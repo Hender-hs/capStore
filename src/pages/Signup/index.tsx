@@ -14,8 +14,8 @@ interface SubmitProps {
   password: string;
 }
 
-function Login() {
-  const { signIn } = useAuth();
+function Signup() {
+  const { signUp } = useAuth();
 
   const [error, setError] = useState(false);
 
@@ -38,7 +38,17 @@ function Login() {
   });
 
   const onSubmit = (data: SubmitProps) => {
-    signIn(data, setError, history);
+    console.log("a");
+    const userInfo = {
+      cash: 1000,
+      url: "",
+      level: 1,
+      products: [],
+      computers: [],
+      age: "",
+      ...data,
+    };
+    signUp(userInfo, setError, history);
   };
 
   return (
@@ -79,4 +89,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import api from "../../services/api";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -15,12 +16,12 @@ interface Product {
   title: string;
   description: string;
   image: string;
-  priceFormatted: number;
 }
 
 interface CartProviderData {
   cart: Product[];
   setCart: (value: Product[]) => void;
+  getProducts: () => void;
 }
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
@@ -33,8 +34,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const getProducts = () => {
+    api.get("/products").then((res) => console.log(res));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, setCart, getProducts }}>
       {children}
     </CartContext.Provider>
   );
