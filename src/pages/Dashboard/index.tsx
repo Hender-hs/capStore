@@ -1,5 +1,15 @@
-const Dashboard = () => {
-    return <div></div>
-}
+import { useCart } from "../../providers/Cart";
 
-export default Dashboard
+const Dashboard = () => {
+  const { products } = useCart();
+
+  return (
+    <div>
+      {products.map((product) => (
+        <p>{product.name}</p>
+      ))}
+    </div>
+  );
+};
+
+export default Dashboard;
