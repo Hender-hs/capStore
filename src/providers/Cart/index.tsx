@@ -1,6 +1,8 @@
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -10,17 +12,28 @@ import api from "../../services/api";
 interface CartProviderProps {
   children: ReactNode;
 }
+
+interface Feedback {
+  user: string;
+  rating: number;
+  comment?: string;
+  likes?: number;
+}
+
 interface Product {
   id?: number;
   name: string;
-  title: string;
+  price: number;
   description: string;
-  image: string;
+  url: string;
+  sellerId: number;
+  quantity: number;
+  feedback: Feedback[];
 }
 
 interface CartProviderData {
   cart: Product[];
-  setCart: (value: Product[]) => void;
+  setCart: Dispatch<SetStateAction<Product[]>>;
   getProducts: () => void;
   addProduct: (product: Product) => void;
 }
