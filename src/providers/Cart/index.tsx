@@ -22,6 +22,7 @@ interface CartProviderData {
   cart: Product[];
   setCart: (value: Product[]) => void;
   getProducts: () => void;
+  addProduct: (product: Product) => void;
 }
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
@@ -38,8 +39,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     api.get("/products").then((res) => console.log(res));
   };
 
+  const addProduct = async (product: Product) => {
+    const response = await api.post("/products", product);
+
+    setCart([...cart, response.data]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart, getProducts }}>
+    <CartContext.Provider value={{ cart, setCart, getProducts, addProduct }}>
       {children}
     </CartContext.Provider>
   );
