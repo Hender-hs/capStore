@@ -35,7 +35,7 @@ interface CartProviderData {
   cart: Product[];
   setCart: Dispatch<SetStateAction<Product[]>>;
   getProducts: () => void;
-  addProduct: (product: Product) => void;
+  addToCart: (product: Product) => void;
 }
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
@@ -43,23 +43,28 @@ const CartContext = createContext<CartProviderData>({} as CartProviderData);
 export const CartProvider = ({ children }: CartProviderProps) => {
   const local = localStorage.getItem("cart");
   const [cart, setCart] = useState<Product[]>(!local ? [] : JSON.parse(local));
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const getProducts = () => {
+  const getProducts = async () => {
     api.get("/products").then((res) => console.log(res));
+    const response = await api.get("products");
+    setProducts(response.data);
   };
 
-  const addProduct = async (product: Product) => {
-    const response = await api.post("/products", product);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    setCart([...cart, response.data]);
+  const addToCart = (product: Product) => {
+    setCart([...cart, product]);
   };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, getProducts, addProduct }}>
+    <CartContext.Provider value={{ cart, setCart, getProducts, addToCart }}>
       {children}
     </CartContext.Provider>
   );
