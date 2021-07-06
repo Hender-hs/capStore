@@ -13,7 +13,11 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface User {}
+interface User {
+  username: string;
+  location: string;
+  cep: number;
+}
 
 interface AuthProviderData {
   signIn: (
@@ -21,13 +25,14 @@ interface AuthProviderData {
     setError: (value: boolean) => void,
     history: History
   ) => void;
-  token: string;
-  setAuth: Dispatch<SetStateAction<string>>;
   signUp: (
     userData: User,
     setError: (value: boolean) => void,
     history: History
   ) => void;
+  token: string;
+  setAuth: Dispatch<SetStateAction<string>>;
+  updateUserInfo: (data: User) => void;
 }
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
@@ -36,6 +41,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const token = localStorage.getItem("token") || "";
 
   const [auth, setAuth] = useState<string>(token);
+  const [user, setUser] = useState({});
 
   const signIn = (
     userData: User,
@@ -67,8 +73,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .catch((err) => setError(true));
   };
 
+  const updateUserInfo = async (data: User) => {
+    const response = await api.patch("/users");
+    setUser({ ...user, data });
+    console.log(response);
+  };
+
   return (
-    <AuthContext.Provider value={{ token: auth, setAuth, signIn, signUp }}>
+    <AuthContext.Provider
+      value={{ token: auth, setAuth, signIn, signUp, updateUserInfo }}
+    >
       {children}
     </AuthContext.Provider>
   );
