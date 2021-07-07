@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const token = localStorage.getItem("token") || "";
 
   const [auth, setAuth] = useState<string>(token);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({} as User);
 
   const signIn = (
     userData: User,
@@ -75,14 +75,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .catch((err) => setError(true));
   };
 
-  const updateUserInfo = async (data: User) => {
-    const response = await api.patch("/users", data, {
+  const updateUserInfo = (data: User) => {
+    api.patch("/users", data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    setUser({ ...user, data });
+    const newUser = { ...user, data };
+
+    setUser(newUser);
   };
 
   return (
