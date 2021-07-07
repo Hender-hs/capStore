@@ -8,17 +8,10 @@ import {
 } from "react";
 import { History } from "history";
 import api from "../../services/api";
+import { User } from "../../types/user";
 
 interface AuthProviderProps {
   children: ReactNode;
-}
-
-export interface User {
-  username?: string;
-  location?: string;
-  password?: string;
-  cep?: number;
-  email?: string;
 }
 
 interface AuthProviderData {
