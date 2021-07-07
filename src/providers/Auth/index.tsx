@@ -13,21 +13,23 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface User {
-  username: string;
-  location: string;
-  cep: number;
+export interface User {
+  username?: string;
+  location?: string;
+  password?: string;
+  cep?: number;
+  email?: string;
 }
 
 interface AuthProviderData {
   signIn: (
     userData: User,
-    setError: (value: boolean) => void,
+    setError: Dispatch<SetStateAction<boolean>>,
     history: History
   ) => void;
   signUp: (
     userData: User,
-    setError: (value: boolean) => void,
+    setError: Dispatch<SetStateAction<boolean>>,
     history: History
   ) => void;
   token: string;
@@ -81,7 +83,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     });
 
     setUser({ ...user, data });
-    console.log(response);
   };
 
   return (

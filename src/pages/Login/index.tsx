@@ -4,15 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
-import { useAuth } from "../../providers/Auth";
+import { useAuth, User } from "../../providers/Auth";
 import { History } from "history";
 
 import { Container } from "./styles";
-
-interface SubmitProps {
-  email: string;
-  password: string;
-}
 
 function Login() {
   const { signIn } = useAuth();
@@ -33,11 +28,11 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SubmitProps>({
+  } = useForm<User>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: SubmitProps) => {
+  const onSubmit = (data: User) => {
     signIn(data, setError, history);
   };
 
