@@ -1,3 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.button``;
+interface ButtonStyledProp {
+  color: string;
+  width: string;
+  height: string;
+}
+export const ButtonStyled = styled.button<ButtonStyledProp>``;
