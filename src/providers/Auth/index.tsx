@@ -74,7 +74,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const updateUserInfo = async (data: User) => {
-    const response = await api.patch("/users");
+    const response = await api.patch("/users", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     setUser({ ...user, data });
     console.log(response);
   };
