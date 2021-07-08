@@ -28,7 +28,7 @@ const SalesAndPurchases = (props: ComponentProps) => {
     <div>
       <h1>{whichHistory}</h1>
       {SalesOrPurchases.map(printSalesOrPurchases)}
-      <h5>R$ {SalesOrPurchases.reduce(TotalSales, 0)}</h5>
+      <h5>Total R$ {SalesOrPurchases.reduce(TotalSales, 0)}</h5>
     </div>
   );
 };

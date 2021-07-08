@@ -14,7 +14,12 @@ interface ProfilesDatas {
   location: string,
 }
 
-const ProfileData = (data: ProfilesDatas, products: Products[]) => {
+interface ComponentProp {
+  data: ProfilesDatas, 
+  products: Products[]
+}
+
+const ProfileData = ({data, products}: ComponentProp) => {
 
   const [ alternateDataTabs, setAlternateDataTabs ] = useState<boolean>(true);
 
