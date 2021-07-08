@@ -5,14 +5,8 @@ import { useState } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
-import { History } from "history";
 
 import { Container } from "./styles";
-
-interface SubmitProps {
-  email: string;
-  password: string;
-}
 
 function Login() {
   const { signIn } = useAuth();
@@ -27,17 +21,17 @@ function Login() {
       .required("Campo obrigatório"),
   });
 
-  const history: History = useHistory();
+  const history = useHistory();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SubmitProps>({
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: SubmitProps) => {
+  const onSubmit = (data) => {
     signIn(data, setError, history);
   };
 
