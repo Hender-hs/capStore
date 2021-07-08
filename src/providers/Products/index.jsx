@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-
 const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
