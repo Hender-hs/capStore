@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Styleguide from "../components/Styleguide";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import SpecificProduct from "../pages/SpecificProduct";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/styleguide" component={Styleguide} />
+      <Route exact path="/specificproduct/:id" component={SpecificProduct} />
     </Switch>
   );
 };
