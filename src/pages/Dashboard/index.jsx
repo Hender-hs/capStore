@@ -1,7 +1,7 @@
-import { useCart } from "../../providers/Cart";
+import { useProducts } from "../../providers/Products";
 
 const Dashboard = () => {
-  const { products } = useCart();
+  const { products } = useProducts();
 
   return (
     <div>
