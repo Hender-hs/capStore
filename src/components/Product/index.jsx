@@ -16,13 +16,23 @@ interface ProductProps {
   category?: string;
   id?: number;
   url: string;
-  quantity?: number;
+  quantity: number;
   sellerId?: number;
   feedback?: Feedback[];
   userType: string;
 }
 
 const Product = ({ name, url, price, quantity, userType }: ProductProps) => {
+  const howManySold = (value: number) => {
+    const newValue = 10 - value;
+
+    if (!newValue) {
+      return 0;
+    }
+
+    return newValue;
+  };
+
   return (
     <S.Container>
       <img src={url || DefaultImage} alt={name} />
@@ -30,7 +40,7 @@ const Product = ({ name, url, price, quantity, userType }: ProductProps) => {
       {userType === "seller" ? (
         <S.SellerPrice>
           <label>{formatValue(price)}</label>
-          <p>Quantidade vendida: {quantity}</p>
+          <p>Quantidade vendida: {() => howManySold(quantity)}</p>
         </S.SellerPrice>
       ) : (
         <S.ClientPrice>
@@ -41,6 +51,7 @@ const Product = ({ name, url, price, quantity, userType }: ProductProps) => {
           <h6>ou 12x sem juros de {formatValue(price / 12)}</h6>
         </S.ClientPrice>
       )}
+      {}
     </S.Container>
   );
 };
