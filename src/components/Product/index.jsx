@@ -3,27 +3,8 @@ import DefaultImage from "../../assets/default.jpg";
 
 import * as S from "./styles";
 
-interface Feedback {
-  user: string;
-  rating: number;
-  comment?: string;
-  likes?: number;
-}
-
-interface ProductProps {
-  name: string;
-  price: number;
-  category?: string;
-  id?: number;
-  url: string;
-  quantity: number;
-  sellerId?: number;
-  feedback?: Feedback[];
-  userType: string;
-}
-
-const Product = ({ name, url, price, quantity, userType }: ProductProps) => {
-  const howManySold = (value: number) => {
+const Product = ({ name, url, price, quantity, userType }) => {
+  const howManySold = (value) => {
     const newValue = 10 - value;
 
     if (!newValue) {
