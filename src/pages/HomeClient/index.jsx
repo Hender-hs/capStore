@@ -39,6 +39,15 @@ const HomeClient = () => {
               </div>
             </Slider>
           </section>
+          <section>
+            <h3>Fontes</h3>
+            <Slider>
+              <div>
+                <p>Nome do produto</p>
+                <span>Preço</span>
+              </div>
+            </Slider>
+          </section>
         </>
       )}
       {inputValue !== "" && (

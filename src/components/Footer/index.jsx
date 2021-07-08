@@ -6,12 +6,14 @@ const Footer = () => {
 
     return (
       <div>
-        <p>Quem somos</p>
+        <p>
+          <a href="/">Quem somos</a>
+        </p>
         <p>Formas de pagamento</p>
         <div>
           <Visa size={50} />
           <Mastercard size={50} />
-          <CreditCard size={50}/>
+          <CreditCard size={50} />
         </div>
       </div>
     );
