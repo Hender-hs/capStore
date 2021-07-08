@@ -1,46 +1,335 @@
-# Getting Started with Create React App
+# Capstone API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## USER
 
-## Available Scripts
+### GET get users
 
-In the project directory, you can run:
+```
+https://capstone-api.herokuapp.com/users
+```
 
-### `yarn start`
+#### Example request
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+curl "https://capstone-api.herokuapp.com/users" \
+  -X GET
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### POST Create account
 
-### `yarn test`
+**Headers**
+Content-Type application/json
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Body JSON
 
-### `yarn build`
+```
+  "name": "paulo",
+  "email": "paulo@gmail.com",
+  "phone": "55995025979",
+  "cep": "62509136",
+  "password": "123456",
+  "location": "Rio de Janeiro",
+  "cpf": "111.111.111-11",
+  "type": "seller"
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Example request
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+curl "https://capstone-api.herokuapp.com/users" \
+  -H 'Content-Type: application/json' \
+  -X POST \
+  -d '{
+  "name": "paulo",
+  "email": "paulo@gmail.com",
+  "phone": "55995025979",
+  "cep": "62509136",
+  "password": "123456",
+  "location": "Rio de Janeiro",
+  "cpf": "111.111.111-11"
+  "type": "seller"
+}'
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### POST login
 
-### `yarn eject`
+**Headers**
+Content-Type application/json
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Body JSON
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+  "email": "paulo@gmail.com",
+  "password": "123456"
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Example request
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+curl "https://kabit-api.herokuapp.com/login/" \
+  -H 'Content-Type: application/json' \
+  -X POST \
+  -d '{
+  "email": "paulo@gmail.com",
+  "password": "123456"
+}
+'
+```
 
-## Learn More
+### PATCH update profile
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Headers**
+Content-Type application/json \
+Authorization
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Body JSON
+
+```
+  "name": "novonome",
+  "email": "novoemail@gmail.com",
+  "phone": "novonumero"
+  "password": "novasenha",
+  "cep": "novocep",
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/users/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X PATCH \
+  -d '{
+  "name": "novonome",
+  "email": "novoemail@gmail.com",
+  "phone": "novonumero"
+  "password": "novasenha",
+  "cep": "novocep",
+}'
+```
+
+### PRODUCTS
+
+### GET get products
+
+**Headers**
+Content-Type application/json \
+
+#### Example request
+
+```
+  -X GET \
+```
+
+### PATCH update product
+
+**Headers**
+Content-Type application/json \
+Authorization
+
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Body JSON
+
+```
+  "quantity": "9"
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/products/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X PATCH \
+  -d '{
+  "quantity": "9"
+}'
+```
+
+### POST create product
+
+**Headers**
+Content-Type application/json \
+Authorization
+
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Body JSON
+
+```
+   "name": "Gigabyte B360M Aorus Gaming3 Lga 1151 Ddr4",
+    "price": 930,
+    "category": "Placa Mãe",
+    "id": 2,
+    "url": "https://http2.mlstatic.com/D_NQ_NP_620380-MLB32460626041_102019-O.webp",
+    "quantity": 10,
+    "sellerId": 1,
+    "feedback": [
+      {
+        "user": "Paulo",
+        "rating": 4,
+        "comment": "Gostei muito!",
+        "likes": 0
+      },
+      {
+        "user": "Filipe Gutierry",
+        "rating": 1,
+        "comment": "Meu deus que placa bosta!",
+        "likes": 3
+      }
+    ]
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/products/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X PATCH \
+  -d '{
+   "name": "Gigabyte B360M Aorus Gaming3 Lga 1151 Ddr4",
+    "price": 930,
+    "category": "Placa Mãe",
+    "id": 2,
+    "url": "https://http2.mlstatic.com/D_NQ_NP_620380-MLB32460626041_102019-O.webp",
+    "quantity": 10,
+    "sellerId": 1,
+    "feedback": [
+      {
+        "user": "Paulo",
+        "rating": 4,
+        "comment": "Gostei muito!",
+        "likes": 0
+      },
+      {
+        "user": "Filipe Gutierry",
+        "rating": 1,
+        "comment": "Meu deus que placa bosta!",
+        "likes": 3
+      }
+    ]
+}'
+```
+
+### COMPUTERS
+
+### GET get computers
+
+**Headers**
+Content-Type application/json \
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/computers/3/" \
+  -X GET \
+```
+
+### PATCH update computers
+
+**Headers**
+Content-Type application/json \
+Authorization
+
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Body JSON
+
+```
+  "memory": "5"
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/products/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X PATCH \
+  -d '{
+  "memory": "5"
+}'
+```
+
+### POST create computer
+
+**Headers**
+Content-Type application/json \
+Authorization
+
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Body JSON
+
+```
+    "title": "Setup Desenvolvedor",
+    "description": "Um computador com as configurações recomendadas para alguém que atua como desenvolvedor",
+    "userId": 3,
+    "owner": "Juan",
+    "id": 1,
+    "case": 6,
+    "motherboard": 1,
+    "cpu": 2,
+    "memory": 3,
+    "ram": 4,
+    "videocard": 5,
+    "cooler": 7,
+    "power": 8
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/products/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X POST \
+  -d '{
+    "title": "Setup Desenvolvedor",
+    "description": "Um computador com as configurações recomendadas para alguém que atua como desenvolvedor",
+    "userId": 3,
+    "owner": "Juan",
+    "id": 1,
+    "case": 6,
+    "motherboard": 1,
+    "cpu": 2,
+    "memory": 3,
+    "ram": 4,
+    "videocard": 5,
+    "cooler": 7,
+    "power": 8
+}'
+```
+
+### DELETE delete computers
+
+**Headers**
+Content-Type application/json \
+Authorization
+
+```
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI
+```
+
+#### Example request
+
+```
+curl "https://kabit-api.herokuapp.com/computers/3/" \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNDkzOTgxLCJqdGkiOiI1ZDRiMmYxNGM3M2Q0MjAwYTcwZjQwMTUxNDEzNjI1YiIsInVzZXJfaWQiOjY0OX0.upqN4ro1KBwxz1tbNWCVXiPGcIZaGBKKYaCQxb3L7EI' \
+  -X DELETE \
+```
