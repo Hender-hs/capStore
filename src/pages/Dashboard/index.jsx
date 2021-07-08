@@ -1,15 +1,5 @@
-import { useProducts } from "../../providers/Products";
-
 const Dashboard = () => {
-  const { products } = useProducts();
+    return <div></div>
+}
 
-  return (
-    <div>
-      {products.map((product) => (
-        <p>{product.name}</p>
-      ))}
-    </div>
-  );
-};
-
-export default Dashboard;
+export default Dashboard
