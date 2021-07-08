@@ -1,15 +1,4 @@
-interface ProfileData {
-  cep: string,
-  phone: number,
-  email: string,
-  location: string,
-}
-
-interface ComponentProps {
-  propProfileData: ProfileData
-}
-
-const UserAndSellerData = ({propProfileData}: ComponentProps) => {
+const UserAndSellerData = ({propProfileData}) => {
 
   const { cep, phone, email, location } = propProfileData;
 

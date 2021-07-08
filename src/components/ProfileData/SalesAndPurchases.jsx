@@ -1,25 +1,15 @@
-interface Product {
-  name: string,
-  price: number,
-}
-
-interface ComponentProps {
-  whichHistory: string,
-  SalesOrPurchases: Product[],
-}
-
-const SalesAndPurchases = (props: ComponentProps) => {
+const SalesAndPurchases = (props) => {
 
   const {whichHistory, SalesOrPurchases} = props;
 
-  const printSalesOrPurchases = ({name, price}: Product) => (
-    <div>
+  const printSalesOrPurchases = ({name, price}, index) => (
+    <div key={index} >
       <h4>{name}</h4>
       <h5>R$ {price}</h5>
     </div>
   );
 
-  const TotalSales = (acc: number, element: Product) => {
+  const TotalSales = (acc, element) => {
     acc += element.price;
     return acc;
   };
