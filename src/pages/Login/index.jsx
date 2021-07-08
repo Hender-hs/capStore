@@ -4,8 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
-import { useAuth, User } from "../../providers/Auth";
-import { History } from "history";
+import { useAuth } from "../../providers/Auth";
 
 import { Container } from "./styles";
 
@@ -22,17 +21,17 @@ function Login() {
       .required("Campo obrigatório"),
   });
 
-  const history: History = useHistory();
+  const history = useHistory();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<User>({
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: User) => {
+  const onSubmit = (data) => {
     signIn(data, setError, history);
   };
 
