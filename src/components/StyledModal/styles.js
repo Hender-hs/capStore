@@ -28,6 +28,7 @@ export const ModalContent = styled.div`
     cursor: pointer;
     letter-spacing: 1px;
     transition: 0.3s;
+    margin: 1rem 0;
 
     &:hover {
       background-color: var(--green);
@@ -62,6 +63,9 @@ export const Input = styled.input`
   outline: none;
   border: none;
   background-color: white;
+  font-size: 14px;
+  font-family: var(--alt-font);
+  font-weight: 600;
 `;
 
 export const TextError = styled.p`
@@ -72,5 +76,6 @@ export const TextError = styled.p`
 export const InputLabel = styled.p`
   padding: 0.5rem 0;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
 `;
