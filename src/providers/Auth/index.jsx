@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("token", response.data.access);
+        localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
         console.log(response.data);
         history.push("/dashboard");
