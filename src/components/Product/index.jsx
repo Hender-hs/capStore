@@ -37,7 +37,6 @@ const Product = ({ name, url, price, quantity, userType, id }) => {
           <h6>ou 12x sem juros de {formatValue(price / 12)}</h6>
         </S.ClientPrice>
       )}
-      {}
     </S.Container>
   );
 };
