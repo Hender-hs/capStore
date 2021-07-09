@@ -7,4 +7,5 @@ const Input = ({ label, type, register, name, error = "", ...rest }) => {
     </>
   );
 };
+
 export default Input;
