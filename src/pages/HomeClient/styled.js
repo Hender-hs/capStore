@@ -7,8 +7,13 @@ export const Container = styled.div`
   justify-content: center;
   background: black;
   height: 100vh;
-  .nextButtonText {
-    color: rgb(14, 241, 52);
+  input {
+    background: none;
+    border-radius: 15px;
+    border: 1px solid white;
+    height: 2rem;
+    color: white;
+    text-align: center;
   }
 `;
 
@@ -21,6 +26,7 @@ export const Card = styled.div`
   width: 12.5rem;
   height: 18.75rem;
   margin: 5rem auto;
+  background: white;
   img {
     width: 6.2rem;
     height: 6.2rem;
