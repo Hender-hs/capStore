@@ -3,37 +3,51 @@ import defaultImg       from "../../assets/default.jpg";
 import { Modal, Fade }  from "@material-ui/core";
 import * as S           from "./styles";
 import { useState }     from "react";
+import { useEffect }    from "react";
 
 const BuildYourPc = () => {
 
-  const { filterByCategory, filteredProducts }  = useProducts();
-  const [ whichCategory, setWhichCategory ]     = useState();
-  const [ openModal, setOpenModal ]             = useState(false);
+  const hardwaresInlocalStorage = JSON.parse(localStorage.getItem("@build-your-pc/hardwares"));
 
-  const WhichKindOfHardwareSelect = (category) => {
-    setWhichCategory(category);
-    filterByCategory(category);
-  }
+  const { filterByCategory, filteredProducts }          = useProducts();
+  const [ PCpartsBeingBuild, setPCpartsBeingBuild ]     = useState(hardwaresInlocalStorage || []);
+  const [ openModal, setOpenModal ]                     = useState(false);
 
   const handleClickHardwareKindSelection = (category) => {
-    WhichKindOfHardwareSelect(category);
+    filterByCategory(category);
     setOpenModal(true);
   }
 
   const addingHardwareToLocalStorage = (element) => {
-
-    const hardwaresInlocalStorage = JSON.parse(localStorage.getItem("@build-your-pc/hardwares"));
-
-    const objectToLocalStorage = hardwaresInlocalStorage || [];
-
-    objectToLocalStorage.push(whichCategory = element);
-
-    localStorage.setItem("@build-your-pc/hardwares", JSON.stringify(objectToLocalStorage));
-
+    setPCpartsBeingBuild([...PCpartsBeingBuild, element]);
     setOpenModal(false);
   }
 
-  const printProdcts = (el, index) => (
+  const removingHardwareToLocalStorage = (productToBeRemoved) => {
+    const sortedSelectedProducts = PCpartsBeingBuild.filter( (el) => el.id !== productToBeRemoved.id )
+    setPCpartsBeingBuild(sortedSelectedProducts);
+  } 
+
+  useEffect( () => {
+    localStorage.setItem("@build-your-pc/hardwares", JSON.stringify(PCpartsBeingBuild));
+  }, [PCpartsBeingBuild]);
+
+  const printingSelectedProdcts = (el, index) => (
+    <S.EachHardware key={index} >
+      <div>
+        <p>{el.name}</p>
+      </div>
+      <div>
+        <img src={el.url} alt={el.name} />
+        <p>{el.description.slice(0, 55)}...</p>
+      </div>
+      <div>
+        <button onClick={() => removingHardwareToLocalStorage(el)} >Remove</button>
+      </div>
+    </S.EachHardware>
+  );
+
+  const printingSpecificKindOfProducts = (el, index) => (
     <S.EachHardware key={index} >
       <div>
         <p>{el.name}</p>
@@ -101,12 +115,12 @@ const BuildYourPc = () => {
         </S.EachHardware>
       </S.PChardware>
       <div>
-        {}
+        {PCpartsBeingBuild.map(printingSelectedProdcts)}
       </div>
       <Modal open={openModal} onClose={() => setOpenModal(false)} >
         <Fade in={openModal} >
           <S.Container>
-            {filteredProducts.map(printProdcts)}
+            {filteredProducts.map(printingSpecificKindOfProducts)}
           </S.Container>
         </Fade>
       </Modal>
