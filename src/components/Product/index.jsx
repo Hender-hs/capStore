@@ -21,7 +21,7 @@ const Product = ({ name, url, price, quantity, userType }) => {
       {userType === "seller" ? (
         <S.SellerPrice>
           <label>{formatValue(price)}</label>
-          <p>Quantidade vendida: {() => howManySold(quantity)}</p>
+          <p>Quantidade vendida: {howManySold(quantity)}</p>
         </S.SellerPrice>
       ) : (
         <S.ClientPrice>
