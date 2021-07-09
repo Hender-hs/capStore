@@ -2,7 +2,7 @@ import { useProducts } from "../../providers/Products";
 import { useState } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
-
+import Input from "../../components/Input";
 const HomeClient = () => {
   const [inputValue, setInput] = useState("");
   const [categoryProdutos, setCategoryProdutos] = useState("Monitor Gamer");
@@ -11,23 +11,23 @@ const HomeClient = () => {
   return (
     <S.Container>
       <div>Aqui vai fica o menu e o carrinho e a sinalização dele</div>
-      <input value={inputValue} onChange={(e) => setInput(e.target.value)} />
+      <Input value={inputValue} onChange={(e) => setInput(e.target.value)} />
 
       <S.ContainerCategory>
         <S.Category
           className=".shrink-border"
-          onClick={() => setCategoryProdutos("Placa Mãe")}
+          onClick={() => setCategoryProdutos("Placa-mãe")}
         >
           <span>Placas Mãe</span>
         </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("Monitor Gamer")}>
+        <S.Category onClick={() => setCategoryProdutos("Processador")}>
           <span>Ram</span>
         </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("Placa Mãe")}>
+        <S.Category onClick={() => setCategoryProdutos("hd/ssd")}>
           <span>HD</span>
         </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("Placa Mãe")}>
-          <span>Promoções</span>
+        <S.Category onClick={() => setCategoryProdutos("Fonte")}>
+          <span>Fonte</span>
         </S.Category>
       </S.ContainerCategory>
 
