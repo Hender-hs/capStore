@@ -32,10 +32,13 @@ const SpecificProduct = () => {
         quantity={product.quantity}
         userType={user?.type}
       />
-      <Button handleClick={() => setCart(product)}>
-        Adicionar ao carrinho
-      </Button>
-      <Feedbacks evaluation={product.feedback} userType={user?.type}/>
+      {user.type === "client" && (
+        <Button handleClick={() => setCart(product)}>
+          Adicionar ao carrinho
+        </Button>
+      )}
+
+      <Feedbacks evaluation={product.feedback} userType={user?.type} />
     </div>
   );
 };
