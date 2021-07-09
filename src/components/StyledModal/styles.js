@@ -79,3 +79,14 @@ export const InputLabel = styled.p`
   font-size: 18px;
   font-weight: 600;
 `;
+
+export const Select = styled.select`
+  width: 304px;
+  font-size: 16px;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: white;
+`;

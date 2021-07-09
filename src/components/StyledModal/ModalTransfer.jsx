@@ -30,21 +30,33 @@ export const ModalTransfer = () => {
       <S.ModalContent>
         <S.InputContainer>
           <S.InputLabel>Agência</S.InputLabel>
-          <S.Input name="agency" {...register("agency")} type="text" />
+          <S.Input
+            name="agency"
+            {...register("agency")}
+            type="text"
+            htmlFor="agency"
+          />
           {!!errors.agency && (
             <S.TextError>{errors?.agency.message}</S.TextError>
           )}
           <S.InputLabel>Número da Conta</S.InputLabel>
-          <S.Input name="accountNumber" {...register("accountNumber")} />
+          <S.Input
+            name="accountNumber"
+            {...register("accountNumber")}
+            htmlFor="accountNumber"
+          />
           {!!errors.accountNumber && (
             <S.TextError>{errors?.accountNumber.message}</S.TextError>
           )}
           <S.InputLabel>Nome do titular</S.InputLabel>
-          <S.Input name="name" {...register("name")} />
+          <S.Input name="name" {...register("name")} htmlFor="name" />
           {!!errors.name && <S.TextError>{errors?.name.message}</S.TextError>}
           <S.InputLabel>Banco</S.InputLabel>
-          <S.Input name="bank" {...register("bank")} />
-          {!!errors.bank && <S.TextError>{errors?.bank.message}</S.TextError>}
+          <S.Select name="bank" {...register("bank")}>
+            <option value="Banco do Brasil">Banco do Brasil</option>
+            <option value="Santander">Santander</option>
+            <option value="Bradesco">Bradesco</option>
+          </S.Select>
         </S.InputContainer>
         <Button type="submit" color="black">
           Finalizar
