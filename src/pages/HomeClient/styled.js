@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 100vh;
   input {
     background: none;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1px solid white;
     height: 2rem;
     color: white;

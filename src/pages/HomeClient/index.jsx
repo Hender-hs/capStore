@@ -11,7 +11,11 @@ const HomeClient = () => {
   return (
     <S.Container>
       <div>Aqui vai fica o menu e o carrinho e a sinalização dele</div>
-      <Input value={inputValue} onChange={(e) => setInput(e.target.value)} />
+      <Input
+        value={inputValue}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Pesquisar"
+      />
 
       <S.ContainerCategory>
         <S.Category
@@ -42,7 +46,7 @@ const HomeClient = () => {
                   <span>Nome {item.name.slice(0, 20)}</span>
                   <p>{item.price}</p>
                   <img src={item.url} alt="img de uma peça" />
-                  <button>Add</button>
+                  <button>Comprar</button>
                 </S.Card>
               ))}
           </Carousel>
@@ -58,7 +62,7 @@ const HomeClient = () => {
                   <span>Nome {item.name.slice(0, 20)}</span>
                   <p>{item.price}</p>
                   <img src={item.url} alt="img de uma peça" />
-                  <button>Add</button>
+                  <button>Comprar</button>
                 </S.Card>
               ))}
           </Carousel>
