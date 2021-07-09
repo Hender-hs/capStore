@@ -22,21 +22,20 @@ const SpecificProduct = () => {
     getProduct();
     // eslint-disable-next-line
   }, []);
-
   return (
     <div>
       {/* Header */}
       <Product
-        name={product?.name}
-        url={product?.url}
-        price={product?.price}
-        quantity={product?.quantity}
-        userType={user.type}
+        name={product.name}
+        url={product.url}
+        price={product.price}
+        quantity={product.quantity}
+        userType={user?.type}
       />
       <Button handleClick={() => setCart(product)}>
         Adicionar ao carrinho
       </Button>
-      <Feedbacks feedback={product.feedback} userType={user.type} />
+      <Feedbacks evaluation={product.feedback} userType={user?.type}/>
     </div>
   );
 };
