@@ -4,6 +4,7 @@ import Product from "../../components/Product";
 import api from "../../services/api";
 import Feedbacks from "../../components/Feedbacks";
 import { useCart } from "../../providers/Cart";
+import Button from "../../components/Button";
 const SpecificProduct = () => {
   const [product, setProduct] = useState([]);
   const { setCart } = useCart();
@@ -30,7 +31,9 @@ const SpecificProduct = () => {
         quantity={product?.quantity}
         userType={product?.userType}
       />
-      <button onClick={() => setCart(product)}>Adicionar ao carrinho</button>
+      <Button handleClick={() => setCart(product)}>
+        Adicionar ao carrinho
+      </Button>
       <Feedbacks feedback={product.feedback} userType={product.userType} />
     </div>
   );
