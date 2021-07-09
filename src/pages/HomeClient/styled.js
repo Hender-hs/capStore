@@ -7,6 +7,9 @@ export const Container = styled.div`
   justify-content: center;
   background: black;
   height: 100vh;
+  .nextButtonText {
+    color: rgb(14, 241, 52);
+  }
 `;
 
 export const Card = styled.div`
@@ -15,11 +18,48 @@ export const Card = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  width: 200px;
-  height: 300px;
-  margin: 10rem auto;
+  width: 12.5rem;
+  height: 18.75rem;
+  margin: 5rem auto;
   img {
-    width: 100px;
-    height: 100px;
+    width: 6.2rem;
+    height: 6.2rem;
+  }
+`;
+
+export const ContainerCategory = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 2rem;
+`;
+
+export const Category = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 3.5rem;
+  width: 4.2rem;
+  margin: 0.8rem;
+  border-bottom: 2px solid gray;
+  span {
+    font-weight: bold;
+    color: rgb(14, 241, 52);
+  }
+  span:hover {
+    animation: neon 1s alternate infinite ease-in-out;
+  }
+
+  @keyframes neon {
+    from {
+      filter: drop-shadow(0px 3px 3px rgb(14, 241, 52));
+    }
+    to {
+      filter: drop-shadow(0px 3px 3px rgb(14, 241, 52));
+    }
   }
 `;
