@@ -33,6 +33,7 @@ const HomeClient = () => {
 
       {inputValue === "" && (
         <>
+          <h3>{categoryProdutos}</h3>
           <Carousel>
             {products
               .filter((item) => item.category === categoryProdutos)

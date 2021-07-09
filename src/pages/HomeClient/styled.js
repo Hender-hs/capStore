@@ -15,6 +15,10 @@ export const Container = styled.div`
     color: white;
     text-align: center;
   }
+  h3 {
+    color: rgb(14, 241, 52);
+    margin: 0;
+  }
 `;
 
 export const Card = styled.div`
