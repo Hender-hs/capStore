@@ -5,9 +5,11 @@ import api from "../../services/api";
 import Feedbacks from "../../components/Feedbacks";
 import { useCart } from "../../providers/Cart";
 import Button from "../../components/Button";
+import { useAuth } from "../../providers/Auth";
 const SpecificProduct = () => {
   const [product, setProduct] = useState([]);
   const { setCart } = useCart();
+  const { user } = useAuth();
   const getProduct = () => {
     const id = Number(localStorage.getItem("@capstone:product_Id") || "");
     api.get("/products").then((response) => {
@@ -29,12 +31,12 @@ const SpecificProduct = () => {
         url={product?.url}
         price={product?.price}
         quantity={product?.quantity}
-        userType={product?.userType}
+        userType={user.type}
       />
       <Button handleClick={() => setCart(product)}>
         Adicionar ao carrinho
       </Button>
-      <Feedbacks feedback={product.feedback} userType={product.userType} />
+      <Feedbacks feedback={product.feedback} userType={user.type} />
     </div>
   );
 };
