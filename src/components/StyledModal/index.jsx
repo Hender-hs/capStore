@@ -6,7 +6,15 @@ const StyledModal = ({ open, onClose, type = "transfer" }) => {
   return (
     <div>
       <Modal open={open} onClose={onClose}>
-        {type === "pix" ? <ModalPix /> : <ModalTransfer />}
+        {type === "pix" ? (
+          <div>
+            <ModalPix />
+          </div>
+        ) : (
+          <div>
+            <ModalTransfer />
+          </div>
+        )}
       </Modal>
     </div>
   );
