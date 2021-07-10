@@ -17,8 +17,11 @@ const GlobalStyle = createGlobalStyle`
   --lighter-green: #A9FDAC;
   --gray: #605F5F;
   --black: #1C1B1B;
-}
+} 
 
+   body {
+    background: var(--black);
+   }
 `;
 
 export default GlobalStyle;
