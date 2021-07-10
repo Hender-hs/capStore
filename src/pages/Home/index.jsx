@@ -3,67 +3,95 @@ import { useState } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
+
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [categoryProdutos, setCategoryProdutos] = useState("Monitor Gamer");
+  const [type, setType] = useState("client");
   const { products } = useProducts();
 
+  const setCart = (item) => {
+    localStorage.setItem("cart", item);
+  };
+
+  const setStock = (item) => {
+    localStorage.setItem("stock", item);
+  };
   return (
-    <S.Container>
-      <div>Aqui vai fica o menu e o carrinho e a sinalização dele</div>
-      <Input value={inputValue} onChange={(e) => setInput(e.target.value)} />
+    <>
+      {type === "client" && (
+        <S.Container>
+          <Input
+            value={inputValue}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          {inputValue === "" && (
+            <>
+              <h1>{categoryProdutos}</h1>
+              <Carousel>
+                {products
+                  .filter((item) => item.category === categoryProdutos)
+                  .map((item) => (
+                    <S.Card>
+                      <img src={item.url} alt="img de uma peça" />
+                      <span>Nome {item.name.slice(0, 20)}</span>
+                      <p>R${item.price}</p>
+                      <button className="client" onClick={() => setCart(item)}>
+                        Comprar
+                      </button>
+                    </S.Card>
+                  ))}
+              </Carousel>
+            </>
+          )}
 
-      <S.ContainerCategory>
-        <S.Category
-          className=".shrink-border"
-          onClick={() => setCategoryProdutos("Placa-mãe")}
-        >
-          <span>Placas Mãe</span>
-        </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("Processador")}>
-          <span>Ram</span>
-        </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("hd/ssd")}>
-          <span>HD</span>
-        </S.Category>
-        <S.Category onClick={() => setCategoryProdutos("Fonte")}>
-          <span>Fonte</span>
-        </S.Category>
-      </S.ContainerCategory>
-
-      {inputValue === "" && (
-        <>
-          <Carousel>
-            {products
-              .filter((item) => item.category === categoryProdutos)
-              .map((item) => (
-                <S.Card>
-                  <span>Nome {item.name.slice(0, 20)}</span>
-                  <p>{item.price}</p>
-                  <img src={item.url} alt="img de uma peça" />
-                  <button>Add</button>
-                </S.Card>
-              ))}
-          </Carousel>
-        </>
+          {inputValue !== "" && (
+            <>
+              <Carousel>
+                {products
+                  .filter((item) => item.category === inputValue)
+                  .map((item) => (
+                    <S.Card>
+                      <span>Nome {item.name.slice(0, 20)}</span>
+                      <p>R${item.price}</p>
+                      <button onClick={() => setCart(item)} className="client">
+                        Comprar
+                      </button>
+                    </S.Card>
+                  ))}
+              </Carousel>
+            </>
+          )}
+        </S.Container>
       )}
-      {inputValue !== "" && (
-        <>
-          <Carousel>
-            {products
-              .filter((item) => item.category === inputValue)
-              .map((item) => (
-                <S.Card>
-                  <span>Nome {item.name.slice(0, 20)}</span>
-                  <p>{item.price}</p>
-                  <img src={item.url} alt="img de uma peça" />
-                  <button>Add</button>
-                </S.Card>
-              ))}
-          </Carousel>
-        </>
+      {type === "seller" && (
+        <S.Container>
+          <Input
+            value={inputValue}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          {inputValue === "" && (
+            <>
+              <h1>Seus Produtos</h1>
+              <Carousel>
+                {products
+                  .filter((item) => item.category === categoryProdutos)
+                  .map((item) => (
+                    <S.Card>
+                      <img src={item.url} alt="img de uma peça" />
+                      <span>Nome {item.name.slice(0, 20)}</span>
+                      <p>R${item.price}</p>
+                    </S.Card>
+                  ))}
+              </Carousel>
+              <button onClick={setCart} className="seller">
+                Comprar
+              </button>
+            </>
+          )}
+        </S.Container>
       )}
-    </S.Container>
+    </>
   );
 };
 
