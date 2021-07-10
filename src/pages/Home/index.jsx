@@ -3,7 +3,7 @@ import { useState } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
-const HomeClient = () => {
+const Home = () => {
   const [inputValue, setInput] = useState("");
   const [categoryProdutos, setCategoryProdutos] = useState("Monitor Gamer");
   const { products } = useProducts();
@@ -67,4 +67,4 @@ const HomeClient = () => {
   );
 };
 
-export default HomeClient;
+export default Home;
