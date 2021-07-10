@@ -11,8 +11,11 @@ export const Container = styled.div`
     background: none;
     border-radius: 15px;
     border: 1px solid white;
-    height: 2rem;
+    height: 3rem;
+    width: 15rem;
     color: white;
+    font-size: 1rem;
+    font-weight: bold;
     text-align: center;
   }
 `;
@@ -51,7 +54,6 @@ export const Category = styled.div`
   height: 3.5rem;
   width: 4.2rem;
   margin: 0.8rem;
-  border-bottom: 2px solid gray;
   span {
     font-weight: bold;
     color: rgb(14, 241, 52);

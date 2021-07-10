@@ -3,6 +3,8 @@ import { useState } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
+// import { BsSearch } from "react-icons/Bs/BsSearch";
+
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [categoryProdutos, setCategoryProdutos] = useState("Monitor Gamer");
