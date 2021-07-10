@@ -7,6 +7,30 @@ export const Container = styled.div`
   justify-content: center;
   background: black;
   height: 100vh;
+  button,
+  .client {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    background: var(--light-green);
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid var(--light-green);
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+  button,
+  .seller {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    background: var(--light-green);
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid var(--light-green);
+    border-radius: 5px;
+    font-weight: bold;
+  }
   span {
     font-family: "Roboto Condensed", sans-serif;
     font-weight: bold;
@@ -65,16 +89,5 @@ export const Card = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
-  }
-  button {
-    margin-top: 4.5rem;
-    background: var(--light-green);
-    width: 4rem;
-    height: 2rem;
-    border: 1px solid var(--light-green);
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 2px;
-    font-family: "Roboto Condensed", sans-serif;
   }
 `;
