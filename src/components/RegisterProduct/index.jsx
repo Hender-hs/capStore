@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import api from "../../services";
+import api from "../../services/api";
 import { useHistory } from "react-router";
 import { toastError, toastSuccess } from "../../utils";
 import * as S from "./styled";
@@ -14,6 +14,7 @@ const RegisterProduct = () => {
   const schema = yup.object().shape({
     name: yup.string().required("Required field"),
     price: yup.string().required("Required field"),
+    category: yup.string().required("Required field"),
     url: yup.string().required("Required field"),
     quantily: yup.string().required("Required field"),
     description: yup.string().required("Required field"),
@@ -27,16 +28,35 @@ const RegisterProduct = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleForm = ({ username, email, password }) => {
-    const necessaryDatas = { username, email, password };
-    api
-      .post("/users/", necessaryDatas)
-      .then((_) => {
-        toastSuccess("Yes!!!You just registered");
-        history.push("/login");
-      })
-      .catch((_) => toastError("That didn't work, try another username"));
-    reset();
+  const handleForm = ({
+    name,
+    price,
+    url,
+    quantily,
+    description,
+    category,
+  }) => {
+    const prod = {
+      name,
+      price,
+      category,
+      url,
+      quantily,
+      sellerId: "3",
+      description,
+      feedback: [],
+    };
+    // preciso adicionar na api e não sei como preciso pesquisar
+
+    //   const necessaryDatas = { username, email, password };
+    //   api
+    //     .post("/users/", necessaryDatas)
+    //     .then((_) => {
+    //       toastSuccess("Yes!!!You just registered");
+    //       history.push("/login");
+    //     })
+    //     .catch((_) => toastError("That didn't work, try another username"));
+    //   reset();
   };
 
   return (
