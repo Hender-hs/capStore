@@ -1,6 +1,5 @@
 import { useProducts }  from "../../providers/Products";
 import defaultImg       from "../../assets/default.jpg";
-import { Modal, Fade }  from "@material-ui/core";
 import * as S           from "./styles";
 import { useState }     from "react";
 import { useEffect }    from "react";
@@ -84,13 +83,11 @@ const BuildYourPc = () => {
       <div>
         {PCpartsBeingBuild.map(printingSelectedProdcts)}
       </div>
-      <Modal open={openModal} onClose={() => setOpenModal(false)} >
-        <Fade in={openModal} >
-          <S.Container>
-            {filteredProducts.map(printingSpecificKindOfProducts)}
-          </S.Container>
-        </Fade>
-      </Modal>
+      <S.Modal open={openModal} onClick={() => setOpenModal(false)} >
+        <S.ModalContainer open={openModal} >
+          {filteredProducts.map(printingSpecificKindOfProducts)}
+        </S.ModalContainer>
+      </S.Modal>
     </S.Container>
   );
 };

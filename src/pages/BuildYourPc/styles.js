@@ -25,3 +25,21 @@ export const EachHardware = styled.div `
     width: 200px;
   }
 `
+
+export const Modal = styled.div `
+  position: absolute;
+  width: ${() => `${document.body.clientWidth}px` };
+  height: ${() => `${document.body.clientHeight}px` };
+  visibility: ${({open}) => open ? "visible" : "hidden" };
+
+  background-color: ${({open}) => open ? "rgb(0, 0, 0, 0.5)" : "rgb(255, 255, 255, 0)" };
+
+  transition: 0.5s;
+`
+
+export const ModalContainer = styled.div `
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  visibility: ${({open}) => open ? "visible" : "hidden" };
+`
