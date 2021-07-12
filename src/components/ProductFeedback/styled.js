@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: var(--lighter-green);
   padding: 1rem;
-
   > :first-child {
     display: flex;
     gap: 1rem;
@@ -13,7 +12,7 @@ export const Container = styled.div`
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     background-color: #fff;
-
+    border-radius: 15px;
     p {
       font-size: 18px;
     }
