@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const token = localStorage.getItem("token") || "";
 
   const [auth, setAuth] = useState(token);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("");
 
   const signIn = (userData, setError, history) => {
     api
@@ -18,17 +18,16 @@ export const AuthProvider = ({ children }) => {
         console.log(response.data);
         history.push("/dashboard");
       })
-      .catch((err) => setError(true));
+      .catch((_) => setError(true));
   };
 
   const signUp = (userData, setError, history) => {
     api
       .post("/users", userData)
-      .then((response) => {
+      .then((_) => {
         history.push("/login");
-        console.log(response);
       })
-      .catch((err) => setError(true));
+      .catch((_) => setError(true));
   };
 
   const updateUserInfo = (data) => {
