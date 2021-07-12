@@ -1,8 +1,12 @@
 import ProductFeedback from "../ProductFeedback";
-const Feedbacks = ({ product }) => {
+import Button from "../Button";
+const Feedbacks = ({ evaluation, userType }) => {
   return (
     <div>
-      {product.feedback.map((item, index) => (
+      {userType === "client" && (
+        <Button handleClick={() => console.log("abre modal")}>Avaliar</Button>
+      )}
+      {evaluation?.map((item, index) => (
         <ProductFeedback key={index} feedback={item} />
       ))}
     </div>
