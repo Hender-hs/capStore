@@ -26,8 +26,7 @@ const Home = () => {
         },
       })
       .then((response) => {
-        console.log(response);
-        setType(response.type);
+        setType(response.data.type);
       });
   };
   /********************************************************** */
