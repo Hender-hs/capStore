@@ -2,13 +2,15 @@ import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { useProducts } from "../../providers/Products";
 import { useState } from "react";
+import ProfileData from "../../components/ProfileData";
 const HomeClient = () => {
   const [inputValue, setInput] = useState("");
   const { products } = useProducts();
 
   return (
     <>
-      <div>Aqui vai fica o menu e o carrinho e a sinalização dele</div>
+      <ProfileData />
+      {/* <div>Aqui vai fica o menu e o carrinho e a sinalização dele</div>
       <input value={inputValue} onChange={(e) => setInput(e.target.value)} />
       {inputValue === "" && (
         <>
@@ -59,7 +61,7 @@ const HomeClient = () => {
           </section>
           <div>Aqui fica o footer</div>
         </>
-      )}
+      )} */}
     </>
   );
 };
