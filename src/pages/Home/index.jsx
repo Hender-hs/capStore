@@ -42,7 +42,6 @@ const Home = () => {
 
   return (
     <>
-      {console.log(type)}
       {type === "client" && (
         <S.Container>
           <Input />

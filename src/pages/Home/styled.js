@@ -31,7 +31,6 @@ export const Card = styled.div`
   border: 1px solid white;
   width: 12.5rem;
   height: 10.75rem;
-  margin-top: 6rem;
   margin-left: 25%;
   background: white;
   border: 1px solid var(--gray);
