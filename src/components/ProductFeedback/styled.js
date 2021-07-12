@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: var(--lighter-green);
   padding: 1rem;
+  border-bottom: 1px solid var(--black);
+
   > :first-child {
     display: flex;
     gap: 1rem;
+    font-weight: bold;
   }
+  p {
+    padding: 0.5rem;
+  }
+
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -15,13 +21,14 @@ export const Container = styled.div`
     border-radius: 15px;
     p {
       font-size: 18px;
+      border: 0;
     }
     > :first-child {
-      display: flex;
       align-items: center;
       justify-content: space-between;
       width: 80%;
     }
+    border: 0;
   }
 `;
 
