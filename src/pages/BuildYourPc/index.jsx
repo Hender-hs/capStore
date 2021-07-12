@@ -62,57 +62,24 @@ const BuildYourPc = () => {
     </S.EachHardware>
   );
 
+  const PCpartsToChooseArray = [
+    "Placa-mãe", "Placa de Vídeo", "Processador", 
+    "Fonte", "Cooler", "hd/ssd", "Memória Ram", 
+    "Gabinete Gamer", "Teclado Gamer", "Mouse Gamer", 
+    "Mousepad Gamer", "Headset"
+  ];
+
+  const PrintingPCpartsToChoose = (el) => (
+    <S.EachHardware onClick={() => handleClickHardwareKindSelection(el)} >
+      <img src={defaultImg} alt={el} />
+      <p>{el}</p>
+    </S.EachHardware>
+  );
+
   return (
     <S.Container>
       <S.PChardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Placa-mãe")} >
-          <img src={defaultImg} alt="Placa Mãe" />
-          <p>Placa Mãe</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Placa de Vídeo")} >
-          <img src={defaultImg} alt="Placa de Vídeo" />
-          <p>Placa de Vídeo</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Processador")} >
-          <img src={defaultImg} alt="Processador"  />
-          <p>Processador</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Fonte")} >
-          <img src={defaultImg} alt="Fonte" />
-          <p>Fonte</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Cooler")} >
-          <img src={defaultImg} alt="Cooler" />
-          <p>Cooler</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("hd/ssd")} >
-          <img src={defaultImg} alt="Armazenamento" />
-          <p>Armazenamento</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Memória Ram")} >
-          <img src={defaultImg} alt="Memoria RAM" />
-          <p>Memoria RAM</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Gabinete Gamer")} >
-          <img src={defaultImg} alt="Gabinete Gamer" />
-          <p>Gabinete</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Teclado Gamer")} >
-          <img src={defaultImg} alt="Teclado Gamer" />
-          <p>Teclado</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Mouse Gamer")} >
-          <img src={defaultImg} alt="Mouse Gamer" />
-          <p>Mouse</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Mousepad Gamer")} >
-          <img src={defaultImg} alt="Mousepad Gamer" />
-          <p>Mousepad</p>
-        </S.EachHardware>
-        <S.EachHardware onClick={() => handleClickHardwareKindSelection("Headset")} >
-          <img src={defaultImg} alt="Headset" />
-          <p>Headset</p>
-        </S.EachHardware>
+        {PCpartsToChooseArray.map(PrintingPCpartsToChoose)}
       </S.PChardware>
       <div>
         {PCpartsBeingBuild.map(printingSelectedProdcts)}
