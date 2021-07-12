@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
-import RegisterProduct from "../../components/RegisterProduct";
 
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
@@ -14,7 +13,6 @@ const Home = () => {
   const [type, setType] = useState("");
   const { products } = useProducts();
 
-  /********************************************************** */
   const getType = () => {
     const token = localStorage.getItem("token");
     const decoded = jwt_decode(token);
@@ -29,13 +27,8 @@ const Home = () => {
         setType(response.data.type);
       });
   };
-  /********************************************************** */
   const setCart = (item) => {
-    localStorage.setItem("cart", item);
-  };
-
-  const setStock = (item) => {
-    localStorage.setItem("stock", item);
+    localStorage.setItem("cart", JSON.stringify(item));
   };
 
   useEffect(() => {
@@ -110,9 +103,6 @@ const Home = () => {
                     </S.Card>
                   ))}
               </Carousel>
-              <button onClick={setCart} className="seller">
-                Comprar
-              </button>
             </>
           )}
         </S.Container>
