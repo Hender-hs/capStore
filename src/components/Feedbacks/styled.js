@@ -6,5 +6,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  
+  > :first-child {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    color: white;
+  }
 `;
