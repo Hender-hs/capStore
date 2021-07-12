@@ -1,12 +1,12 @@
 import * as yup from 'yup'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import{Link,Redirect,useHistory} from "react-router-dom"
+import{ Redirect, useHistory } from "react-router-dom"
 import api from "../../services/api"
-import{ toast } from 'react-toastify'
 import Container, { Select } from './styles'
 import Input from '../../components/Input'
 import Button from '../../components/Button';
+import { toastSuccess, toastError } from '../../utils/toast';
 
 const Register = () => {
   const formSchema = yup.object().shape({
@@ -30,11 +30,12 @@ const Register = () => {
   const handleSubmitFunction = (data) => {
     api.post("/users/", data)
     .then((res) => {
-      const {accessToken} = res.data
+      const { accessToken } = res.data
       localStorage.setItem("@capstore:accessToken", JSON.stringify(accessToken))
+      toastSuccess("Usuário criado com sucesso")
       return history.push('/login')
     })
-    .catch((err) => toast.error("Erro ao criar usuario"))
+    .catch((_) => toastError("Erro ao criar usuário já cadastrado"))
     console.log("done")
   }
 
@@ -47,12 +48,12 @@ const Register = () => {
     <Container>
       <form onSubmit={handleSubmit(handleSubmitFunction)}>
         <h1>Criar Conta</h1>
-        <Input label="Nome" type="text" register={register} name="name" error={errors.name?.message} />
-        <Input label="Email" type="text" register={register} name="email" error={errors.email?.message} />
+        <Input label="Nome" type="text" register={register} name="name" error={errors.name?.message} placeholder="João"/>
+        <Input label="Email" type="text" register={register} name="email" error={errors.email?.message} placeholder="joao@mail.com" />
         <Input label="Telefone" type="text" register={register} name="phone" error={errors.phone?.message} placeholder="51 9999-9999" />
-        <Input label="CEP" type="text" register={register} name="cep" error={errors.cep?.message} placeholder="00000-000"/>
-        <Input label="Senha" type="password" register={register} name="password" error={errors.password?.message} />
-        <Input label="Confirme sua Senha" type="password" register={register} name="confirmPassword" error={errors.confirmPassword?.message} />
+        <Input label="CEP" type="text" register={register} name="cep" error={errors.cep?.message} placeholder="00000-000" />
+        <Input label="Senha" type="password" register={register} name="password" error={errors.password?.message} placeholder="123456@Aa" />
+        <Input label="Confirme sua Senha" type="password" register={register} name="confirmPassword" error={errors.confirmPassword?.message} placeholder="123456@Aa" />
         <Select {...register("typeUser")}>
         <option value="seller">Vendedor</option>
         <option value="customer">Cliente</option>
