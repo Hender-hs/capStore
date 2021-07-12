@@ -1,8 +1,8 @@
 import Modal from "@material-ui/core/Modal";
 import { ModalPix } from "./ModalPix";
-import { ModalTransfer } from "./ModalTransfer";
+import { ModalBank } from "./ModalBank";
 
-const StyledModal = ({ open, onClose, type = "transfer" }) => {
+const TransferModal = ({ open, onClose, type = "transfer" }) => {
   return (
     <div>
       <Modal open={open} onClose={onClose}>
@@ -12,7 +12,7 @@ const StyledModal = ({ open, onClose, type = "transfer" }) => {
           </div>
         ) : (
           <div>
-            <ModalTransfer />
+            <ModalBank />
           </div>
         )}
       </Modal>
@@ -20,4 +20,4 @@ const StyledModal = ({ open, onClose, type = "transfer" }) => {
   );
 };
 
-export default StyledModal;
+export default TransferModal;

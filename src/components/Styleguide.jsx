@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core";
 import { useState } from "react";
 import Product from "./Product";
-import StyledModal from "./StyledModal";
+import TransferModal from "./TransferModal";
 
 const Styleguide = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +37,8 @@ const Styleguide = () => {
       <Button onClick={handleOpenTransfer} variant="contained">
         transfer
       </Button>
-      <StyledModal open={isOpen} onClose={handleOpen} type="pix" />
-      <StyledModal
+      <TransferModal open={isOpen} onClose={handleOpen} type="pix" />
+      <TransferModal
         open={isTransferOpen}
         onClose={handleOpenTransfer}
         type="transfer"

@@ -5,7 +5,7 @@ import Button from "../Button";
 
 import * as S from "./styles";
 
-export const ModalTransfer = () => {
+export const ModalBank = () => {
   const schema = yup.object().shape({
     agency: yup.string().required("Campo obrigatório"),
     accountNumber: yup.string().required("Campo obrigatório"),
