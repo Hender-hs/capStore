@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 const AuthContext = createContext();
@@ -9,13 +10,14 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
 
+  const history = useHistory();
+
   const signIn = (userData, setError, history) => {
     api
       .post("/login", userData)
       .then((response) => {
         localStorage.setItem("token", response.data.access);
         setAuth(response.data.access);
-        console.log(response.data);
         history.push("/dashboard");
       })
       .catch((_) => setError(true));
@@ -28,6 +30,12 @@ export const AuthProvider = ({ children }) => {
         history.push("/login");
       })
       .catch((_) => setError(true));
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    setAuth("");
+    history.push("/login");
   };
 
   const updateUserInfo = (data) => {
@@ -44,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token: auth, setAuth, signIn, signUp, updateUserInfo }}
+      value={{ token: auth, setAuth, signIn, signUp, logout, updateUserInfo }}
     >
       {children}
     </AuthContext.Provider>
