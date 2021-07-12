@@ -1,5 +1,4 @@
-const UserAndSellerData = ({propProfileData}) => {
-
+const UserAndSellerData = ({ propProfileData }) => {
   const { cep, phone, email, location } = propProfileData;
 
   return (

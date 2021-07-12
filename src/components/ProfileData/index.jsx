@@ -25,7 +25,6 @@ const ProfileData = ({ data, products }) => {
           <p>{isClientOrUser()}</p>
         </div>
       </nav>
-
       <div>
         {alternateDataTabs ? (
           <UserAndSellerData propProfileData={data} />
