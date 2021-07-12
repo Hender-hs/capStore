@@ -7,6 +7,7 @@ import SpecificProduct from "../pages/SpecificProduct";
 
 import HomeClient from "../pages/HomeClient";
 import Register from "../pages/Register"
+import WithdrawMoney from "../pages/withdrawalMoney";
 
 const Routes = () => {
   return (
@@ -16,8 +17,8 @@ const Routes = () => {
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/HomeClient" component={HomeClient} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
-
       <Route exact path="/register" component={Register} />
+      <Route exact path="/withdrawMoney" component={WithdrawMoney} />
     </Switch>
   );
 };
