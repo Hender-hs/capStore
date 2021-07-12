@@ -4,7 +4,7 @@ import * as S from "./styled.js";
 import Input from "../../components/Input";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-
+import Button from "../../components/Button";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 
