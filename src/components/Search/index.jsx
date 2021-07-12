@@ -12,6 +12,7 @@ const Search = () => {
     );
     console.log(result);
   };
+
   return (
     <S.Container>
       <S.Input
