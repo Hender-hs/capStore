@@ -8,8 +8,7 @@ export const ButtonStyled = styled.button`
       ? "var(--green)"
       : "var(--light-green)"};
 
-  width: ${(props) => (props.width ? props.width : `width: 100%`)};
-  height: ${(props) => (props.height ? props.height : `height: 40px`)};
-
+  width: ${(props) => (props.width ? props.width : `100%`)};
+  height: ${(props) => (props.height ? props.height : `40px`)};
   border: 0;
 `;
