@@ -48,7 +48,6 @@ const Home = () => {
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>
-              <div></div>
               <Slider autoFocus="true">
                 {products
                   .filter((item) => item.category === "Placa-mãe")
@@ -114,6 +113,7 @@ const Home = () => {
                   .filter((item) => item.category === inputValue)
                   .map((item) => (
                     <S.Card>
+                      <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
                       <button onClick={() => setCart(item)} className="client">
@@ -131,13 +131,14 @@ const Home = () => {
           {
             <Slider>
               {products.map((item) => (
-                <S.Card>
+                <S.CardS>
+                  <img src={item.url} alt="img de uma peça" />
                   <span>Nome {item.name.slice(0, 20)}</span>
                   <p>R${item.price}</p>
                   <button onClick={() => setCart(item)} className="client">
                     Comprar
                   </button>
-                </S.Card>
+                </S.CardS>
               ))}
             </Slider>
           }
