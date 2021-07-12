@@ -3,6 +3,7 @@ import { useState } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
+import RegisterProduct from "../../components/RegisterProduct";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -10,6 +11,9 @@ const Home = () => {
   const [type, setType] = useState("client");
   const { products } = useProducts();
 
+  /********************************************************** */
+  const getId = () => {};
+  /********************************************************** */
   const setCart = (item) => {
     localStorage.setItem("cart", item);
   };
