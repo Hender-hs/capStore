@@ -6,6 +6,11 @@ import * as S from "./styles";
 const BiggerInput = styled(S.Input)`
   width: 300px;
   margin: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+    width: 500px;
+  }
 `;
 
 export const ModalPix = () => {

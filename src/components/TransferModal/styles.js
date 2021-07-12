@@ -17,6 +17,10 @@ export const ModalContent = styled.div`
   align-items: center;
   outline: none;
 
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
+
   button {
     background-color: black;
     border-radius: 10px;
@@ -34,6 +38,16 @@ export const ModalContent = styled.div`
       background-color: var(--green);
       color: #ffffff;
     }
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    label {
+      font-size: 1.5rem;
+    }
   }
 `;
 
@@ -44,6 +58,14 @@ export const ModalHeader = styled.div`
   label {
     font-size: 18px;
   }
+
+  @media (min-width: 768px) {
+    label {
+      font-size: 1.5rem;
+    }
+
+    padding: 20px;
+  }
 `;
 
 export const Divisor = styled.div`
@@ -51,10 +73,22 @@ export const Divisor = styled.div`
   height: 20px;
   padding-left: 10px;
   margin-left: 10px;
+
+  @media (min-width: 768px) {
+    height: 30px;
+    padding-left: 60px;
+    margin-left: 60px;
+  }
 `;
 
 export const InputContainer = styled.div`
   padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    min-width: 700px;
+  }
 `;
 
 export const Input = styled.input`
@@ -66,6 +100,11 @@ export const Input = styled.input`
   font-size: 14px;
   font-family: var(--alt-font);
   font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+    width: 100%;
+  }
 `;
 
 export const TextError = styled.p`
@@ -78,6 +117,10 @@ export const InputLabel = styled.p`
   color: white;
   font-size: 18px;
   font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Select = styled.select`
@@ -89,4 +132,16 @@ export const Select = styled.select`
   outline: none;
   border: none;
   background: white;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+`;
+
+export const InputContent = styled.div`
+  @media (min-width: 768px) {
+    width: 50%;
+    padding: 10px;
+  }
 `;
