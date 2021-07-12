@@ -1,18 +1,35 @@
 import { useProducts } from "../../providers/Products";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./styled.js";
 import Carousel from "nuka-carousel";
 import Input from "../../components/Input";
 import RegisterProduct from "../../components/RegisterProduct";
 
+import api from "../../services/api";
+import jwt_decode from "jwt-decode";
+
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [categoryProdutos, setCategoryProdutos] = useState("Monitor Gamer");
-  const [type, setType] = useState("client");
+  const [type, setType] = useState("");
   const { products } = useProducts();
 
   /********************************************************** */
-  const getId = () => {};
+  const getType = () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+
+    api
+      .get(`/users/${decoded.sub}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setType(response.type);
+      });
+  };
   /********************************************************** */
   const setCart = (item) => {
     localStorage.setItem("cart", item);
@@ -21,6 +38,11 @@ const Home = () => {
   const setStock = (item) => {
     localStorage.setItem("stock", item);
   };
+
+  useEffect(() => {
+    getType();
+    console.log(type);
+  }, []);
   return (
     <>
       {type === "client" && (
@@ -29,6 +51,7 @@ const Home = () => {
             value={inputValue}
             onChange={(e) => setInput(e.target.value)}
           />
+
           {inputValue === "" && (
             <>
               <h1>{categoryProdutos}</h1>
