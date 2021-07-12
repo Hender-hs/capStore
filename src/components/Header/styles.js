@@ -19,4 +19,5 @@ export const NavLink = styled(Link)`
 
 export const StyledSpan = styled.span`
   padding-left: 10px;
+  font-size: 20px;
 `;

@@ -14,7 +14,7 @@ import { useCart } from "../../providers/Cart";
 const innerTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#2ca81c",
+      main: "#605F5F",
     },
   },
 });
@@ -68,7 +68,7 @@ export default function PrimarySearchAppBar() {
               noWrap
               className={classes.toolbarTitle}
             >
-              Kenzie Shop
+              Menu
             </Typography>
           </S.NavLink>
           <nav>
@@ -76,7 +76,7 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={cart.length} color="primary">
                 <FiShoppingCart
                   size={25}
-                  color="green"
+                  color="black"
                   className={classes.cartIcon}
                 />
               </Badge>
