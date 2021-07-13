@@ -62,66 +62,6 @@ const Home = () => {
                     </S.Card>
                   ))}
               </Slider>
-
-              <>
-                <h1>Processador</h1>
-                <Slider>
-                  {products
-                    .filter((item) => item.category === "Processador")
-                    .map((item) => (
-                      <S.Card>
-                        <img src={item.url} alt="img de uma peça" />
-                        <span>Nome {item.name.slice(0, 20)}</span>
-                        <p>R${item.price}</p>
-                        <button
-                          className="client"
-                          onClick={() => setCart(item)}
-                        >
-                          Comprar
-                        </button>
-                      </S.Card>
-                    ))}
-                </Slider>
-              </>
-
-              <>
-                <h1>Monitor Gamer</h1>
-                <Slider>
-                  {products
-                    .filter((item) => item.category === "Monitor Gamer")
-                    .map((item) => (
-                      <S.Card>
-                        <img src={item.url} alt="img de uma peça" />
-                        <span>Nome {item.name.slice(0, 20)}</span>
-                        <p>R${item.price}</p>
-                        <button
-                          className="client"
-                          onClick={() => setCart(item)}
-                        >
-                          Comprar
-                        </button>
-                      </S.Card>
-                    ))}
-                </Slider>
-              </>
-            </>
-          )}
-          {inputValue !== "" && (
-            <>
-              <Slider>
-                {products
-                  .filter((item) => item.category === inputValue)
-                  .map((item) => (
-                    <S.Card>
-                      <img src={item.url} alt="img de uma peça" />
-                      <span>Nome {item.name.slice(0, 20)}</span>
-                      <p>R${item.price}</p>
-                      <button onClick={() => setCart(item)} className="client">
-                        Comprar
-                      </button>
-                    </S.Card>
-                  ))}
-              </Slider>
             </>
           )}
         </S.Container>
@@ -130,7 +70,7 @@ const Home = () => {
         <S.Container>
           {
             <Slider>
-              {products.map((item) => (
+              {filteredProducts.map((item) => (
                 <S.CardS>
                   <img src={item.url} alt="img de uma peça" />
                   <span>Nome {item.name.slice(0, 20)}</span>

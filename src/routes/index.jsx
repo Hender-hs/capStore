@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import SpecificProduct from "../pages/SpecificProduct";
+import SpecificProducts from "../pages/SpecificProducts";
 
 import Home from "../pages/Home";
 import Register from "../pages/Register";
@@ -16,9 +16,8 @@ const Routes = () => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/home" component={Home} />
-      <Route exact path="/specificProduct" component={SpecificProduct} />
+      <Route exact path="/specificProducts" component={SpecificProducts} />
       <Route exact path="/styleguide" component={Styleguide} />
-
       <Route exact path="/register" component={Register} />
     </Switch>
   );
