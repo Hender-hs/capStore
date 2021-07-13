@@ -30,7 +30,7 @@ const SpecificProduct = () => {
         url={product.url}
         price={product.price}
         quantity={product.quantity}
-        userType="client"
+        userType={user?.type}
       />
       {user?.type === "client" && (
         <Button handleClick={() => setCart(product)}>
@@ -38,7 +38,7 @@ const SpecificProduct = () => {
         </Button>
       )}
 
-      <Feedbacks evaluation={product.feedback} userType="client" />
+      <Feedbacks evaluation={product.feedback} userType={user?.type} />
     </div>
   );
 };
