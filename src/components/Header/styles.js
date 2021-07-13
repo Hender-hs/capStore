@@ -7,6 +7,7 @@ export const NavLink = styled(Link)`
   display: flex;
   justify-self: flex-end;
   margin-left: auto;
+  position: relative;
 
   color: #333;
 
@@ -37,12 +38,16 @@ export const Header = styled.div`
 export const Items = styled.div`
   border-radius: 100%;
   padding: 4px 8px;
-  background-color: gray;
+  background-color: red;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: -5px;
 `;
 
 export const CartIcon = styled(FiShoppingCart)`

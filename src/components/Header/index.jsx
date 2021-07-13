@@ -6,7 +6,7 @@ import * as S from "./styles";
 import { useAuth } from "../../providers/Auth";
 import { useCart } from "../../providers/Cart";
 
-export default function PrimarySearchAppBar() {
+const Header = () => {
   const { user } = useAuth();
   const { cart } = useCart();
 
@@ -23,4 +23,6 @@ export default function PrimarySearchAppBar() {
       </S.NavLink>
     </S.Header>
   );
-}
+};
+
+export default Header;
