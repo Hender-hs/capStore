@@ -5,13 +5,13 @@ export const CartContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const ProductsContainer = styled.div`
+export const Container = styled.div`
   background-color: white;
   border-radius: 5px;
   margin: 20px 0;
 `;
 
-export const ProductContent = styled.div`
+export const Content = styled.div`
   display: flex;
   border-bottom: 1px solid var(--gray);
   padding: 10px;
