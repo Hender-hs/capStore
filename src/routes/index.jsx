@@ -5,7 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import SpecificProduct from "../pages/SpecificProduct";
 
-import HomeClient from "../pages/HomeClient";
+import Home from "../pages/Home";
 import Register from "../pages/Register";
 import UserCart from "../pages/UserCart";
 
@@ -15,7 +15,7 @@ const Routes = () => {
       <Route exact path="/" component={Signup} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/HomeClient" component={HomeClient} />
+      <Route exact path="/home" component={Home} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
       <Route exact path="/cart" component={UserCart} />
 

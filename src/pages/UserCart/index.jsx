@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import DefaultImage from "../assets/default.jpg";
+// import DefaultImage from "../assets/default.jpg";
 import { useCart } from "../../providers/Cart";
 
 const UserCart = () => {
@@ -11,9 +11,15 @@ const UserCart = () => {
         {cart.map((product, index) => (
           <S.ProductContent key={index}>
             <S.ProductCol>
-              <img src={product.image || DefaultImage} alt={product.name} />
+              <img src={product.image} alt={product.name} />
             </S.ProductCol>
-            <S.ProductCol></S.ProductCol>
+            <S.ProductCol>
+              <p>Monitor sansung</p>
+              <p>{product.price}</p>
+            </S.ProductCol>
+            <S.ProductCol>
+              <input type="number" />
+            </S.ProductCol>
           </S.ProductContent>
         ))}
       </S.ProductsContainer>
