@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 const CartProduct = ({ image, name, price, id, quantity, index }) => {
   const [counter, setCounter] = useState(quantity || 1);
-  const { removeFromCart, cart, setCart } = useCart();
+  const { removeFromCart, cart, setCart, updateCart } = useCart();
 
   useEffect(() => {
     const newCart = cart;
@@ -23,6 +23,8 @@ const CartProduct = ({ image, name, price, id, quantity, index }) => {
 
   const handleAdd = () => {
     setCounter(counter + 1);
+    updateCart();
+    console.log(cart);
   };
 
   const handleRemove = () => {

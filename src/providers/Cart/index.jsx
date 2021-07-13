@@ -7,8 +7,14 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(local || []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+
+    // eslint-disable-next-line
   }, [cart]);
+
+  const updateCart = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -21,7 +27,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartCost = () => {
-    return cart.reduce((acc, product) => acc + product.price, 0);
+    return cart.reduce(
+      (acc, product) => acc + product.price * (product.quantity || 1),
+      0
+    );
   };
 
   const isInCart = (product) => {
@@ -38,6 +47,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         getCartCost,
         isInCart,
+        updateCart,
       }}
     >
       {children}

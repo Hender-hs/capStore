@@ -5,6 +5,7 @@ import CartProduct from "./CartProduct";
 import formatValue from "../../utils/formatValue";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const UserCart = () => {
   const { cart, setCart, getCartCost } = useCart();
@@ -25,13 +26,21 @@ const UserCart = () => {
             image={product.url}
             id={product.id}
             index={index}
+            quantity={product?.quantity}
           />
         ))}
       </S.Container>
       <S.Container>
         <S.Content>
           <S.CostCol>Subtotal</S.CostCol>
-          <S.CostCol>{formatValue(getCartCost())}</S.CostCol>
+          <S.CostCol>
+            {formatValue(
+              cart.reduce(
+                (acc, product) => acc + product.price * product.quantity,
+                0
+              )
+            )}
+          </S.CostCol>
         </S.Content>
         <S.Content>
           <S.CostCol>Frete</S.CostCol>
@@ -43,7 +52,11 @@ const UserCart = () => {
         </S.Content>
       </S.Container>
       <S.ButtonContainer>
-        <Button width="200px" onClick={handleBuy}>
+        <Button
+          width="200px"
+          onClick={handleBuy}
+          style={{ cursor: "pointer", borderRadius: "10px" }}
+        >
           Comprar
         </Button>
       </S.ButtonContainer>
