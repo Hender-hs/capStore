@@ -4,9 +4,15 @@ import { useCart } from "../../providers/Cart";
 import CartProduct from "./CartProduct";
 import formatValue from "../../utils/formatValue";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
 
 const UserCart = () => {
-  const { cart, getCartCost } = useCart();
+  const { cart, setCart, getCartCost } = useCart();
+
+  const handleBuy = () => {
+    setCart([]);
+    toast.success("Compra realizada!");
+  };
 
   return (
     <S.CartContainer>
@@ -37,7 +43,9 @@ const UserCart = () => {
         </S.Content>
       </S.Container>
       <S.ButtonContainer>
-        <Button width="200px">Comprar</Button>
+        <Button width="200px" onClick={handleBuy}>
+          Comprar
+        </Button>
       </S.ButtonContainer>
     </S.CartContainer>
   );
