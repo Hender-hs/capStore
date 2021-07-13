@@ -1,4 +1,4 @@
-import { ButtonStyled } from "./styles";
+import { ButtonStyled } from "./styled";
 
 const Button = ({ children, handleClick, color, width, height, ...rest }) => {
   return (

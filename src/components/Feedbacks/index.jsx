@@ -1,15 +1,27 @@
 import ProductFeedback from "../ProductFeedback";
 import Button from "../Button";
+import * as S from "./styled";
+
 const Feedbacks = ({ evaluation, userType }) => {
   return (
-    <div>
-      {userType === "client" && (
-        <Button handleClick={() => console.log("abre modal")}>Avaliar</Button>
-      )}
+    <S.Container>
+      <div>
+        <h3>Avaliações</h3>
+        {userType === "client" && (
+          <Button
+            handleClick={() => console.log("abre modal")}
+            color="black"
+            width="100px"
+          >
+            Avaliar
+          </Button>
+        )}
+      </div>
+
       {evaluation?.map((item, index) => (
         <ProductFeedback key={index} feedback={item} />
       ))}
-    </div>
+    </S.Container>
   );
 };
 export default Feedbacks;
