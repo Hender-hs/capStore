@@ -26,7 +26,7 @@ const Header = ({ color = "transparent" }) => {
           </S.NavLink>
         </S.Header>
       )}
-      {color === "black" && (
+      {color !== "transparent" && (
         <S.Header color={color}>
           <GiHamburgerMenu size={30} color="white" />
           <S.NavLink to="/cart">
