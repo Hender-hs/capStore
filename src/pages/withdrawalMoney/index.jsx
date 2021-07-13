@@ -1,18 +1,29 @@
-import Button from '../../components/Button';
-import * as S from './styles';
+import { useState }   from "react";
+import * as S         from "./styles";
+import Button         from "../../components/Button";
+import TransferModal  from "../../components/TransferModal";
+import Header         from "../../components/Header";
 
 const WithdrawMoney = () => {
  
+  const [openModal, setOpenModal]                           = useState(false);
+  const [modalPixOrBankTransfer, setModalPixOrBankTransfer] = useState(null);
+
+  const handleSwitchModals = (transferType) => {
+    setOpenModal(true);
+    setModalPixOrBankTransfer(transferType);
+  };
+
   return (
     <S.Container>
-      <S.FakeHeader/>
+      <Header />
       <S.PageBody>
         <div>
-          
+          <TransferModal type={modalPixOrBankTransfer} open={openModal} onClose={() => setOpenModal(false) } />
         </div>
         <S.DivButtons>
-          <Button>Pix</Button>
-          <Button>Transferência</Button>
+          <Button onClick={ () => handleSwitchModals("pix") } >Pix</Button>
+          <Button onClick={ () => handleSwitchModals("transfer") } >Transferência</Button>
         </S.DivButtons>
       </S.PageBody>
     </S.Container>   
