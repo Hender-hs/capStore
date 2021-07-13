@@ -5,7 +5,6 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import SpecificProduct from "../pages/SpecificProduct";
 import AboutUs from '../pages/AboutUs'
-import HomeClient from "../pages/HomeClient";
 import Register from "../pages/Register"
 
 import Home from "../pages/Home";
