@@ -5,12 +5,6 @@ export const Container = styled.div `
   height: 100vh;
 `
 
-export const FakeHeader = styled.div `
-  width: 100%;
-  height: 10%;
-  background-color: rebeccapurple;
-`
-
 export const Body = styled.div `
   width: 100%;
   height: 90%;
