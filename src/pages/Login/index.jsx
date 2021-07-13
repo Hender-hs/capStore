@@ -4,8 +4,8 @@ import { useState } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
-import Input from '../../components/Input'
-import Button from '../../components/Button'
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 import { Container } from "./styles";
 
 function Login() {
@@ -39,14 +39,24 @@ function Login() {
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-        <Input label="Email" type="text" register={register} name="email" error={errors.email?.message} />
+          <Input
+            label="Email"
+            type="text"
+            register={register}
+            name="email"
+            error={errors.email?.message}
+          />
         </div>
         <div>
-        <Input label="Senha" type="password" register={register} name="password" error={errors.password?.message} />
+          <Input
+            label="Senha"
+            type="password"
+            register={register}
+            name="password"
+            error={errors.password?.message}
+          />
         </div>
-        <Button type="submit">
-          Enviar
-        </Button>
+        <Button type="submit">Enviar</Button>
       </form>
       {error && <span> Usuário ou senha incorretas! </span>}
     </Container>

@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
   const history = useHistory();
 
   const signIn = (userData, setError, history) => {
+    console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
