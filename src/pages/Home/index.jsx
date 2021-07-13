@@ -44,7 +44,7 @@ const Home = () => {
     <>
       {type === "client" && (
         <S.Container>
-          <Input />
+          <input />
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>
