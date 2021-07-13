@@ -1,5 +1,6 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosNotifications } from "react-icons/io";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import * as S from "./styles";
 
@@ -16,9 +17,9 @@ const Header = () => {
       <S.NavLink to="/cart">
         <S.Items>{cart.length}</S.Items>
         {user?.type === "seller" ? (
-          <IoIosNotifications size={30} />
+          <IoIosNotifications size={35} />
         ) : (
-          <S.CartIcon />
+          <AiOutlineShoppingCart size={35} />
         )}
       </S.NavLink>
     </S.Header>

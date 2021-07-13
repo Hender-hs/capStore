@@ -1,4 +1,3 @@
-import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -46,12 +45,6 @@ export const Items = styled.div`
   color: white;
   position: absolute;
   z-index: 2;
-  right: 0;
-  top: -5px;
-`;
-
-export const CartIcon = styled(FiShoppingCart)`
-  color: var(--dark);
-  width: 30px;
-  height: 30px;
+  right: 3px;
+  top: -3px;
 `;
