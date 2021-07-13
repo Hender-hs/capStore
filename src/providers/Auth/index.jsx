@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 const AuthContext = createContext();
@@ -7,7 +8,9 @@ export const AuthProvider = ({ children }) => {
   const token = localStorage.getItem("token") || "";
 
   const [auth, setAuth] = useState(token);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("");
+
+  const history = useHistory();
 
   const signIn = (userData, setError, history) => {
     console.log(userData);
@@ -16,20 +19,24 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
-        console.log(response.data);
         history.push("/dashboard");
       })
-      .catch((err) => setError(true));
+      .catch((_) => setError(true));
   };
 
   const signUp = (userData, setError, history) => {
     api
       .post("/users", userData)
-      .then((response) => {
+      .then((_) => {
         history.push("/login");
-        console.log(response);
       })
-      .catch((err) => setError(true));
+      .catch((_) => setError(true));
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    setAuth("");
+    history.push("/login");
   };
 
   const updateUserInfo = (data) => {
@@ -46,7 +53,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token: auth, setAuth, signIn, signUp, updateUserInfo, user }}
+      value={{
+        token: auth,
+        setAuth,
+        signIn,
+        signUp,
+        logout,
+        updateUserInfo,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>
