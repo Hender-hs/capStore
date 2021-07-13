@@ -31,6 +31,7 @@
     "react-scripts": "4.0.3",
     "react-star-rating-component": "^1.4.1",
     "react-toastify": "^7.0.4",
+    "react-typed": "^1.2.0",
     "skeleton": "^0.1.2",
     "slider": "^1.0.4",
     "styled-components": "^5.3.0",

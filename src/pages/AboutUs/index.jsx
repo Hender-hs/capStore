@@ -3,6 +3,7 @@ import developer from '../../assets/lotties/developer.json'
 import Lottie from 'react-lottie';
 import GlobalStyle from '../../styles/global'
 import Developers from '../../components/Developers'
+import Typed from 'react-typed';
 
 const AboutUs = () => {
   const developerOptions = {
@@ -27,7 +28,11 @@ const AboutUs = () => {
         />
       </Background>
       <BackgroundH2>
-        <h2>Quem somos?</h2>
+        <Typed 
+          strings={['Quem somos?']}
+          typeSpeed={140}
+          style={{fontSize: "3rem"}}
+        />
       </BackgroundH2>
       <Developers dev="henderson" />
     </Container>
