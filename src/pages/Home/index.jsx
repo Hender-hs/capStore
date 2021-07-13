@@ -1,7 +1,8 @@
 import { useProducts } from "../../providers/Products";
 import { useState, useEffect } from "react";
 import * as S from "./styled.js";
-import Input from "../../components/Input";
+
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import Button from "../../components/Button";
@@ -13,6 +14,7 @@ const Home = () => {
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
+  const history = useHistory();
 
   const getType = () => {
     const token = localStorage.getItem("token");
@@ -56,9 +58,12 @@ const Home = () => {
                       <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
-                      <button className="client" onClick={() => setCart(item)}>
+                      <Button
+                        className="client"
+                        handleClick={() => setCart(item)}
+                      >
                         Comprar
-                      </button>
+                      </Button>
                     </S.Card>
                   ))}
               </Slider>
@@ -73,12 +78,12 @@ const Home = () => {
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
-                        <button
+                        <Button
                           className="client"
-                          onClick={() => setCart(item)}
+                          handleClick={() => setCart(item)}
                         >
                           Comprar
-                        </button>
+                        </Button>
                       </S.Card>
                     ))}
                 </Slider>
@@ -94,12 +99,12 @@ const Home = () => {
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
-                        <button
+                        <Button
                           className="client"
-                          onClick={() => setCart(item)}
+                          handleClick={() => setCart(item)}
                         >
                           Comprar
-                        </button>
+                        </Button>
                       </S.Card>
                     ))}
                 </Slider>
@@ -108,6 +113,7 @@ const Home = () => {
           )}
           {inputValue !== "" && (
             <>
+              <h1>Produto encontrado</h1>
               <Slider>
                 {products
                   .filter((item) => item.category === inputValue)
@@ -116,9 +122,12 @@ const Home = () => {
                       <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
-                      <button onClick={() => setCart(item)} className="client">
+                      <Button
+                        handleClick={() => setCart(item)}
+                        className="client"
+                      >
                         Comprar
-                      </button>
+                      </Button>
                     </S.Card>
                   ))}
               </Slider>
@@ -129,19 +138,25 @@ const Home = () => {
       {type === "seller" && (
         <S.Container>
           {
-            <Slider>
-              {products.map((item) => (
-                <S.CardS>
-                  <img src={item.url} alt="img de uma peça" />
-                  <span>Nome {item.name.slice(0, 20)}</span>
-                  <p>R${item.price}</p>
-                  <button onClick={() => setCart(item)} className="client">
-                    Comprar
-                  </button>
-                </S.CardS>
-              ))}
-            </Slider>
+            <>
+              <h1>Seus produtos a venda</h1>
+              <Slider>
+                {filteredProducts.map((item) => (
+                  <S.CardS>
+                    <img src={item.url} alt="img de uma peça" />
+                    <span>Nome {item.name.slice(0, 20)}</span>
+                    <p>R${item.price}</p>
+                  </S.CardS>
+                ))}
+              </Slider>
+            </>
           }
+          <Button
+            width="15rem"
+            handleClick={() => history.push("/registerProduct")}
+          >
+            Registra novo Produto
+          </Button>
         </S.Container>
       )}
     </>
