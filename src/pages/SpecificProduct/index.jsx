@@ -32,7 +32,7 @@ const SpecificProduct = () => {
         quantity={product.quantity}
         userType={user?.type}
       />
-      {user.type === "client" && (
+      {user?.type === "client" && (
         <Button handleClick={() => setCart(product)}>
           Adicionar ao carrinho
         </Button>

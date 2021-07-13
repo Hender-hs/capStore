@@ -8,15 +8,21 @@ import AboutUs from '../pages/AboutUs'
 import HomeClient from "../pages/HomeClient";
 import Register from "../pages/Register"
 
+import Home from "../pages/Home";
+import Register from "../pages/Register";
+import Styleguide from "../components/Styleguide";
+
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Signup} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/HomeClient" component={HomeClient} />
+      <Route exact path="/home" component={Home} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
       <Route exact path="/aboutUs" component={AboutUs} />
+      <Route exact path="/styleguide" component={Styleguide} />
+
       <Route exact path="/register" component={Register} />
     </Switch>
   );
