@@ -3,6 +3,7 @@ import { MdRemove } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 
 import * as S from "./styles";
+import formatValue from "../../utils/formatValue";
 
 const CartProduct = ({ image, name, price }) => {
   const [counter, setCounter] = useState(1);
@@ -29,9 +30,9 @@ const CartProduct = ({ image, name, price }) => {
       </S.ProductCol>
       <S.ProductCol>
         <p>Monitor sansung</p>
-        <p>{price}</p>
+        <p>{formatValue(price)}</p>
       </S.ProductCol>
-      <S.ProductCol style={{ marginLeft: "auto" }}>
+      <S.ProductCol>
         <S.QuantityButton onClick={handleRemove}>
           <MdRemove size={15} color="white" />
         </S.QuantityButton>
