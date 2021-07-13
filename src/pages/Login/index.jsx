@@ -1,11 +1,11 @@
-import { TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
-
+import Input from '../../components/Input'
+import Button from '../../components/Button'
 import { Container } from "./styles";
 
 function Login() {
@@ -17,7 +17,7 @@ function Login() {
     email: yup.string().email().required("Campo obrigatório"),
     password: yup
       .string()
-      .min(6, "Mínimo de 6 dígitos")
+      .min(8, "Mínimo de 8 dígitos")
       .required("Campo obrigatório"),
   });
 
@@ -39,32 +39,12 @@ function Login() {
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <TextField
-            margin="normal"
-            variant="outlined"
-            label="Nome de usuário"
-            size="small"
-            color="primary"
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-          ></TextField>
+        <Input label="Email" type="text" register={register} name="email" error={errors.email?.message} />
         </div>
-
         <div>
-          <TextField
-            margin="normal"
-            variant="outlined"
-            type="password"
-            label="Senha"
-            size="small"
-            color="primary"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          ></TextField>
+        <Input label="Senha" type="password" register={register} name="password" error={errors.password?.message} />
         </div>
-        <Button type="submit" variant="contained" color="primary" size="large">
+        <Button type="submit">
           Enviar
         </Button>
       </form>
