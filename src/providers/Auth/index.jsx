@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("token", response.data.access);
+        localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
         history.push("/dashboard");
       })
@@ -52,7 +52,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token: auth, setAuth, signIn, signUp, logout, updateUserInfo }}
+      value={{
+        token: auth,
+        setAuth,
+        signIn,
+        signUp,
+        logout,
+        updateUserInfo,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>
