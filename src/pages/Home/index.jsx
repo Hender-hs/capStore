@@ -1,9 +1,10 @@
 import { useProducts } from "../../providers/Products";
 import { useState, useEffect } from "react";
+import * as S from "./styled.js";
 import Input from "../../components/Input";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-
+import Button from "../../components/Button";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 
@@ -42,7 +43,7 @@ const Home = () => {
   return (
     <>
       {type === "client" && (
-        <div>
+        <S.Container>
           <Input />
           {inputValue === "" && (
             <>
@@ -51,14 +52,14 @@ const Home = () => {
                 {products
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
-                    <div>
+                    <S.Card>
                       <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
                       <button className="client" onClick={() => setCart(item)}>
                         Comprar
                       </button>
-                    </div>
+                    </S.Card>
                   ))}
               </Slider>
 
@@ -68,7 +69,7 @@ const Home = () => {
                   {products
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
-                      <div>
+                      <S.Card>
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
@@ -78,7 +79,7 @@ const Home = () => {
                         >
                           Comprar
                         </button>
-                      </div>
+                      </S.Card>
                     ))}
                 </Slider>
               </>
@@ -89,7 +90,7 @@ const Home = () => {
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
-                      <div>
+                      <S.Card>
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
@@ -99,7 +100,7 @@ const Home = () => {
                         >
                           Comprar
                         </button>
-                      </div>
+                      </S.Card>
                     ))}
                 </Slider>
               </>
@@ -111,35 +112,37 @@ const Home = () => {
                 {products
                   .filter((item) => item.category === inputValue)
                   .map((item) => (
-                    <div>
+                    <S.Card>
+                      <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
                       <button onClick={() => setCart(item)} className="client">
                         Comprar
                       </button>
-                    </div>
+                    </S.Card>
                   ))}
               </Slider>
             </>
           )}
-        </div>
+        </S.Container>
       )}
       {type === "seller" && (
-        <div>
+        <S.Container>
           {
             <Slider>
               {products.map((item) => (
-                <div>
+                <S.CardS>
+                  <img src={item.url} alt="img de uma peça" />
                   <span>Nome {item.name.slice(0, 20)}</span>
                   <p>R${item.price}</p>
                   <button onClick={() => setCart(item)} className="client">
                     Comprar
                   </button>
-                </div>
+                </S.CardS>
               ))}
             </Slider>
           }
-        </div>
+        </S.Container>
       )}
     </>
   );
