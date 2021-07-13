@@ -7,6 +7,7 @@ import SpecificProduct from "../pages/SpecificProduct";
 
 import HomeClient from "../pages/HomeClient";
 import Register from "../pages/Register"
+import Profile from "../pages/Profile";
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
       <Route exact path="/specificProduct" component={SpecificProduct} />
 
       <Route exact path="/register" component={Register} />
+      <Route exact path="/profile" component={Profile} />
     </Switch>
   );
 };
