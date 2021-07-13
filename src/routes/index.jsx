@@ -5,7 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import BuildYourPc from "../pages/BuildYourPc";
 import SpecificProduct from "../pages/SpecificProduct";
-
+import Wallet from "../pages/Wallet"
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Styleguide from "../components/Styleguide";
@@ -20,7 +20,7 @@ const Routes = () => {
       <Route exact path="/build-your-pc" component={BuildYourPc} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
       <Route exact path="/styleguide" component={Styleguide} />
-
+      <Route exact path="/wallet" component={Wallet} />
       <Route exact path="/register" component={Register} />
     </Switch>
   );
