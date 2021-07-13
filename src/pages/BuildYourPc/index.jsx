@@ -3,6 +3,7 @@ import defaultImg       from "../../assets/default.jpg";
 import * as S           from "./styles";
 import { useState }     from "react";
 import { useEffect }    from "react";
+import Button from "../../components/Button";
 
 const BuildYourPc = () => {
 
@@ -41,7 +42,7 @@ const BuildYourPc = () => {
         <p>{el.description.slice(0, 55)}...</p>
       </div>
       <div>
-        <button onClick={() => removingHardwareToLocalStorage(el)} >Remove</button>
+        <Button onClick={() => removingHardwareToLocalStorage(el)} >Remove</Button>
       </div>
     </S.EachHardware>
   );
@@ -56,7 +57,7 @@ const BuildYourPc = () => {
         <p>{el.description}</p>
       </div>
       <div>
-        <button onClick={() => addingHardwareToLocalStorage(el)} >Adicionar</button>
+        <Button onClick={() => addingHardwareToLocalStorage(el)} >Adicionar</Button>
       </div>
     </S.EachHardware>
   );
