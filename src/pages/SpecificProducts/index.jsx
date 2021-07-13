@@ -51,7 +51,7 @@ const SpecificProducts = ({ category }) => {
                     <span>Nome {item.name.slice(0, 20)}</span>
                     <p>R${item.price}</p>
                     <button onClick={() => setCart(item)} className="client">
-                      Comprar
+                      Comprar.
                     </button>
                   </div>
                 ))}
