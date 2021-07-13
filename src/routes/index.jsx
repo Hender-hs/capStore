@@ -9,7 +9,7 @@ import HomeClient from "../pages/HomeClient";
 import Register from "../pages/Register"
 
 import Home from "../pages/Home";
-import Register from "../pages/Register";
+
 import Styleguide from "../components/Styleguide";
 
 const Routes = () => {
