@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const Header = styled.div`
+  position: fixed;
+  margin-bottom: 70px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  border-bottom: 1px solid var(--gray);
+  background-color: ${(props) => props.color};
+`;
+
 export const NavLink = styled(Link)`
   font-size: 18px;
   display: flex;
@@ -23,15 +35,6 @@ export const NavLink = styled(Link)`
 export const StyledSpan = styled.span`
   padding-left: 10px;
   font-size: 20px;
-`;
-
-export const Header = styled.div`
-  position: fixed;
-  margin-bottom: 70px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  width: 100%;
 `;
 
 export const Items = styled.div`
