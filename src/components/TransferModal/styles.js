@@ -25,7 +25,7 @@ export const ModalContent = styled.div`
     background-color: black;
     border-radius: 10px;
     color: white;
-    padding: 1rem 2rem;
+    padding: 2rem 3rem;
     outline: none;
     border: none;
     font-size: 16px;
@@ -33,6 +33,9 @@ export const ModalContent = styled.div`
     letter-spacing: 1px;
     transition: 0.3s;
     margin: 1rem 0;
+    width: fit-content;
+    display: flex;
+    align-items: center;
 
     &:hover {
       background-color: var(--green);
