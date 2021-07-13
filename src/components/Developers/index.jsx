@@ -1,12 +1,18 @@
 import { Container } from './styles'
+import { useHistory } from 'react-router-dom'
 
-const Developers = (dev, linkedin) => {
+const Developers = ({dev, linkedin}) => {
 
+  const history = useHistory();
 
+  const onClickFunc = () => {
+    history.push(linkedin)
+  }
 
   return (
-    <Container onClick={}>
-      <img src={dev} alt="dev" />
+
+    <Container onClick={onClickFunc}>
+      <img src="../../assets/devs/henderson.jpeg" alt="dev" />
     </Container>
   )
 }

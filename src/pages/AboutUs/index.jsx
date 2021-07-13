@@ -2,6 +2,7 @@ import Container, { Background, BackgroundH2 } from './styles';
 import developer from '../../assets/lotties/developer.json'
 import Lottie from 'react-lottie';
 import GlobalStyle from '../../styles/global'
+import Developers from '../../components/Developers'
 
 const AboutUs = () => {
   const developerOptions = {
@@ -26,6 +27,7 @@ const AboutUs = () => {
       <BackgroundH2>
         <h2>Quem somos?</h2>
       </BackgroundH2>
+      <Developers dev="../../assets/devs/henderson.jpeg" />
     </Container>
   )
 }
