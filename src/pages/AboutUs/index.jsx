@@ -15,6 +15,8 @@ const AboutUs = () => {
   };
 
   return (
+    <>
+    {/* header */}
     <Container>
       <GlobalStyle/> 
       <Background>
@@ -27,8 +29,9 @@ const AboutUs = () => {
       <BackgroundH2>
         <h2>Quem somos?</h2>
       </BackgroundH2>
-      <Developers dev="../../assets/devs/henderson.jpeg" />
+      <Developers dev="henderson" />
     </Container>
+    </>
   )
 }
 
