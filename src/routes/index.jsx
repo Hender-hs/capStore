@@ -6,7 +6,8 @@ import Signup from "../pages/Signup";
 import SpecificProduct from "../pages/SpecificProduct";
 
 import HomeClient from "../pages/HomeClient";
-import Register from "../pages/Register"
+import Register from "../pages/Register";
+import UserCart from "../pages/UserCart";
 
 const Routes = () => {
   return (
@@ -16,6 +17,7 @@ const Routes = () => {
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/HomeClient" component={HomeClient} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
+      <Route exact path="/cart" component={UserCart} />
 
       <Route exact path="/register" component={Register} />
     </Switch>
