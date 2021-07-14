@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import { toastSuccess, toastError } from '../../utils/toast'
 
@@ -11,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
 
-  const history = useHistory();
 
   const signIn = (userData, setError, history) => {
     console.log(userData);
@@ -38,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       .catch((_) => setError(true));
   };
 
-  const logout = () => {
+  const logout = (history) => {    
     localStorage.clear();
     setAuth("");
     history.push("/login");
