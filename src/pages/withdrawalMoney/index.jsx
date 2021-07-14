@@ -1,8 +1,8 @@
-import { useState }   from "react";
-import * as S         from "./styles";
-import Button         from "../../components/Button";
-import TransferModal  from "../../components/TransferModal";
-import Header         from "../../components/Header";
+import { useState }                             from "react";
+import * as S                                   from "./styles";
+import Button                                   from "../../components/Button";
+import SellerTransferAndClientEvaluationModals  from "../../components/SellerTransferAndClientEvaluationModals";
+import Header                                   from "../../components/Header";
 
 const WithdrawMoney = () => {
  
@@ -19,7 +19,7 @@ const WithdrawMoney = () => {
       <Header />
       <S.PageBody>
         <div>
-          <TransferModal type={modalPixOrBankTransfer} open={openModal} onClose={() => setOpenModal(false) } />
+          <SellerTransferAndClientEvaluationModals type={modalPixOrBankTransfer} open={openModal} onClose={() => setOpenModal(false) } />
         </div>
         <S.DivButtons>
           <Button onClick={ () => handleSwitchModals("pix") } >Pix</Button>
