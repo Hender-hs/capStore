@@ -47,6 +47,31 @@ export const Data = styled.div`
   ul {
     width: 50%;
     padding: 20px 0;
+
+    &.editInfo {
+      li {
+        display: flex;
+        justify-content: space-between;
+        max-width: 150px;
+        align-items: center;
+
+        input {
+          width: 90px;
+          padding: 5px;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+        }
+
+        @media (min-width: 768px) {
+          max-width: 300px;
+
+          input {
+            width: 200px;
+          }
+        }
+      }
+    }
   }
 
   li {

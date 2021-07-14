@@ -1,29 +1,29 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
-import { toastSuccess, toastError } from '../../utils/toast'
+import { toastSuccess, toastError } from "../../utils/toast";
+import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const token = localStorage.getItem("token") || "";
+  const token = localStorage.getItem("@capstore:token") || "";
 
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
-
 
   const signIn = (userData, setError, history) => {
     console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("@capstore:token", response.data.accessToken);
         setAuth(response.data.access);
         history.push("/dashboard");
-        toastSuccess("Usuário logado com sucesso")
+        toastSuccess("Usuário logado com sucesso");
       })
-      .catch((_) => { 
+      .catch((_) => {
         setError(true);
-        toastError("Erro ao tentar logar, verifique suas credenciais")
+        toastError("Erro ao tentar logar, verifique suas credenciais");
       });
   };
 
@@ -36,14 +36,14 @@ export const AuthProvider = ({ children }) => {
       .catch((_) => setError(true));
   };
 
-  const logout = (history) => {    
+  const logout = (history) => {
     localStorage.clear();
     setAuth("");
     history.push("/login");
   };
 
   const updateUserInfo = (data) => {
-    api.patch("/users", data, {
+    api.patch(`/users/${user.id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -52,6 +52,20 @@ export const AuthProvider = ({ children }) => {
     const newUser = { ...user, data };
 
     setUser(newUser);
+  };
+
+  const getUserInfo = () => {
+    const decoded = jwt_decode(token);
+
+    api
+      .get(`/users/${decoded.sub}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
   };
 
   return (
@@ -64,6 +78,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         updateUserInfo,
         user,
+        getUserInfo,
       }}
     >
       {children}
