@@ -18,14 +18,15 @@ const CartProduct = ({
   handleAddCost,
   handleRemoveCost,
 }) => {
-  const { removeFromCart, cart, setCart, updateCart } = useCart();
+  const { removeFromCart, cart, setCart } = useCart();
   const [counter, setCounter] = useState(howMany || 1);
 
   useEffect(() => {
     const newCart = cart;
     newCart[index].howMany = counter;
-    console.log(newCart);
     setCart(newCart);
+
+    // eslint-disable-next-line
   }, [counter]);
 
   const handleAdd = () => {
