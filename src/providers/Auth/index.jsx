@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
-        history.push("/dashboard");
+        history.push("/home");
       })
       .catch((_) => setError(true));
   };

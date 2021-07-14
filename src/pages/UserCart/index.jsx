@@ -9,10 +9,20 @@ import { useState } from "react";
 
 const UserCart = () => {
   const { cart, setCart, getCartCost } = useCart();
+  const [totalCost, setTotalCost] = useState(getCartCost() || 0);
 
   const handleBuy = () => {
     setCart([]);
     toast.success("Compra realizada!");
+    setTotalCost(0);
+  };
+
+  const handleAddCost = (price) => {
+    setTotalCost(totalCost + price);
+  };
+
+  const handleRemoveCost = (price) => {
+    setTotalCost(totalCost - price);
   };
 
   return (
@@ -26,21 +36,16 @@ const UserCart = () => {
             image={product.url}
             id={product.id}
             index={index}
-            quantity={product?.quantity}
+            howMany={product?.howMany}
+            handleAddCost={handleAddCost}
+            handleRemoveCost={handleRemoveCost}
           />
         ))}
       </S.Container>
       <S.Container>
         <S.Content>
           <S.CostCol>Subtotal</S.CostCol>
-          <S.CostCol>
-            {formatValue(
-              cart.reduce(
-                (acc, product) => acc + product.price * product.quantity,
-                0
-              )
-            )}
-          </S.CostCol>
+          <S.CostCol>{formatValue(totalCost)}</S.CostCol>
         </S.Content>
         <S.Content>
           <S.CostCol>Frete</S.CostCol>
@@ -48,7 +53,7 @@ const UserCart = () => {
         </S.Content>
         <S.Content>
           <S.CostCol>Total</S.CostCol>
-          <S.CostCol>{formatValue(getCartCost() + 15)}</S.CostCol>
+          <S.CostCol>{formatValue(totalCost + 15)}</S.CostCol>
         </S.Content>
       </S.Container>
       <S.ButtonContainer>

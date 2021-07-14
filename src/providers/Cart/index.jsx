@@ -17,7 +17,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const newProduct = product;
+    newProduct.howMany = 1;
+    setCart([...cart, newProduct]);
   };
 
   const removeFromCart = (id) => {
@@ -28,7 +30,7 @@ export const CartProvider = ({ children }) => {
 
   const getCartCost = () => {
     return cart.reduce(
-      (acc, product) => acc + product.price * (product.quantity || 1),
+      (acc, product) => acc + product.price * (product.howMany || 1),
       0
     );
   };

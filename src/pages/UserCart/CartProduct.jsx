@@ -8,27 +8,35 @@ import { useCart } from "../../providers/Cart";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
-const CartProduct = ({ image, name, price, id, quantity, index }) => {
-  const [counter, setCounter] = useState(quantity || 1);
+const CartProduct = ({
+  image,
+  name,
+  price,
+  id,
+  howMany,
+  index,
+  handleAddCost,
+  handleRemoveCost,
+}) => {
   const { removeFromCart, cart, setCart, updateCart } = useCart();
+  const [counter, setCounter] = useState(howMany || 1);
 
   useEffect(() => {
     const newCart = cart;
-    newCart[index].quantity = counter;
-
+    newCart[index].howMany = counter;
+    console.log(newCart);
     setCart(newCart);
-
-    updateCart();
-    // eslint-disable-next-line
   }, [counter]);
 
   const handleAdd = () => {
     setCounter(counter + 1);
-    console.log(cart);
+
+    handleAddCost(price);
   };
 
   const handleRemove = () => {
     const newCounter = counter - 1;
+    handleRemoveCost(price);
 
     if (newCounter < 1) {
       removeFromCart(id);
