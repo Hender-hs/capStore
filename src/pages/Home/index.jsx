@@ -6,6 +6,7 @@ import * as S from "./styled";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { useCart } from "../../providers/Cart";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -13,6 +14,8 @@ const Home = () => {
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
   const { addToCart } = useCart();
+
+  const history = useHistory();
 
   const getType = () => {
     const token = localStorage.getItem("@capstore:token");
@@ -30,6 +33,11 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
+
+  const redirectToSpecificProductPage = (el) => {
+    localStorage.setItem("@capstone:product_Id", el.id)
+    history.push("/specificProduct")
+  }
 
   useEffect(() => {
     console.log("type", type);
@@ -50,7 +58,7 @@ const Home = () => {
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
                     <div>
-                      <S.Card>
+                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
@@ -72,7 +80,7 @@ const Home = () => {
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
                       <div>
-                        <S.Card>
+                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                           <img src={item.url} alt="img de uma peça" />
                           <span>Nome {item.name.slice(0, 20)}</span>
                           <p>R${item.price}</p>
@@ -95,7 +103,7 @@ const Home = () => {
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
                       <div>
-                        <S.Card>
+                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                           <img src={item.url} alt="img de uma peça" />
                           <span>Nome {item.name.slice(0, 20)}</span>
                           <p>R${item.price}</p>
@@ -119,7 +127,7 @@ const Home = () => {
                   .filter((item) => item.category === inputValue)
                   .map((item) => (
                     <div>
-                      <S.Card>
+                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
                         <button
@@ -142,7 +150,7 @@ const Home = () => {
             <Slider>
               {filteredProducts.map((item) => (
                 <div>
-                  <S.CardS>
+                  <S.CardS onClick={() => redirectToSpecificProductPage(item)} >
                     <span>Nome {item.name.slice(0, 20)}</span>
                     <p>R${item.price}</p>
                   </S.CardS>
