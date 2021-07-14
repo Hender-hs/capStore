@@ -1,13 +1,13 @@
-import * as S                       from "./styles";
-import { FaUserCircle as UserIcon } from "react-icons/fa";
-import { IoWalletOutline as WalletIcon }          from "react-icons/io5";
-import ProfileData                  from "../../components/ProfileData";
-import api                          from "../../services/api";
-import jwtDecode                    from "jwt-decode";
-import { useEffect, useState }      from "react";
-import formatValue                  from "../../utils/formatValue";
-import { useHistory }               from "react-router-dom";
-import Header                       from "../../components/Header";
+import * as S                             from "./styles";
+import { FaUserCircle as UserIcon }       from "react-icons/fa";
+import { IoWalletOutline as WalletIcon }  from "react-icons/io5";
+import ProfileData                        from "../../components/ProfileData";
+import api                                from "../../services/api";
+import jwtDecode                          from "jwt-decode";
+import { useEffect, useState }            from "react";
+import formatValue                        from "../../utils/formatValue";
+import { useHistory }                     from "react-router-dom";
+import Header                             from "../../components/Header";
 
 const Profile = () => {
 
@@ -17,7 +17,7 @@ const Profile = () => {
 
   if (!token) history.push("/")
 
-  const [ userData, setUserData ] = useState({});
+  const [ userData, setUserData ] = useState();
 
   const getUserDatas = () => {
     const userId = jwtDecode(token).sub;
@@ -26,7 +26,7 @@ const Profile = () => {
   }
 
   useEffect( () => {
-    userData === undefined && getUserDatas(); 
+    !userData && getUserDatas();
   });
 
   return (
