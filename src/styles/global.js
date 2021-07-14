@@ -8,7 +8,12 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto Condensed', sans-serif;
+    body {
+      background: var(--black);
+    }
 }
+
+
 :root{
   --alt-font: 'Poppins', sans-serif; 
   --dark-green: #0D2818;

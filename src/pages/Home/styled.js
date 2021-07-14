@@ -5,22 +5,28 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--black);
-  height: 100vh;
-  /* input {
+  input {
     background: none;
     border-radius: 15px;
     border: 1px solid white;
-    height: 2rem;
     color: white;
     text-align: center;
-    margin: 2rem auto;
-  } */
+    margin-left: 2rem;
+  }
+  svg {
+    color: white;
+  }
+  div {
+    border: none;
+  }
   h1 {
     color: var(--light-green);
   }
   polygon {
     fill: var(--light-green);
+  }
+  div .slide .current {
+    background: yellow;
   }
 `;
 
@@ -31,8 +37,9 @@ export const Card = styled.div`
   justify-content: center;
   border: 1px solid white;
   width: 12.5rem;
-  height: 10.75rem;
+  height: 12.75rem;
   margin: 0 auto;
+  margin-top: 6rem;
   margin-left: 25%;
   background: white;
   border: 1px solid var(--gray);
@@ -40,6 +47,11 @@ export const Card = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
+  }
+  button {
+    position: relative;
+    border-radius: 5px;
+    margin-top: 2rem;
   }
 `;
 
@@ -50,7 +62,7 @@ export const CardS = styled.div`
   justify-content: center;
   border: 1px solid white;
   width: 12.5rem;
-  height: 10.75rem;
+  height: 12.75rem;
   margin-top: 8rem;
   margin-left: 25%;
   background: white;
@@ -59,5 +71,10 @@ export const CardS = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
+  }
+  button {
+    position: relative;
+    border-radius: 5px;
+    margin-top: 2rem;
   }
 `;

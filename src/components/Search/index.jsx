@@ -7,9 +7,7 @@ const Search = ({ setSearch }) => {
   const [input, setInput] = useState();
 
   const searchProductForName = () => {
-    const result = products.filter(
-      (item) => item.name.includes(input) || item.description.includes(input)
-    );
+    const result = products.filter((item) => item.name.includes(input));
     setSearch(result);
   };
 
