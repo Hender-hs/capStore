@@ -55,6 +55,29 @@ export const EachHardwareSelected = styled.div `
     margin-top: 25px;
     width: 50%;
   }
+
+  @media (max-width: 850px) {
+
+    height: 10%;
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      margin: 0px 0 0px 0;
+      font-size: 8px;
+    }
+
+    img {
+      height: 50px;
+    }
+
+    button {
+      width: 100%;
+      height: 80%;
+    }
+  }
 `
 
 export const EachHardware = styled.div `
@@ -100,6 +123,30 @@ export const EachHardware = styled.div `
     margin-top: 25px;
     width: 50%;
   }
+
+  @media (max-width: 850px) {
+
+  height: 10%;
+  width: 80vw;
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px 0 0px 0;
+    font-size: 8px;
+  }
+
+  img {
+    height: 50px;
+  }
+
+  button {
+    width: 100%;
+    height: 80%;
+  }
+}
 `
 
 export const Modal = styled.div `
@@ -175,4 +222,10 @@ export const TitleDiv = styled.div `
   justify-content: center;
   align-items: center;
   margin-top: -15px;
+
+  @media (max-width: 850px) {
+    h1 {
+      font-size: 130%;
+    }
+  }
 `
