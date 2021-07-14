@@ -61,10 +61,14 @@ const Home = () => {
 
   return (
     <S.Container>
-      <Header color="gray" />
+      <Header />
       <div style={{marginTop: "75px"}} />
-      <input onChange={(e) => setInput(e.target.value)} />
-        <Lottie width="30%" height="50%" options={LaptopOptions} />
+      <img src={GabineteHome} />
+      <div className="search">
+        <p>Pesquisar hardware</p>
+        <input onChange={(e) => setInput(e.target.value)} />
+      </div>
+        {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
           {inputValue === "" && (

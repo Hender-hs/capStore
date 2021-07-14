@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-between;
-  /* background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(0, 0, 0) 100%); */
+  background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 27%, rgb(0, 0, 0) 100%);
   background-color: black;
   min-height: 100vh;
+  transition: 0.2s;
   input {
     background: none;
     border-radius: 15px;
@@ -23,6 +24,20 @@ export const Container = styled.div`
   polygon {
     fill: var(--light-green);
   }
+
+  img {
+    /* height: ${() => document.scrollingElement.clientWidth}; */
+    height: 50vh;
+    width: 30vw;
+  }
+
+  .search {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 `;
 
 export const Card = styled.div`
