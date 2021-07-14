@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import api from "../../services/api";
+import { toastSuccess, toastError } from "../../utils/toast";
 
 const AuthContext = createContext();
 
@@ -10,8 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
 
-  const history = useHistory();
-
   const signIn = (userData, setError, history) => {
     console.log(userData);
     api
@@ -20,8 +18,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
         history.push("/dashboard");
+        toastSuccess("Usuário logado com sucesso");
       })
-      .catch((_) => setError(true));
+      .catch((_) => {
+        setError(true);
+        toastError("Erro ao tentar logar, verifique suas credenciais");
+      });
   };
 
   const signUp = (userData, setError, history) => {
@@ -33,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       .catch((_) => setError(true));
   };
 
-  const logout = () => {
+  const logout = (history) => {
     localStorage.clear();
     setAuth("");
     history.push("/login");

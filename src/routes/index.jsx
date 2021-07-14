@@ -5,9 +5,12 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import BuildYourPc from "../pages/BuildYourPc";
 import SpecificProduct from "../pages/SpecificProduct";
+import AboutUs from "../pages/AboutUs";
+import Register from "../pages/Register";
 
 import Home from "../pages/Home";
-import Register from "../pages/Register";
+import UserCart from "../pages/UserCart";
+
 import Styleguide from "../components/Styleguide";
 import WithdrawMoney from "../pages/withdrawalMoney";
 
@@ -20,6 +23,8 @@ const Routes = () => {
       <Route exact path="/home" component={Home} />
       <Route exact path="/build-your-pc" component={BuildYourPc} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
+      <Route exact path="/cart" component={UserCart} />
+      <Route exact path="/aboutUs" component={AboutUs} />
       <Route exact path="/styleguide" component={Styleguide} />
 
       <Route exact path="/register" component={Register} />
