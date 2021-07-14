@@ -5,8 +5,8 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import BuildYourPc from "../pages/BuildYourPc";
 import SpecificProduct from "../pages/SpecificProduct";
-import AboutUs from '../pages/AboutUs'
-import Register from "../pages/Register"
+import AboutUs from "../pages/AboutUs";
+import Register from "../pages/Register";
 
 import Home from "../pages/Home";
 
