@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   background: var(--black);
   height: 100vh;
-  input {
+  /* input {
     background: none;
     border-radius: 15px;
     border: 1px solid white;
@@ -15,7 +15,7 @@ export const Container = styled.div`
     color: white;
     text-align: center;
     margin: 2rem auto;
-  }
+  } */
   h1 {
     color: var(--light-green);
   }

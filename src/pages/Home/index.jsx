@@ -1,15 +1,14 @@
 import { useProducts } from "../../providers/Products";
 import { useState, useEffect } from "react";
-import * as S from "./styled.js";
-import Input from "../../components/Input";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-import Button from "../../components/Button";
+import * as S from "./styled";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
+import Search from "../../components/Search";
 
 const Home = () => {
-  const [inputValue, setInput] = useState("");
+  const [search, setSearch] = useState([]);
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
@@ -41,34 +40,18 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <S.Container>
+      <Search setSearch={setSearch} />
       {type === "client" && (
-        <S.Container>
-          <input />
-          {inputValue === "" && (
+        <>
+          {search.length === 0 && (
             <>
               <h1>Placa mãe</h1>
               <Slider autoFocus="true">
                 {products
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
-                    <S.Card>
-                      <img src={item.url} alt="img de uma peça" />
-                      <span>Nome {item.name.slice(0, 20)}</span>
-                      <p>R${item.price}</p>
-                      <button className="client" onClick={() => setCart(item)}>
-                        Comprar
-                      </button>
-                    </S.Card>
-                  ))}
-              </Slider>
-
-              <>
-                <h1>Processador</h1>
-                <Slider>
-                  {products
-                    .filter((item) => item.category === "Processador")
-                    .map((item) => (
+                    <div>
                       <S.Card>
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
@@ -80,6 +63,29 @@ const Home = () => {
                           Comprar
                         </button>
                       </S.Card>
+                    </div>
+                  ))}
+              </Slider>
+
+              <>
+                <h1>Processador</h1>
+                <Slider>
+                  {products
+                    .filter((item) => item.category === "Processador")
+                    .map((item) => (
+                      <div>
+                        <S.Card>
+                          <img src={item.url} alt="img de uma peça" />
+                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <p>R${item.price}</p>
+                          <button
+                            className="client"
+                            onClick={() => setCart(item)}
+                          >
+                            Comprar
+                          </button>
+                        </S.Card>
+                      </div>
                     ))}
                 </Slider>
               </>
@@ -90,61 +96,61 @@ const Home = () => {
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
-                      <S.Card>
-                        <img src={item.url} alt="img de uma peça" />
-                        <span>Nome {item.name.slice(0, 20)}</span>
-                        <p>R${item.price}</p>
-                        <button
-                          className="client"
-                          onClick={() => setCart(item)}
-                        >
-                          Comprar
-                        </button>
-                      </S.Card>
+                      <div>
+                        <S.Card>
+                          <img src={item.url} alt="img de uma peça" />
+                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <p>R${item.price}</p>
+                          <button
+                            className="client"
+                            onClick={() => setCart(item)}
+                          >
+                            Comprar
+                          </button>
+                        </S.Card>
+                      </div>
                     ))}
                 </Slider>
               </>
             </>
           )}
-          {inputValue !== "" && (
+          {search.length !== 0 && (
             <>
               <Slider>
-                {products
-                  .filter((item) => item.category === inputValue)
-                  .map((item) => (
+                {search.map((item) => (
+                  <div>
                     <S.Card>
-                      <img src={item.url} alt="img de uma peça" />
                       <span>Nome {item.name.slice(0, 20)}</span>
                       <p>R${item.price}</p>
                       <button onClick={() => setCart(item)} className="client">
                         Comprar
                       </button>
                     </S.Card>
-                  ))}
+                  </div>
+                ))}
               </Slider>
             </>
           )}
-        </S.Container>
+        </>
       )}
       {type === "seller" && (
-        <S.Container>
+        <>
           {
             <Slider>
-              {products.map((item) => (
-                <S.CardS>
-                  <img src={item.url} alt="img de uma peça" />
-                  <span>Nome {item.name.slice(0, 20)}</span>
-                  <p>R${item.price}</p>
-                  <button onClick={() => setCart(item)} className="client">
-                    Comprar
-                  </button>
-                </S.CardS>
+              {filteredProducts.map((item) => (
+                <div>
+                  <S.CardS>
+                    <span>Nome {item.name.slice(0, 20)}</span>
+                    <p>R${item.price}</p>
+                  </S.CardS>
+                </div>
               ))}
             </Slider>
           }
-        </S.Container>
+          <button>Anunciar</button>
+        </>
       )}
-    </>
+    </S.Container>
   );
 };
 

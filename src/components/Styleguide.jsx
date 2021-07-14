@@ -1,11 +1,17 @@
 import { Button } from "@material-ui/core";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../providers/Auth";
 import Product from "./Product";
 import TransferModal from "./TransferModal";
 
 const Styleguide = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTransferOpen, setIsTransferOpen] = useState(false);
+
+  const history = useHistory();
+
+  const { logout } = useAuth();
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
@@ -43,6 +49,7 @@ const Styleguide = () => {
         onClose={handleOpenTransfer}
         type="transfer"
       />
+      <Button onClick={() => logout(history)}>Logout</Button>
     </div>
   );
 };
