@@ -9,6 +9,7 @@ import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
 
 import Home from "../pages/Home";
+import UserCart from "../pages/UserCart";
 
 import Styleguide from "../components/Styleguide";
 
@@ -21,6 +22,7 @@ const Routes = () => {
       <Route exact path="/home" component={Home} />
       <Route exact path="/build-your-pc" component={BuildYourPc} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
+      <Route exact path="/cart" component={UserCart} />
       <Route exact path="/aboutUs" component={AboutUs} />
       <Route exact path="/styleguide" component={Styleguide} />
 
