@@ -18,6 +18,38 @@ export const Container = styled.div`
     font-size: 20px;
     font-weight: 600;
   }
+  @media only screen and (min-width: 768px) {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    img {
+      max-width: 300px;
+      width: 100%;
+    }
+    h3 {
+      color: white;
+      border-bottom: 1px solid white;
+      font-size: 30px;
+    }
+  }
+`;
+export const Datas = styled.div`
+  @media only screen and (min-width: 768px) {
+    color: white;
+    p,
+    h6 {
+      padding: 0.5rem;
+    }
+    p {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    h6 {
+      border-bottom: 1px solid white;
+      font-size: 25px;
+    }
+  }
 `;
 
 export const SellerPrice = styled.div`
@@ -40,4 +72,5 @@ export const ClientPrice = styled.div`
     font-size: 14px;
     margin: 1rem 0;
   }
+  
 `;
