@@ -7,11 +7,14 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(local || []);
 
   useEffect(() => {
+    // eslint-disable-next-line
     localStorage.setItem("@capstore:cart", JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const newProduct = product;
+    newProduct.howMany = 1;
+    setCart([...cart, newProduct]);
   };
 
   const removeFromCart = (id) => {
@@ -21,7 +24,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartCost = () => {
-    return cart.reduce((acc, product) => acc + product.price, 0);
+    return cart.reduce(
+      (acc, product) => acc + product.price * (product.howMany || 1),
+      0
+    );
   };
 
   const isInCart = (product) => {
