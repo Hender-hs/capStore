@@ -10,7 +10,7 @@ export const Container = styled.div`
   border-top: 1px solid #fff;
   padding: 1rem;
   color: #fff;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   > :first-child {
       p {

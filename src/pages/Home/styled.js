@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--black);
-  height: 100vh;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(0, 0, 0) 100%); */
+  background-color: black;
+  min-height: 100vh;
   input {
     background: none;
     border-radius: 15px;
@@ -37,6 +38,7 @@ export const Card = styled.div`
   background: white;
   border: 1px solid var(--gray);
   border-radius: 5px;
+  cursor: pointer;
   img {
     width: 6.2rem;
     height: 6.2rem;
