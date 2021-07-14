@@ -9,6 +9,7 @@ import Button from "../Button";
 import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
 import { useAuth } from "../../providers/Auth";
+import { toastSuccess } from "../../utils/toast";
 
 const ModalEvaluation = () => {
   const productId = Number(localStorage.getItem("@capstone:product_Id") || "");
@@ -18,6 +19,7 @@ const ModalEvaluation = () => {
   const [user, setUser] = useState("");
   const { token } = useAuth();
   const [feedbacks, setFeedbacks] = useState([]);
+  const [sent, setSent] = useState(false);
 
   const getUserName = () => {
     const decoded = jwt_decode(token);
@@ -40,27 +42,41 @@ const ModalEvaluation = () => {
 
   const handleEvaluation = () => {
     setFeedbacks([...feedbacks, { user, rating, comment, likes: 0 }]);
-    sendEvaluation();
+    setSent(!sent);
   };
 
   const sendEvaluation = () => {
     if (rating > 0) {
-      api.patch(`products/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: feedbacks,
-      });
+      api
+        .patch(
+          `products/${productId}`,
+          { feedback: [...feedbacks] },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((_) => toastSuccess("Comentário enviado com sucesso!"));
     }
   };
 
   const onStarClick = (newValue) => {
     setRating(newValue);
   };
+
   useEffect(() => {
     getUserName();
     getFeedbacks();
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (sent) {
+      sendEvaluation();
+    }
+    // eslint-disable-next-line
+  }, [sent]);
   return (
     <S.ModalContent>
       <S.ModalHeader>
@@ -75,7 +91,7 @@ const ModalEvaluation = () => {
           fullIcon={<FullStar />}
           activeColor="#ffd700"
         />
-        
+
         <label htmlFor="commentary">Comentário</label>
         <textarea
           id="commentary"
