@@ -3,15 +3,18 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const local = JSON.parse(localStorage.getItem("cart"));
+  const local = JSON.parse(localStorage.getItem("@capstore:cart"));
   const [cart, setCart] = useState(local || []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    // eslint-disable-next-line
+    localStorage.setItem("@capstore:cart", JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const newProduct = product;
+    newProduct.howMany = 1;
+    setCart([...cart, newProduct]);
   };
 
   const removeFromCart = (id) => {
@@ -21,7 +24,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartCost = () => {
-    return cart.reduce((acc, product) => acc + product.price, 0);
+    return cart.reduce(
+      (acc, product) => acc + product.price * (product.howMany || 1),
+      0
+    );
   };
 
   const isInCart = (product) => {
