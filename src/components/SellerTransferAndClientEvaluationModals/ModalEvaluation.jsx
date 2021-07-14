@@ -16,7 +16,7 @@ const ModalEvaluation = () => {
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [user, setUser] = useState("");
+  const [userName, setUserName] = useState("");
   const { token } = useAuth();
   const [feedbacks, setFeedbacks] = useState([]);
   const [canSend, setCanSend] = useState(false);
@@ -25,7 +25,7 @@ const ModalEvaluation = () => {
     const decoded = jwt_decode(token);
     api
       .get(`/users/${decoded.sub}`)
-      .then((response) => setUser(response.data.name));
+      .then((response) => setUserName(response.data.name));
   };
 
   const getFeedbacks = () => {
@@ -41,7 +41,7 @@ const ModalEvaluation = () => {
   };
 
   const handleEvaluation = () => {
-    setFeedbacks([...feedbacks, { user, rating, comment, likes: 0 }]);
+    setFeedbacks([...feedbacks, { user: userName, rating, comment, likes: 0 }]);
     setCanSend(!canSend);
   };
 
