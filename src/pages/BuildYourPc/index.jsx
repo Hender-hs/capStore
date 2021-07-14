@@ -4,6 +4,8 @@ import * as S           from "./styles";
 import { useState }     from "react";
 import { useEffect }    from "react";
 import Button from "../../components/Button";
+import Header from "../../components/Header";
+import formatValue from "../../utils/formatValue";
 
 const BuildYourPc = () => {
 
@@ -33,31 +35,28 @@ const BuildYourPc = () => {
   }, [PCpartsBeingBuild]);
 
   const printingSelectedProdcts = (el, index) => (
-    <S.EachHardware key={index} >
-      <div>
+    <S.EachHardwareSelected key={index} >
+      <div style={{display: "flex", alignItems: "center"}}>
+        <img src={el.url} alt={el.name} />
         <p>{el.name}</p>
       </div>
       <div>
-        <img src={el.url} alt={el.name} />
-        <p>{el.description.slice(0, 55)}...</p>
+        <Button width="300px" style={{fontSize: "16px", color: "white", borderRadius: "10px"}} onClick={() => removingHardwareToLocalStorage(el)} >Remover</Button>
       </div>
-      <div>
-        <Button onClick={() => removingHardwareToLocalStorage(el)} >Remove</Button>
-      </div>
-    </S.EachHardware>
+    </S.EachHardwareSelected>
   );
 
   const printingSpecificKindOfProducts = (el, index) => (
     <S.EachHardware key={index} >
-      <div>
+      <div className="firstChild" >
+        <img src={el.url} alt={el.name} />
         <p>{el.name}</p>
       </div>
-      <div>
-        <img src={el.url} alt={el.name} />
-        <p>{el.description}</p>
+      <div className="secondChild" >
+        <p>{formatValue(el.price)}</p>
       </div>
       <div>
-        <Button onClick={() => addingHardwareToLocalStorage(el)} >Adicionar</Button>
+        <Button width="250px" style={{fontSize: "16px", color: "white", borderRadius: "10px"}} onClick={() => addingHardwareToLocalStorage(el)} >Adicionar</Button>
       </div>
     </S.EachHardware>
   );
@@ -70,20 +69,28 @@ const BuildYourPc = () => {
   ];
 
   const PrintingPCpartsToChoose = (el) => (
-    <S.EachHardware onClick={() => handleClickHardwareKindSelection(el)} >
+    <S.EachHardwareType onClick={() => handleClickHardwareKindSelection(el)} >
       <img src={defaultImg} alt={el} />
       <p>{el}</p>
-    </S.EachHardware>
+    </S.EachHardwareType>
   );
 
   return (
     <S.Container>
-      <S.PChardware>
-        {PCpartsToChooseArray.map(PrintingPCpartsToChoose)}
-      </S.PChardware>
       <div>
-        {PCpartsBeingBuild.map(printingSelectedProdcts)}
+        <Header color={"black"} />
       </div>
+      <S.BodyDiv>
+        <S.PChardware>
+          {PCpartsToChooseArray.map(PrintingPCpartsToChoose)}
+        </S.PChardware>
+          <S.SelectedProducts>
+            <S.TitleDiv>
+                <h1>Monte seu pc</h1>
+            </S.TitleDiv>
+            {PCpartsBeingBuild.map(printingSelectedProdcts)}
+          </S.SelectedProducts>
+      </S.BodyDiv>
       <S.Modal open={openModal} onClick={() => setOpenModal(false)} >
         <S.ModalContainer open={openModal} >
           {filteredProducts.map(printingSpecificKindOfProducts)}
