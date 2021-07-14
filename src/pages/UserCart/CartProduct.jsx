@@ -18,12 +18,12 @@ const CartProduct = ({ image, name, price, id, quantity, index }) => {
 
     setCart(newCart);
 
+    updateCart();
     // eslint-disable-next-line
   }, [counter]);
 
   const handleAdd = () => {
     setCounter(counter + 1);
-    updateCart();
     console.log(cart);
   };
 
