@@ -1,13 +1,35 @@
 import { Input } from "@material-ui/core";
 import { useState } from "react";
+import { useAuth } from "../../providers/Auth";
 import * as S from "./styles";
 
 const UserAndSellerData = ({ propProfileData }) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
+
   const { cep, phone, email, location } = propProfileData;
+
+  const [userCep, setUserCep] = useState(cep || "");
+  const [userPhone, setUserPhone] = useState(phone || "");
+  const [userEmail, setUserEmail] = useState(email || "");
+  const [userLocation, setUserLocation] = useState(location || "");
+
+  const { updateUserInfo, getUserInfo } = useAuth();
 
   const handleOpenEdit = () => {
     setIsOpenEdit(!isOpenEdit);
+  };
+
+  const handleSaveEdit = () => {
+    const data = {
+      cep: userCep,
+      phone: userPhone,
+      email: userEmail,
+      location: userLocation,
+    };
+
+    updateUserInfo(data);
+    handleOpenEdit();
+    getUserInfo();
   };
 
   return (
@@ -30,21 +52,41 @@ const UserAndSellerData = ({ propProfileData }) => {
         <>
           <ul className="editInfo">
             <li>
-              CEP: <input placeholder={cep} />
+              CEP:{" "}
+              <input
+                placeholder={cep}
+                value={userCep}
+                onChange={(e) => setUserCep(e.target.value)}
+              />
             </li>
             <li>
-              Celular: <input placeholder={phone} />
+              Celular:{" "}
+              <input
+                placeholder={phone}
+                value={userPhone}
+                onChange={(e) => setUserPhone(e.target.value)}
+              />
             </li>
             <li>
-              Email: <input placeholder={email} />
+              Email:{" "}
+              <input
+                placeholder={email}
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
             </li>
           </ul>
           <ul className="editInfo">
             <li>
-              Estado: <input placeholder={location} />
+              Estado:{" "}
+              <input
+                placeholder={location}
+                value={userLocation}
+                onChange={(e) => setUserLocation(e.target.value)}
+              />
             </li>
           </ul>
-          <S.ChangeData onClick={handleOpenEdit}>Salvar</S.ChangeData>
+          <S.ChangeData onClick={handleSaveEdit}>Salvar</S.ChangeData>
         </>
       )}
     </S.Data>

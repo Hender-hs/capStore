@@ -77,6 +77,13 @@ export const Data = styled.div`
   li {
     padding: 10px 7px;
     color: white;
+    animation: vanish 0.5s;
+
+    @keyframes vanish {
+      from {
+        opacity: 0;
+      }
+    }
 
     &:hover {
       color: var(--green);
