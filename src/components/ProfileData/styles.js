@@ -52,6 +52,10 @@ export const Data = styled.div`
   li {
     padding: 10px 7px;
     color: white;
+
+    &:hover {
+      color: var(--green);
+    }
   }
 
   @media (min-width: 768px) {
