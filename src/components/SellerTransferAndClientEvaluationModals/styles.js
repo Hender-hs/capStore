@@ -148,3 +148,17 @@ export const InputContent = styled.div`
     padding: 10px;
   }
 `;
+export const ModalHeaderEvaluation = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  label {
+    font-size: 18px;
+  }
+  padding: 20px;
+  @media (min-width: 768px) {
+    label {
+      font-size: 1.5rem;
+    }
+  }
+`;
