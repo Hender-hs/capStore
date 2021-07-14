@@ -6,9 +6,10 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { ContainerForm, Container, Wrapper, RegisterButton, InputDiv, Title } from "./styles";
+import { ContainerForm, Container, Wrapper, RegisterButton, InputDiv, Title, ContainerDesk, ContainerSvg, ContainerDeskRight } from "./styles";
 import Lottie from 'react-lottie';
 import buying from '../../assets/lotties/buying.json'
+import loginAnimation from '../../assets/lotties/loginanimation.json'
 
 
 function Login() {
@@ -26,6 +27,16 @@ function Login() {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+
+  const loginOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loginAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
 
   const schema = yup.object().shape({
     email: yup.string().email("O email deve ser válido").required("Campo obrigatório"),
@@ -99,7 +110,7 @@ function Login() {
             />
           </InputDiv>
           <Button 
-            style={{marginTop: 25, marginBottom: 25, borderRadius: 10}}
+            style={{marginTop: 25, marginBottom: 25, borderRadius: 10, cursor: "pointer"}}
             type="submit"
             width="60%">Enviar</Button>
         <p style={{color: "white"}}>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
@@ -108,10 +119,54 @@ function Login() {
       </ContainerForm>
       </Wrapper>
     );
-  } else if (width > breakpoint){
+  } else {
     return (
-      <>
-      </>
+      <ContainerDesk>
+        <ContainerSvg>
+          <Lottie 
+            options={loginOptions}
+            width="100%"
+            height="100%"
+          />
+        </ContainerSvg>
+        <ContainerDeskRight>
+          <ContainerForm style={{height: "auto", borderRadius: 20, padding: 10}}>
+          <form 
+            onSubmit={handleSubmit(onSubmit)}
+            style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}>
+              <Title>Entrar</Title>
+            <InputDiv>
+              <Input
+                label="Email"
+                type="text"
+                register={register}
+                name="email"
+                error={errors.email?.message}
+                placeholder="joao@mail.com"
+                style={{marginBottom: 5}}
+              />
+            </InputDiv>
+            <InputDiv>
+              <Input
+                label="Senha"
+                type="password"
+                register={register}
+                name="password"
+                error={errors.password?.message}
+                placeholder="Senha"
+                style={{marginBottom: 5}}
+              />
+            </InputDiv>
+            <Button 
+              style={{marginTop: 25, marginBottom: 25, borderRadius: 10, cursor: "pointer"}}
+              type="submit"
+              width="60%">Enviar</Button>
+          <p style={{color: "white"}}>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
+          </form>
+          {error && <span> Usuário ou senha incorretas! </span>}
+        </ContainerForm>
+        </ContainerDeskRight>
+      </ContainerDesk>
     )
   }
 }
