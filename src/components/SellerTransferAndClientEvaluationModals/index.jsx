@@ -3,7 +3,7 @@ import { ModalPix } from "./ModalPix";
 import { ModalBank } from "./ModalBank";
 import ModalEvaluation from "./ModalEvaluation";
 
-const TransferModal = ({ open, onClose, type }) => {
+const SellerTransferAndClientEvaluationModals = ({ open, onClose, type }) => {
   return (
     <div>
       <Modal open={open} onClose={onClose}>
@@ -25,4 +25,4 @@ const TransferModal = ({ open, onClose, type }) => {
   );
 };
 
-export default TransferModal;
+export default SellerTransferAndClientEvaluationModals;

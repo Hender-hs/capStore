@@ -1,7 +1,7 @@
 import ProductFeedback from "../ProductFeedback";
 import Button from "../Button";
 import * as S from "./styled";
-import TransferModal from "../TransferModal";
+import SellerTransferAndClientEvaluationModals from "../SellerTransferAndClientEvaluationModals";
 import { useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import { useEffect } from "react";
@@ -32,7 +32,7 @@ const Feedbacks = ({ evaluation, userType }) => {
     <S.Container>
       <div>
         <h3>Avaliações</h3>
-        <TransferModal
+        <SellerTransferAndClientEvaluationModals
           open={openModal}
           onClose={() => setOpenModal(!openModal)}
         />
