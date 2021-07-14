@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
-import { toastSuccess, toastError } from '../../utils/toast'
+import { toastSuccess, toastError } from "../../utils/toast";
 
 const AuthContext = createContext();
 
@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
 
-
   const signIn = (userData, setError, history) => {
     console.log(userData);
     api
@@ -19,11 +18,11 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
         history.push("/dashboard");
-        toastSuccess("Usuário logado com sucesso")
+        toastSuccess("Usuário logado com sucesso");
       })
-      .catch((_) => { 
+      .catch((_) => {
         setError(true);
-        toastError("Erro ao tentar logar, verifique suas credenciais")
+        toastError("Erro ao tentar logar, verifique suas credenciais");
       });
   };
 
@@ -36,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       .catch((_) => setError(true));
   };
 
-  const logout = (history) => {    
+  const logout = (history) => {
     localStorage.clear();
     setAuth("");
     history.push("/login");
