@@ -1,6 +1,13 @@
 import * as S from "./styled";
 
-const Input = ({ label, type, register, name, error = "", ...rest }) => {
+const Input = ({
+  label,
+  type = "text",
+  register,
+  name,
+  error = "",
+  ...rest
+}) => {
   return (
     <S.Container>
       <label htmlFor={name}>{label}</label>

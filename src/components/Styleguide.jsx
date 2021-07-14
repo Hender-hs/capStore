@@ -1,59 +1,21 @@
-import { Button } from "@material-ui/core";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 import { useAuth } from "../providers/Auth";
-import Product from "./Product";
-import SellerTransferAndClientEvaluationModals from "./SellerTransferAndClientEvaluationModals";
+import { useProducts } from "../providers/Products";
+import ProfileData from "./ProfileData";
 
 const Styleguide = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isTransferOpen, setIsTransferOpen] = useState(false);
+  const { user, getUserInfo } = useAuth();
+  const { products } = useProducts();
 
-  const history = useHistory();
-
-  const { logout } = useAuth();
-
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOpenTransfer = () => {
-    setIsTransferOpen(!isTransferOpen);
-  };
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
-      <Product
-        name="Teclado Mecânico TGT Spawn Tournament"
-        url=""
-        price={200}
-        quantity={2}
-        userType="seller"
-      />
-      <Product
-        name="Teclado Mecânico TGT Spawn Tournament"
-        url=""
-        price={200}
-        quantity={2}
-        userType="client"
-      />
-      <Button onClick={handleOpen} variant="contained">
-        pix
-      </Button>
-      <Button onClick={handleOpenTransfer} variant="contained">
-        transfer
-      </Button>
-      <SellerTransferAndClientEvaluationModals
-        open={isOpen}
-        onClose={handleOpen}
-        type="pix"
-      />
-      <SellerTransferAndClientEvaluationModals
-        open={isTransferOpen}
-        onClose={handleOpenTransfer}
-        type="transfer"
-      />
-      <Button onClick={() => logout(history)}>Logout</Button>
+      <ProfileData data={user} products={products} />
+      <button onClick={getUserInfo}>Teste</button>
     </div>
   );
 };

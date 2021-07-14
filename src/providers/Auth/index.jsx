@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import { toastSuccess, toastError } from "../../utils/toast";
+import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext();
 
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUserInfo = (data) => {
-    api.patch("/users", data, {
+    api.patch(`/users/${user.id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -51,6 +52,20 @@ export const AuthProvider = ({ children }) => {
     const newUser = { ...user, data };
 
     setUser(newUser);
+  };
+
+  const getUserInfo = () => {
+    const decoded = jwt_decode(token);
+
+    api
+      .get(`/users/${decoded.sub}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
   };
 
   return (
@@ -63,6 +78,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         updateUserInfo,
         user,
+        getUserInfo,
       }}
     >
       {children}
