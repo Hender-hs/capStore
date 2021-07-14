@@ -16,7 +16,7 @@ const AboutUs = () => {
   };
 
   return (
-    <>
+    <div style={{height: "100%"}}>
     {/* header */}
     <Container>
       <GlobalStyle/> 
@@ -36,7 +36,7 @@ const AboutUs = () => {
       </BackgroundH2>
       <Developers dev="henderson" />
     </Container>
-    </>
+    </div>
   )
 }
 
