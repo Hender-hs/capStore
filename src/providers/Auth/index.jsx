@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
+import { toastSuccess, toastError } from '../../utils/toast'
 
 const AuthContext = createContext();
 
@@ -18,8 +19,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", response.data.accessToken);
         setAuth(response.data.access);
         history.push("/dashboard");
+        toastSuccess("Usuário logado com sucesso")
       })
-      .catch((_) => setError(true));
+      .catch((_) => { 
+        setError(true);
+        toastError("Erro ao tentar logar, verifique suas credenciais")
+      });
   };
 
   const signUp = (userData, setError, history) => {
