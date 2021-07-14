@@ -15,7 +15,7 @@ const Home = () => {
   const { addToCart } = useCart();
 
   const getType = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("@capstore:token");
     const decoded = jwt_decode(token);
     setType(JSON.parse(decoded.sub));
 
