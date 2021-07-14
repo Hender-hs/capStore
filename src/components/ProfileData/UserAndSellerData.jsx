@@ -1,17 +1,26 @@
-const UserAndSellerData = ({propProfileData}) => {
+import * as S from "./styles";
 
-  const { cep, phone, email, location } = propProfileData;
+const UserAndSellerData = ({ propProfileData }) => {
+  const {
+    cep = 6354240,
+    phone = "(21)9999-9999",
+    email = "paulo@mail.com",
+    location = "Rio de Janeiro",
+  } = propProfileData;
 
   return (
-    <div>
+    <S.Data>
       <ul>
-        <li>{cep}</li>
-        <li>{phone}</li>
-        <li>{email}</li>
-        <li>{location}</li>
+        <li>CEP: {cep}</li>
+        <li>Celular: {phone}</li>
+        <li>Email: {email}</li>
         <li>Senha: ********</li>
       </ul>
-    </div>
+      <ul>
+        <li>Estado: {location}</li>
+      </ul>
+      <S.ChangeData>Alterar dados</S.ChangeData>
+    </S.Data>
   );
 };
 
