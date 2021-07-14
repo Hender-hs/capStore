@@ -2,7 +2,7 @@ import * as S from "./styled";
 import { useState } from "react";
 import { useProducts } from "../../providers/Products";
 import { AiOutlineSearch } from "react-icons/ai";
-const Search = () => {
+const Search = ({ setSearch }) => {
   const { products } = useProducts();
   const [input, setInput] = useState();
 
@@ -10,8 +10,9 @@ const Search = () => {
     const result = products.filter(
       (item) => item.name.includes(input) || item.description.includes(input)
     );
-    console.log(result);
+    setSearch(result);
   };
+
   return (
     <S.Container>
       <S.Input
