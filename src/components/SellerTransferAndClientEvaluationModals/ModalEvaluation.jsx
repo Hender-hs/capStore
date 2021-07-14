@@ -79,25 +79,24 @@ const ModalEvaluation = () => {
   }, [canSend]);
   return (
     <S.ModalContent>
-      <S.ModalHeader>
+      <S.ModalHeaderEvaluation>
         <label>Nota</label>
         <ReactStars
           count={5}
           onChange={onStarClick}
-          size={24}
+          size={30}
           isHalf={true}
           emptyIcon={<EmptyStar />}
           halfIcon={<HalfStar />}
           fullIcon={<FullStar />}
           activeColor="#ffd700"
         />
-
         <label htmlFor="commentary">Comentário</label>
         <textarea
           id="commentary"
           onChange={(e) => setComment(e.target.value)}
         />
-      </S.ModalHeader>
+      </S.ModalHeaderEvaluation>
 
       <Button handleClick={handleEvaluation}>Enviar</Button>
     </S.ModalContent>
