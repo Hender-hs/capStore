@@ -28,7 +28,7 @@ function Login() {
   };
 
   const schema = yup.object().shape({
-    email: yup.string().email().required("Campo obrigatório"),
+    email: yup.string().email("O email deve ser válido").required("Campo obrigatório"),
     password: yup
       .string()
       .min(8, "Mínimo de 8 dígitos")
