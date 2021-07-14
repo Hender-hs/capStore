@@ -10,7 +10,7 @@ const Search = ({ setSearch }) => {
     const result = products.filter(
       (item) => item.name.includes(input) || item.description.includes(input)
     );
-    setSearch(result);
+    setSearch([...result]);
   };
 
   return (

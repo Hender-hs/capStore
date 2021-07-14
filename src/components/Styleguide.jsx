@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../providers/Auth";
 import Product from "./Product";
-import TransferModal from "./TransferModal";
+import SellerTransferAndClientEvaluationModals from "./SellerTransferAndClientEvaluationModals";
 
 const Styleguide = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,8 +43,12 @@ const Styleguide = () => {
       <Button onClick={handleOpenTransfer} variant="contained">
         transfer
       </Button>
-      <TransferModal open={isOpen} onClose={handleOpen} type="pix" />
-      <TransferModal
+      <SellerTransferAndClientEvaluationModals
+        open={isOpen}
+        onClose={handleOpen}
+        type="pix"
+      />
+      <SellerTransferAndClientEvaluationModals
         open={isTransferOpen}
         onClose={handleOpenTransfer}
         type="transfer"
