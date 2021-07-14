@@ -19,7 +19,7 @@ const ModalEvaluation = () => {
   const [user, setUser] = useState("");
   const { token } = useAuth();
   const [feedbacks, setFeedbacks] = useState([]);
-  const [sent, setSent] = useState(false);
+  const [canSend, setCanSend] = useState(false);
 
   const getUserName = () => {
     const decoded = jwt_decode(token);
@@ -42,7 +42,7 @@ const ModalEvaluation = () => {
 
   const handleEvaluation = () => {
     setFeedbacks([...feedbacks, { user, rating, comment, likes: 0 }]);
-    setSent(!sent);
+    setCanSend(!canSend);
   };
 
   const sendEvaluation = () => {
@@ -72,11 +72,11 @@ const ModalEvaluation = () => {
   }, []);
 
   useEffect(() => {
-    if (sent) {
+    if (canSend) {
       sendEvaluation();
     }
     // eslint-disable-next-line
-  }, [sent]);
+  }, [canSend]);
   return (
     <S.ModalContent>
       <S.ModalHeader>
