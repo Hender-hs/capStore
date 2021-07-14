@@ -36,9 +36,16 @@ const BuildYourPc = () => {
 
   const printingSelectedProdcts = (el, index) => (
     <S.EachHardwareSelected key={index} >
-      <div style={{display: "flex", alignItems: "center"}}>
+      <div className="product-info" >
         <img src={el.url} alt={el.name} />
-        <p>{el.name}</p>
+        <div className="product-name">
+          <p>{el.name}</p>
+          <div className="price-info" >
+            <p><strong >à vista </strong>{formatValue(el.price)}</p>
+            <p>ou</p>
+            <h3>em até 12x de {formatValue(el.price / 12)}</h3>
+          </div>
+        </div>
       </div>
       <div>
         <Button width="300px" style={{fontSize: "16px", color: "white", borderRadius: "10px"}} onClick={() => removingHardwareToLocalStorage(el)} >Remover</Button>
@@ -48,12 +55,16 @@ const BuildYourPc = () => {
 
   const printingSpecificKindOfProducts = (el, index) => (
     <S.EachHardware key={index} >
-      <div className="firstChild" >
+      <div className="first-child" >
         <img src={el.url} alt={el.name} />
-        <p>{el.name}</p>
+        <div className="product-name">
+          <p>{el.name}</p>
+        </div>
       </div>
-      <div className="secondChild" >
-        <p>{formatValue(el.price)}</p>
+      <div className="second-child" >
+        <p><strong >à vista </strong>{formatValue(el.price)}</p>
+        <p>ou</p>
+        <h3>em até 12x de {formatValue(el.price / 12)}</h3>
       </div>
       <div>
         <Button width="250px" style={{fontSize: "16px", color: "white", borderRadius: "10px"}} onClick={() => addingHardwareToLocalStorage(el)} >Adicionar</Button>

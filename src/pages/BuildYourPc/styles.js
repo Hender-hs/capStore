@@ -7,6 +7,7 @@ export const Container = styled.div `
   flex-direction: column;
   justify-content: space-between;
   background-image: linear-gradient(0deg, rgb(175, 175, 175) 0%, rgb(0, 0, 0, 0.5) 0%, rgb(0, 0, 0) 110%);
+  overflow-x: hidden;
 `
 
 export const BodyDiv = styled.div `
@@ -18,7 +19,7 @@ export const BodyDiv = styled.div `
 `
 
 export const PChardware = styled.div `
-  width: 50%;
+  width: 60%;
   height: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -41,6 +42,19 @@ export const EachHardwareSelected = styled.div `
     height: 200px;
     max-width: 300px;
   }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0 25px 0;
+    font-weight: 800;
+  }
+
+  .product-name {
+    margin-top: 25px;
+    width: 50%;
+  }
 `
 
 export const EachHardware = styled.div `
@@ -54,13 +68,23 @@ export const EachHardware = styled.div `
   background-color: #c4c4c4;
   border-radius: 10px;
   padding: 20px;
+  font-weight: 800;
+  text-align: center;
 
   img {
     height: 200px;
     max-width: 300px;
   }
 
-  .firstChild {
+  strong {
+    color: var(--green);
+  }
+
+  h3 {
+    font: bolder;
+  }
+
+  .first-child {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,21 +92,26 @@ export const EachHardware = styled.div `
     margin: 10px 0;
   }
 
-  .secondChild {
+  .second-child {
     margin: 10px 0;
+  }
+
+  .product-name {
+    margin-top: 25px;
+    width: 50%;
   }
 `
 
 export const Modal = styled.div `
   position: absolute;
   /* width: ${() => `${document.body.clientWidth}px` }; */
-  width: 100vw;
+  width: 100%;
   height: ${() => `${document.body.clientHeight}px` };
   visibility: ${({open}) => open ? "visible" : "hidden" };
 
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
 
   background-color: ${({open}) => open ? "rgb(0, 0, 0, 0.5)" : "rgb(255, 255, 255, 0)" };
 
@@ -117,12 +146,25 @@ export const EachHardwareType = styled.div `
 `
 
 export const SelectedProducts = styled.div `
-  width: 50%;
+  width: 40%;
   min-height: 100%;
   background-color: var(--gray);
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  strong {
+    color: var(--green);
+  }
+
+  h3 {
+    font: bolder;
+  }
+
+  .price-info {
+    margin: 10px 0;
+  }
+
 `
 export const TitleDiv = styled.div `
   width: 100%;
