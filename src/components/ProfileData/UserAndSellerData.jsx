@@ -1,4 +1,3 @@
-import { Input } from "@material-ui/core";
 import { useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import * as S from "./styles";
@@ -30,6 +29,7 @@ const UserAndSellerData = ({ propProfileData }) => {
     updateUserInfo(data);
     handleOpenEdit();
     getUserInfo();
+    console.log(data);
   };
 
   return (
