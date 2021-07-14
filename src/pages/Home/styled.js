@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--black);
-  height: 100vh;
+  /* height: 100vh; */
   input {
     background: none;
     border-radius: 15px;
@@ -31,8 +31,9 @@ export const Card = styled.div`
   justify-content: center;
   border: 1px solid white;
   width: 12.5rem;
-  height: 10.75rem;
+  height: 15.75rem;
   margin: 0 auto;
+  margin-top: 5rem;
   margin-left: 25%;
   background: white;
   border: 1px solid var(--gray);
@@ -40,6 +41,10 @@ export const Card = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
+  }
+  button {
+    position: relative;
+    top: 2.2rem;
   }
 `;
 
