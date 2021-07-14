@@ -3,18 +3,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const local = JSON.parse(localStorage.getItem("cart"));
+  const local = JSON.parse(localStorage.getItem("@capstore:cart"));
   const [cart, setCart] = useState(local || []);
 
   useEffect(() => {
-    updateCart();
-
     // eslint-disable-next-line
+    localStorage.setItem("@capstore:cart", JSON.stringify(cart));
   }, [cart]);
-
-  const updateCart = () => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
 
   const addToCart = (product) => {
     const newProduct = product;
@@ -49,7 +44,6 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         getCartCost,
         isInCart,
-        updateCart,
       }}
     >
       {children}

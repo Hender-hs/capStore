@@ -30,9 +30,6 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
-  const setCart = (item) => {
-    localStorage.setItem("cart", JSON.stringify(item));
-  };
 
   useEffect(() => {
     console.log("type", type);
