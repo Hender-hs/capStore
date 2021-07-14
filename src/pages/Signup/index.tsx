@@ -8,7 +8,7 @@ import { useAuth } from "../../providers/Auth";
 import { History } from "history";
 
 import { Container } from "./styles";
-import Search from "../../components/Search";
+
 interface SubmitProps {
   email: string;
   password: string;
@@ -53,7 +53,6 @@ function Signup() {
 
   return (
     <Container>
-      <Search />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <TextField

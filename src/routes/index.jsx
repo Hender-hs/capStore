@@ -5,14 +5,8 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import BuildYourPc from "../pages/BuildYourPc";
 import SpecificProduct from "../pages/SpecificProduct";
-<<<<<<< HEAD
-
-import HomeClient from "../pages/HomeClient";
+import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
-=======
-import AboutUs from '../pages/AboutUs'
-import Register from "../pages/Register"
->>>>>>> e2b41346aaa47d7262ebea74145fe132f2860de4
 
 import Home from "../pages/Home";
 
