@@ -12,6 +12,7 @@ import Home from "../pages/Home";
 import UserCart from "../pages/UserCart";
 
 import Styleguide from "../components/Styleguide";
+import WithdrawMoney from "../pages/withdrawalMoney";
 
 const Routes = () => {
   return (
@@ -27,6 +28,7 @@ const Routes = () => {
       <Route exact path="/styleguide" component={Styleguide} />
 
       <Route exact path="/register" component={Register} />
+      <Route exact path="/withdrawMoney" component={WithdrawMoney} />
     </Switch>
   );
 };
