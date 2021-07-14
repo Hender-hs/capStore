@@ -1,12 +1,12 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import{ Redirect, useHistory } from "react-router-dom"
-import api from "../../services/api"
-import Container, { Select } from './styles'
-import Input from '../../components/Input'
-import Button from '../../components/Button';
-import { toastSuccess, toastError } from '../../utils/toast';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Redirect, useHistory } from "react-router-dom";
+import api from "../../services/api";
+import Container, { Select } from "./styles";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import { toastSuccess, toastError } from "../../utils/toast";
 
 const Register = () => {
   const formSchema = yup.object().shape({
@@ -22,26 +22,31 @@ const Register = () => {
     type: yup.string().required("Campo obrigatório")
   })
 
-  const {register, handleSubmit, formState: {errors}} = useForm({
-    resolver: yupResolver(formSchema)
-  })
-  const history = useHistory()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+  const history = useHistory();
 
   const handleSubmitFunction = (data) => {
-    api.post("/users/", data)
-    .then((res) => {
-      const { accessToken } = res.data
-      localStorage.setItem("@capstore:accessToken", JSON.stringify(accessToken))
-      toastSuccess("Usuário criado com sucesso")
-      return history.push('/login')
-    })
-    .catch((_) => toastError("Erro ao criar usuário já cadastrado"))
-    console.log("done")
-  }
+    console.log(data);
+    api
+      .post("/users/", data)
+      .then((response) => {
+        localStorage.setItem("token", response.data.accessToken);
+        toastSuccess("Usuário criado com sucesso");
+        return history.push("/login");
+      })
+      .catch((_) => toastError("Erro ao criar usuário já cadastrado"));
+    console.log("done");
+  };
 
   const token = localStorage.getItem("@capstore:accessToken") || false;
-  if(token) {
-    return <Redirect to="/dashboard"/>
+  if (token) {
+    return <Redirect to="/dashboard" />;
   }
 
   return (
@@ -61,7 +66,7 @@ const Register = () => {
         <Button type="submit">Confirmar</Button>
       </form>
     </Container>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
