@@ -9,11 +9,6 @@ import { History } from "history";
 
 import { Container } from "./styles";
 
-interface SubmitProps {
-  email: string;
-  password: string;
-}
-
 function Signup() {
   const { signUp } = useAuth();
 
@@ -27,13 +22,13 @@ function Signup() {
       .required("Campo obrigatório"),
   });
 
-  const history: History = useHistory();
+  const history = useHistory();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SubmitProps>({
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
