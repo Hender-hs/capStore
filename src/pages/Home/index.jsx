@@ -5,12 +5,14 @@ import jwt_decode from "jwt-decode";
 import * as S from "./styled";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
+import { useCart } from "../../providers/Cart";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
+  const { addToCart } = useCart();
 
   const getType = () => {
     const token = localStorage.getItem("token");
@@ -28,19 +30,16 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
-  const setCart = (item) => {
-    localStorage.setItem("cart", JSON.stringify(item));
-  };
 
   useEffect(() => {
+    console.log("type", type);
     getType();
     filterBySellerId(id);
-    console.log(type);
   }, []);
 
   return (
     <S.Container>
-      {type === "client" && (
+      {type !== "seller" && (
         <>
           <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
@@ -57,7 +56,7 @@ const Home = () => {
                         <p>R${item.price}</p>
                         <button
                           className="client"
-                          onClick={() => setCart(item)}
+                          onClick={() => addToCart(item)}
                         >
                           Comprar
                         </button>
@@ -79,7 +78,7 @@ const Home = () => {
                           <p>R${item.price}</p>
                           <button
                             className="client"
-                            onClick={() => setCart(item)}
+                            onClick={() => addToCart(item)}
                           >
                             Comprar
                           </button>
@@ -102,7 +101,7 @@ const Home = () => {
                           <p>R${item.price}</p>
                           <button
                             className="client"
-                            onClick={() => setCart(item)}
+                            onClick={() => addToCart(item)}
                           >
                             Comprar
                           </button>
@@ -124,7 +123,7 @@ const Home = () => {
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
                         <button
-                          onClick={() => setCart(item)}
+                          onClick={() => addToCart(item)}
                           className="client"
                         >
                           Comprar
