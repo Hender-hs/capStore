@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { Container } from "./styles";
+import { ContainerForm, Container } from "./styles";
 
 function Login() {
   const { signIn } = useAuth();
@@ -36,7 +36,11 @@ function Login() {
   };
 
   return (
+    <>
     <Container>
+
+    </Container>
+    <ContainerForm>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Input
@@ -59,7 +63,8 @@ function Login() {
         <Button type="submit">Enviar</Button>
       </form>
       {error && <span> Usuário ou senha incorretas! </span>}
-    </Container>
+    </ContainerForm>
+    </>
   );
 }
 
