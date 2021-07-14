@@ -102,7 +102,7 @@ function Login() {
             style={{marginTop: 25, marginBottom: 25, borderRadius: 10}}
             type="submit"
             width="60%">Enviar</Button>
-        <p>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
+        <p style={{color: "white"}}>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
         </form>
         {error && <span> Usuário ou senha incorretas! </span>}
       </ContainerForm>
