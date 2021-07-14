@@ -78,3 +78,14 @@ export const ButtonContainer = styled.div`
 export const CostCol = styled(ProductCol)`
   width: 50%;
 `;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
+  img {
+    max-width: 100%;
+  }
+`;
