@@ -20,6 +20,7 @@ const SpecificProduct = () => {
       setProduct(foundProduct);
     });
   };
+  console.log(user)
 
   useEffect(() => {
     getProduct();

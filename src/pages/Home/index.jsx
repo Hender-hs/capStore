@@ -7,6 +7,11 @@ import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { useCart } from "../../providers/Cart";
 import { useHistory } from "react-router-dom";
+import GabineteHome  from "../../assets/gabinete_gamer.jpeg"
+import LaptopSVG from "../../assets/Laptop-SVG.json"
+import Lottie from "react-lottie";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -16,6 +21,15 @@ const Home = () => {
   const { addToCart } = useCart();
 
   const history = useHistory();
+
+  const LaptopOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: LaptopSVG,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   const getType = () => {
     const token = localStorage.getItem("@capstore:token");
@@ -47,9 +61,16 @@ const Home = () => {
 
   return (
     <S.Container>
+      <Header />
+      <div style={{marginTop: "75px"}} />
+      <img src={GabineteHome} />
+      <div className="search">
+        <p>Pesquisar hardware</p>
+        <input onChange={(e) => setInput(e.target.value)} />
+      </div>
+        {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
-          <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>
@@ -62,12 +83,12 @@ const Home = () => {
                         <img src={item.url} alt="img de uma peça" />
                         <span>Nome {item.name.slice(0, 20)}</span>
                         <p>R${item.price}</p>
-                        <button
+                        {/* <button
                           className="client"
                           onClick={() => addToCart(item)}
                         >
                           Comprar
-                        </button>
+                        </button> */}
                       </S.Card>
                     </div>
                   ))}
@@ -84,12 +105,12 @@ const Home = () => {
                           <img src={item.url} alt="img de uma peça" />
                           <span>Nome {item.name.slice(0, 20)}</span>
                           <p>R${item.price}</p>
-                          <button
+                          {/* <button
                             className="client"
                             onClick={() => addToCart(item)}
                           >
                             Comprar
-                          </button>
+                          </button> */}
                         </S.Card>
                       </div>
                     ))}
@@ -107,12 +128,12 @@ const Home = () => {
                           <img src={item.url} alt="img de uma peça" />
                           <span>Nome {item.name.slice(0, 20)}</span>
                           <p>R${item.price}</p>
-                          <button
+                          {/* <button
                             className="client"
                             onClick={() => addToCart(item)}
                           >
                             Comprar
-                          </button>
+                          </button> */}
                         </S.Card>
                       </div>
                     ))}
@@ -124,7 +145,7 @@ const Home = () => {
             <>
               <Slider>
                 {products
-                  .filter((item) => item.category === inputValue)
+                  .filter((item) => item.category.toLowerCase() === inputValue.toLowerCase())
                   .map((item) => (
                     <div>
                       <S.Card onClick={() => redirectToSpecificProductPage(item)} >
@@ -161,6 +182,7 @@ const Home = () => {
           <button>Anunciar</button>
         </>
       )}
+      <Footer />
     </S.Container>
   );
 };
