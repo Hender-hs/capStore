@@ -19,7 +19,7 @@ const Register = () => {
   ).required("Campo obrigatório").min(8),
     confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'As senhas devem coincidir')
     .required('Campo obrigatório'),
-    typeUser: yup.string().required("Campo obrigatório")
+    type: yup.string().required("Campo obrigatório")
   })
 
   const {register, handleSubmit, formState: {errors}} = useForm({
@@ -54,9 +54,9 @@ const Register = () => {
         <Input label="CEP" type="text" register={register} name="cep" error={errors.cep?.message} placeholder="00000-000" />
         <Input label="Senha" type="password" register={register} name="password" error={errors.password?.message} placeholder="123456@Aa" />
         <Input label="Confirme sua Senha" type="password" register={register} name="confirmPassword" error={errors.confirmPassword?.message} placeholder="123456@Aa" />
-        <Select {...register("typeUser")}>
+        <Select {...register("type")}>
         <option value="seller">Vendedor</option>
-        <option value="customer">Cliente</option>
+        <option value="client">Cliente</option>
         </Select>
         <Button type="submit">Confirmar</Button>
       </form>
