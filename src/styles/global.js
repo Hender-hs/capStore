@@ -23,7 +23,9 @@ const GlobalStyle = createGlobalStyle`
   --gray: #605F5F;
   --black: #1C1B1B;
 }
-
+button {
+  cursor: pointer;
+}
 `;
 
 export default GlobalStyle;

@@ -16,8 +16,10 @@ const Home = () => {
   const { products, filterBySellerId, filteredProducts } = useProducts();
   const { history } = useHistory();
 
+  const history = useHistory();
+
   const getType = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("@capstore:token");
     const decoded = jwt_decode(token);
     setType(JSON.parse(decoded.sub));
 
@@ -32,6 +34,11 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
+
+  const redirectToSpecificProductPage = (el) => {
+    localStorage.setItem("@capstone:product_Id", el.id)
+    history.push("/specificProduct")
+  }
 
   useEffect(() => {
     console.log("type", type);
@@ -54,7 +61,7 @@ const Home = () => {
                     .filter((item) => item.category === "Placa-mãe")
                     .map((item) => (
                       <div>
-                        <S.Card>
+                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                           <img src={item.url} alt="img de uma peça" />
                           <span>Nome {item.name.slice(0, 20)}</span>
                           <p>R${item.price}</p>
