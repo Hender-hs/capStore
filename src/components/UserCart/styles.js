@@ -7,9 +7,14 @@ export const CartContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  background-color: white;
-  border-radius: 5px;
+  background: var(--dark-green);
+  border-radius: 10px;
   margin: 20px 0;
+  color: white;
+
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const Content = styled.div`
@@ -40,10 +45,14 @@ export const ProductCol = styled.div`
   text-align: center;
 
   label {
-    border: 1px solid var(--black);
+    /* border: 1px solid var(--gray); */
     width: 15px;
     height: 18px;
     font-family: Roboto sans-serif;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   p {
