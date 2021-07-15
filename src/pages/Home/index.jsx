@@ -173,7 +173,7 @@ const Home = () => {
         <>
           {
             <Slider>
-              {user.products.map((item) => (
+              {user.products?.map((item) => (
                 <S.SliderChild>
                   <S.Card onClick={() => redirectToSpecificProductPage(item)}>
                     <span>{item.name.slice(0, 30)}</span>

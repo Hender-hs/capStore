@@ -6,6 +6,9 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import formatValue from "../../utils/formatValue";
 import { useAuth } from "../../providers/Auth";
+import Lottie from "react-lottie";
+
+import animationWallet from "../../assets/lotties/wallet.json";
 
 const Wallet = () => {
   const { token, user, getUserInfo } = useAuth();
@@ -19,12 +22,24 @@ const Wallet = () => {
 
   if (!token) history.push("/");
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationWallet,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <S.Container>
       <Header />
       <S.Body>
         <S.WalletDiv>
-          <WalletIcon size="200" />
+          {/* <WalletIcon size="200" /> */}
+          <div style={{ marginRight: "-150px" }}>
+            <Lottie options={defaultOptions} width={400} height={400} />
+          </div>
           <S.H3>{formatValue(user?.cash || 0)}</S.H3>
           <S.DivButton>
             <Button

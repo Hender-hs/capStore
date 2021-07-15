@@ -160,8 +160,8 @@ const Register = () => {
               placeholder="123456@Aa"
             />
             <Select {...register("type")}>
-              <option value="seller">Vendedor</option>
-              <option value="client">Cliente</option>
+              <option value="seller">Cliente</option>
+              <option value="client">Vendedor</option>
             </Select>
             <Button type="submit">Confirmar</Button>
           </form>
