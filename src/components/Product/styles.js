@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 250px;
   margin: 1rem auto;
-  background: gray;
   padding: 0.5rem 1rem;
   border-radius: 10px;
 
@@ -14,9 +13,10 @@ export const Container = styled.div`
   }
 
   h3 {
-    color: #404040;
+    color: black;
     font-size: 20px;
     font-weight: 600;
+    margin-top: 20px;
   }
   @media only screen and (min-width: 768px) {
     background-color: transparent;
@@ -28,7 +28,7 @@ export const Container = styled.div`
       width: 100%;
     }
     h3 {
-      color: white;
+      color: black;
       border-bottom: 1px solid white;
       font-size: 30px;
     }
@@ -36,7 +36,8 @@ export const Container = styled.div`
 `;
 export const Datas = styled.div`
   @media only screen and (min-width: 768px) {
-    color: white;
+    color: black;
+    margin-left: 20px;
     p,
     h6 {
       padding: 0.5rem;
