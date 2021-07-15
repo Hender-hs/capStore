@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import GlobalStyle from '../../styles/global'
 import Developers from '../../components/Developers'
 import Typed from 'react-typed';
-
+import Header from "../../components/Header";
 const AboutUs = () => {
   const developerOptions = {
     loop: true,
@@ -16,8 +16,9 @@ const AboutUs = () => {
   };
 
   return (
-    <div style={{height: "100%"}}>
-    {/* header */}
+    <>
+    <Header color="black"/>
+    <div style={{height: "100vh"}}>
     <Container>
       <GlobalStyle/> 
       <Background>
@@ -37,6 +38,7 @@ const AboutUs = () => {
       <Developers dev="henderson" />
     </Container>
     </div>
+    </>
   )
 }
 
