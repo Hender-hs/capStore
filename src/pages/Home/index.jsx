@@ -63,8 +63,8 @@ const Home = () => {
   return (
     <S.Container>
       <Header />
-      <div style={{ marginTop: "75px" }} />
-      <img src={GabineteHome} alt="cabinet" />
+      <div style={{marginTop: "75px"}} />
+      <img src={GabineteHome} alt="gabinete"/>
       <div className="search">
         <input
           placeholder="Pesquisar hardware"
@@ -88,12 +88,6 @@ const Home = () => {
                         <img src={item.url} alt="img de uma peça" />
                         <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
-                        {/* <button
-                          className="client"
-                          onClick={() => addToCart(item)}
-                        >
-                          Comprar
-                        </button> */}
                       </S.Card>
                     </S.SliderChild>
                   ))}
@@ -108,18 +102,10 @@ const Home = () => {
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
                       <S.SliderChild>
-                        <S.Card
-                          onClick={() => redirectToSpecificProductPage(item)}
-                        >
-                          <img src={item.url} alt="img de uma peça" />
+                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                          <img src={item.url} alt="Processador" />
                           <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}
@@ -133,18 +119,9 @@ const Home = () => {
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
                       <S.SliderChild>
-                        <S.Card
-                          onClick={() => redirectToSpecificProductPage(item)}
-                        >
-                          <img src={item.url} alt="img de uma peça" />
+                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                          <img src={item.url} alt="Monitor" />
                           <span>{item.name.slice(0, 30)}</span>
-                          {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}
