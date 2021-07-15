@@ -153,7 +153,7 @@ export const Modal = styled.div `
   position: absolute;
   /* width: ${() => `${document.body.clientWidth}px` }; */
   width: 100%;
-  height: ${() => `${document.body.clientHeight}px` };
+  height: ${() => `${document.scrollingElement.offsetHeight}px` };
   visibility: ${({open}) => open ? "visible" : "hidden" };
 
   display: flex;
