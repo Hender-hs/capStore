@@ -1,20 +1,45 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { Container } from "./styles";
+import { ContainerForm, Container, Wrapper, RegisterButton, InputDiv, Title, ContainerDesk, ContainerSvg, ContainerDeskRight } from "./styles";
+import Lottie from 'react-lottie';
+import buying from '../../assets/lotties/buying.json'
+import loginAnimation from '../../assets/lotties/loginanimation.json'
+
 
 function Login() {
   const { signIn } = useAuth();
 
   const [error, setError] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 768;
+
+  const buyerOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: buying,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  const loginOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loginAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
 
   const schema = yup.object().shape({
-    email: yup.string().email().required("Campo obrigatório"),
+    email: yup.string().email("O email deve ser válido").required("Campo obrigatório"),
     password: yup
       .string()
       .min(8, "Mínimo de 8 dígitos")
@@ -35,32 +60,115 @@ function Login() {
     signIn(data, setError, history);
   };
 
-  return (
-    <Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <Input
-            label="Email"
-            type="text"
-            register={register}
-            name="email"
-            error={errors.email?.message}
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+     window.addEventListener("resize", handleResizeWindow);
+     return () => {
+       window.removeEventListener("resize", handleResizeWindow);
+     };
+   }, []);
+
+  const registerFunc = () => {
+    return history.push("/register")
+  }
+
+  if (width < breakpoint) {
+    return (
+      <Wrapper>
+      <Container>
+        <Lottie 
+          options={buyerOptions}
+          width={300}
+          height={250}
+        />
+      </Container>
+      <ContainerForm>
+        <form 
+          onSubmit={handleSubmit(onSubmit)}
+          style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}>
+            <Title>Entrar</Title>
+          <InputDiv>
+            <Input
+              label="Email"
+              type="text"
+              register={register}
+              name="email"
+              error={errors.email?.message}
+              placeholder="joao@mail.com"
+              style={{marginBottom: 5}}
+            />
+          </InputDiv>
+          <InputDiv>
+            <Input
+              label="Senha"
+              type="password"
+              register={register}
+              name="password"
+              error={errors.password?.message}
+              placeholder="Senha"
+              style={{marginBottom: 5}}
+            />
+          </InputDiv>
+          <Button 
+            style={{marginTop: 25, marginBottom: 25, borderRadius: 10, cursor: "pointer"}}
+            type="submit"
+            width="60%">Enviar</Button>
+        <p style={{color: "white"}}>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
+        </form>
+        {error && <span> Usuário ou senha incorretas! </span>}
+      </ContainerForm>
+      </Wrapper>
+    );
+  } else {
+    return (
+      <ContainerDesk>
+        <ContainerSvg>
+          <Lottie 
+            options={loginOptions}
+            width="100%"
+            height="100%"
           />
-        </div>
-        <div>
-          <Input
-            label="Senha"
-            type="password"
-            register={register}
-            name="password"
-            error={errors.password?.message}
-          />
-        </div>
-        <Button type="submit">Enviar</Button>
-      </form>
-      {error && <span> Usuário ou senha incorretas! </span>}
-    </Container>
-  );
+        </ContainerSvg>
+        <ContainerDeskRight>
+          <ContainerForm style={{height: "auto", borderRadius: 20, padding: 10}}>
+          <form 
+            onSubmit={handleSubmit(onSubmit)}
+            style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}>
+              <Title>Entrar</Title>
+            <InputDiv>
+              <Input
+                label="Email"
+                type="text"
+                register={register}
+                name="email"
+                error={errors.email?.message}
+                placeholder="joao@mail.com"
+                style={{marginBottom: 5}}
+              />
+            </InputDiv>
+            <InputDiv>
+              <Input
+                label="Senha"
+                type="password"
+                register={register}
+                name="password"
+                error={errors.password?.message}
+                placeholder="Senha"
+                style={{marginBottom: 5}}
+              />
+            </InputDiv>
+            <Button 
+              style={{marginTop: 25, marginBottom: 25, borderRadius: 10, cursor: "pointer"}}
+              type="submit"
+              width="60%">Enviar</Button>
+          <p style={{color: "white"}}>Não possuo conta ainda. <RegisterButton onClick={registerFunc}>Registrar</RegisterButton></p>
+          </form>
+          {error && <span> Usuário ou senha incorretas! </span>}
+        </ContainerForm>
+        </ContainerDeskRight>
+      </ContainerDesk>
+    )
+  }
 }
 
 export default Login;

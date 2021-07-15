@@ -1,41 +1,45 @@
-import { useState }       from "react";
-import SalesAndPurchases  from "./SalesAndPurchases";
-import UserAndSellerData  from "./UserAndSellerData";
+import { useState } from "react";
+import SalesAndPurchases from "./SalesAndPurchases";
+import UserAndSellerData from "./UserAndSellerData";
 
-const ProfileData = ({data, products}) => {
+import * as S from "./styles";
 
-  const [ alternateDataTabs, setAlternateDataTabs ] = useState(true);
+const ProfileData = ({ data, products }) => {
+  const [alternateDataTabs, setAlternateDataTabs] = useState(true);
 
   const isClientOrUser = () => {
     if (data.type === "client") return "Compras";
     return "Vendas";
-  }
+  };
 
   const alternateHistoryTitle = () => {
     if (data.type === "client") return "Histórico de compras";
     return "Histórico de vendas";
-  }
+  };
 
   return (
-    <div>
-      <nav>
-        <div onClick={() => setAlternateDataTabs(true)} >
+    <S.Container>
+      <S.Tabs>
+        <div onClick={() => setAlternateDataTabs(true)}>
           <p>Dados Cadastrais</p>
         </div>
-        <div onClick={() => setAlternateDataTabs(false)} >
+        <S.Divider />
+        <div onClick={() => setAlternateDataTabs(false)}>
           <p>{isClientOrUser()}</p>
         </div>
-      </nav>
-      <div>
-        { 
-          alternateDataTabs 
-          ? 
+      </S.Tabs>
+      <S.Content>
+        {alternateDataTabs ? (
           <UserAndSellerData propProfileData={data} />
-          :
-          <SalesAndPurchases whichHistory={alternateHistoryTitle()} ProductsOfSalesOrPurchases={products} isSellerToShowTotal={data.type} />
-        }
-      </div>
-    </div>
+        ) : (
+          <SalesAndPurchases
+            whichHistory={alternateHistoryTitle()}
+            ProductsOfSalesOrPurchases={products}
+            isSellerToShowTotal={data.type}
+          />
+        )}
+      </S.Content>
+    </S.Container>
   );
 };
 

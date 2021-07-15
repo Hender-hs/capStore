@@ -41,13 +41,8 @@ const Home = () => {
   return (
     <S.Container>
       {type === "client" && (
-<<<<<<< HEAD
-        <S.Container>
-          <input />
-=======
         <>
           <input onChange={(e) => setInput(e.target.value)} />
->>>>>>> e2b41346aaa47d7262ebea74145fe132f2860de4
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>

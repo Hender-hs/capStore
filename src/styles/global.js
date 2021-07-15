@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-family: 'Roboto Condensed', sans-serif;
 }
+
 :root{
   --alt-font: 'Poppins', sans-serif; 
   --dark-green: #0D2818;
@@ -18,7 +19,9 @@ const GlobalStyle = createGlobalStyle`
   --gray: #605F5F;
   --black: #1C1B1B;
 }
-
+button {
+  cursor: pointer;
+}
 `;
 
 export default GlobalStyle;
