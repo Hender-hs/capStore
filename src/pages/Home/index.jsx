@@ -14,6 +14,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import { useAuth } from "../../providers/Auth";
+import formatValue from "../../utils/formatValue";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -21,7 +22,7 @@ const Home = () => {
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
   const { addToCart } = useCart();
-  const { getUserInfo } = useAuth();
+  const { getUserInfo, user } = useAuth();
 
   const history = useHistory();
 
@@ -172,12 +173,13 @@ const Home = () => {
         <>
           {
             <Slider>
-              {filteredProducts.map((item) => (
+              {user.products.map((item) => (
                 <S.SliderChild>
-                  <S.CardS onClick={() => redirectToSpecificProductPage(item)}>
+                  <S.Card onClick={() => redirectToSpecificProductPage(item)}>
                     <span>{item.name.slice(0, 30)}</span>
-                    {/* <p>R${item.price}</p> */}
-                  </S.CardS>
+                    <img src={item.url} alt={item.name} />
+                    <p>{formatValue(item.price)}</p>
+                  </S.Card>
                 </S.SliderChild>
               ))}
             </Slider>
