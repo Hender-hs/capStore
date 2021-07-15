@@ -110,4 +110,8 @@ export const ToggleMenu = styled.div `
 export const ToggleMenuLink = styled(Link) `
   font-size: 30px;
   color: black;
+  &:hover {
+    color: gray;
+    transition: 0.1s;
+  }
 `
