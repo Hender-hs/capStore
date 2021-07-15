@@ -57,7 +57,8 @@ export const BackgroundModal = styled.div`
   position: absolute;
   /* width: ${() => `${document.scrollingElement.scrollWidth - 3}px`}; */
   width: 99vw;
-  height: ${() => `${document.scrollingElement.scrollHeight}px`};
+  height: ${({ openToggleMenu }) =>
+    `${document.scrollingElement.offsetHeight}px`};
   visibility: ${({ openToggleMenu }) =>
     openToggleMenu ? "visible" : "hidden"};
   background-color: ${({ openToggleMenu }) =>
@@ -70,7 +71,7 @@ export const ToggleMenu = styled.div`
   left: 0;
   top: 0;
   width: ${({ openToggleMenu }) => (openToggleMenu ? "30vw" : "0vw")};
-  height: ${() => `${document.scrollingElement.scrollHeight}px`};
+  height: ${() => `${document.scrollingElement.offsetHeight}px`};
   visibility: ${({ openToggleMenu }) =>
     openToggleMenu ? "visible" : "hidden"};
   background-color: white;
