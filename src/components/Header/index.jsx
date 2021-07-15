@@ -50,6 +50,7 @@ const Header = ({ color = "transparent" }) => {
           </div>
           <div className="second-child" >
             <UserIcon size="100" style={{visibility: openToggleMenu ? "visible" : "hidden"}} />
+            <span>{user.name}</span>
           </div>
           <div className="third-child" >
             <S.ToggleMenuLink to="home" >Home</S.ToggleMenuLink>
