@@ -69,7 +69,7 @@ const Register = () => {
   };
 
   const loginFunc = () => {
-    history.push("/login")
+    history.push("/")
   }
 
   const token = localStorage.getItem("@capstore:accessToken") || false;
