@@ -7,8 +7,8 @@ import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { useCart } from "../../providers/Cart";
 import { useHistory } from "react-router-dom";
-import GabineteHome  from "../../assets/gabinete_gamer.jpeg"
-import LaptopSVG from "../../assets/Laptop-SVG.json"
+import GabineteHome from "../../assets/gabinete_gamer.jpeg";
+import LaptopSVG from "../../assets/Laptop-SVG.json";
 import Lottie from "react-lottie";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -27,8 +27,8 @@ const Home = () => {
     autoplay: true,
     animationData: LaptopSVG,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   const getType = () => {
@@ -49,25 +49,29 @@ const Home = () => {
   };
 
   const redirectToSpecificProductPage = (el) => {
-    localStorage.setItem("@capstone:product_Id", el.id)
-    history.push("/specificProduct")
-  }
+    localStorage.setItem("@capstone:product_Id", el.id);
+    history.push("/specificProduct");
+  };
 
   useEffect(() => {
     console.log("type", type);
     getType();
     filterBySellerId(id);
+    // eslint-disable-next-line
   }, []);
 
   return (
     <S.Container>
       <Header />
       <div style={{marginTop: "75px"}} />
-      <img src={GabineteHome} />
+      <img src={GabineteHome} alt="gabinete"/>
       <div className="search">
-        <input placeholder="Pesquisar hardware" onChange={(e) => setInput(e.target.value)} />
+        <input
+          placeholder="Pesquisar hardware"
+          onChange={(e) => setInput(e.target.value)}
+        />
       </div>
-        {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
+      {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
           {inputValue === "" && (
@@ -78,38 +82,30 @@ const Home = () => {
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
                     <S.SliderChild>
-                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                      <S.Card
+                        onClick={() => redirectToSpecificProductPage(item)}
+                      >
                         <img src={item.url} alt="img de uma peça" />
                         <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
-                        {/* <button
-                          className="client"
-                          onClick={() => addToCart(item)}
-                        >
-                          Comprar
-                        </button> */}
                       </S.Card>
                     </S.SliderChild>
                   ))}
               </Slider>
 
               <>
-                <h1 style={{color: "rgb(255, 255, 255, 0.5)"}} >Processadores</h1>
+                <h1 style={{ color: "rgb(255, 255, 255, 0.5)" }}>
+                  Processadores
+                </h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                          <img src={item.url} alt="img de uma peça" />
+                          <img src={item.url} alt="Processador" />
                           <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}
@@ -117,22 +113,15 @@ const Home = () => {
               </>
 
               <>
-                <h1 style={{color: "white"}} >Monitores Gamer</h1>
+                <h1 style={{ color: "white" }}>Monitores Gamer</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                          <img src={item.url} alt="img de uma peça" />
+                          <img src={item.url} alt="Monitor" />
                           <span>{item.name.slice(0, 30)}</span>
-                          {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}
@@ -144,10 +133,15 @@ const Home = () => {
             <>
               <Slider>
                 {products
-                  .filter((item) => item.category.toLowerCase() === inputValue.toLowerCase())
+                  .filter(
+                    (item) =>
+                      item.category.toLowerCase() === inputValue.toLowerCase()
+                  )
                   .map((item) => (
                     <S.SliderChild>
-                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                      <S.Card
+                        onClick={() => redirectToSpecificProductPage(item)}
+                      >
                         <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
                         <button
@@ -170,7 +164,7 @@ const Home = () => {
             <Slider>
               {filteredProducts.map((item) => (
                 <S.SliderChild>
-                  <S.CardS onClick={() => redirectToSpecificProductPage(item)} >
+                  <S.CardS onClick={() => redirectToSpecificProductPage(item)}>
                     <span>{item.name.slice(0, 30)}</span>
                     {/* <p>R${item.price}</p> */}
                   </S.CardS>
