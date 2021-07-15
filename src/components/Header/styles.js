@@ -72,11 +72,15 @@ export const ToggleMenu = styled.div`
   top: 0;
   width: ${({ openToggleMenu }) => (openToggleMenu ? "30vw" : "0vw")};
   height: ${() => `${document.scrollingElement.offsetHeight}px`};
-  visibility: ${({ openToggleMenu }) =>
-    openToggleMenu ? "visible" : "hidden"};
-  background-color: white;
+  visibility: ${({openToggleMenu}) => openToggleMenu ? "visible" : "hidden" };
+  background: rgba( 181, 181, 177, 0.35 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.0px );
+  -webkit-backdrop-filter: blur( 8.0px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   transition: 0.2s;
   z-index: 2;
+  color: #fff;
 
   display: flex;
   flex-direction: column;
@@ -96,6 +100,7 @@ export const ToggleMenu = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin: 10px 15px;
+    flex-direction: column;
   }
 
   .third-child {
@@ -103,8 +108,18 @@ export const ToggleMenu = styled.div`
     height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
+    a {
+      display: block;
+      /* width: 100%; */
+      text-align: center;
+      border-bottom: 1px solid var(--gray);
+      color: #fff;
+      &:hover {
+        transform: scale(1.1)
+      }
+    }
   }
 
   @media (max-width: 800px) {
