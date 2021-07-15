@@ -7,7 +7,7 @@ import { useCart } from "../../providers/Cart";
 import { AiOutlineShoppingCart as CartIcon } from "react-icons/ai";
 import Button from "../Button";
 
-const MenuDesktop = ({ setInputValue }) => {
+const MenuDesktop = ({ setInputValue, needInput }) => {
   const history = useHistory();
   const { user, logout, getUserInfo } = useAuth();
   const { cart } = useCart();
@@ -38,10 +38,13 @@ const MenuDesktop = ({ setInputValue }) => {
         </ul>
       </nav>
       <div>
-        <input
-          placeholder="Pesquisar"
-          onChange={(e) => setInputValue(e.target.value)}
-        />
+        {needInput && (
+          <input
+            placeholder="Pesquisar"
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+        )}
+
         {user?.type === "client" && (
           <Button width="80px" onClick={() => history.push("/cart")}>
             <CartIcon size={25} />
