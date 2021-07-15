@@ -54,7 +54,7 @@ const CartProduct = ({
         <img src={image} alt={name} />
       </S.ProductCol>
       <S.ProductCol style={{ maxWidth: "178px" }}>
-        <p>Monitor sansung</p>
+        <p>{name.slice(0, 20)}</p>
         <p>{formatValue(price)}</p>
       </S.ProductCol>
       <S.ProductCol>

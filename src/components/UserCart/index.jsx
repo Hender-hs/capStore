@@ -47,8 +47,9 @@ const UserCart = () => {
   };
 
   const addToHistory = () => {
-    const newProducts = [...user.products, ...cart] || cart;
-    updateUserInfo({ products: newProducts });
+    const newProducts = user.products || cart;
+    const newShopHistory = [...newProducts, ...cart] || cart;
+    updateUserInfo({ products: newShopHistory });
   };
 
   return (

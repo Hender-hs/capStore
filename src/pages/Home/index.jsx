@@ -5,12 +5,32 @@ import jwt_decode from "jwt-decode";
 import * as S from "./styled";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
+import { useCart } from "../../providers/Cart";
+import { useHistory } from "react-router-dom";
+import GabineteHome from "../../assets/gabinete_gamer.jpeg";
+import LaptopSVG from "../../assets/Laptop-SVG.json";
+import Lottie from "react-lottie";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
+  const { addToCart } = useCart();
+
+  const history = useHistory();
+
+  const LaptopOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: LaptopSVG,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   const getType = () => {
     const token = localStorage.getItem("token");
@@ -28,19 +48,33 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
-  const setCart = (item) => {
-    localStorage.setItem("cart", JSON.stringify(item));
+
+  const redirectToSpecificProductPage = (el) => {
+    localStorage.setItem("@capstone:product_Id", el.id);
+    history.push("/specificProduct");
   };
+
+  const getToRegisterProducts = () => history.push("/register-products");
 
   useEffect(() => {
     getType();
     filterBySellerId(id);
-    console.log(type);
+    // eslint-disable-next-line
   }, []);
 
   return (
     <S.Container>
-      {type === "client" && (
+      <Header />
+      <div style={{ marginTop: "75px" }} />
+      <img src={GabineteHome} alt="gabinete" />
+      <div className="search">
+        <input
+          placeholder="Pesquisar hardware"
+          onChange={(e) => setInput(e.target.value)}
+        />
+      </div>
+      {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
+      {type !== "seller" && (
         <>
           <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
@@ -50,64 +84,53 @@ const Home = () => {
                 {products
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
-                    <div>
-                      <S.Card>
+                    <S.SliderChild>
+                      <S.Card
+                        onClick={() => redirectToSpecificProductPage(item)}
+                      >
                         <img src={item.url} alt="img de uma peça" />
-                        <span>Nome {item.name.slice(0, 20)}</span>
-                        <p>R${item.price}</p>
-                        <button
-                          className="client"
-                          onClick={() => setCart(item)}
-                        >
-                          Comprar
-                        </button>
+                        <span>{item.name.slice(0, 30)}</span>
+                        {/* <p>R${item.price}</p> */}
                       </S.Card>
-                    </div>
+                    </S.SliderChild>
                   ))}
               </Slider>
 
               <>
-                <h1>Processador</h1>
+                <h1 style={{ color: "rgb(255, 255, 255, 0.5)" }}>
+                  Processadores
+                </h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
-                      <div>
-                        <S.Card>
-                          <img src={item.url} alt="img de uma peça" />
-                          <span>Nome {item.name.slice(0, 20)}</span>
-                          <p>R${item.price}</p>
-                          <button
-                            className="client"
-                            onClick={() => setCart(item)}
-                          >
-                            Comprar
-                          </button>
+                      <S.SliderChild>
+                        <S.Card
+                          onClick={() => redirectToSpecificProductPage(item)}
+                        >
+                          <img src={item.url} alt="Processador" />
+                          <span>{item.name.slice(0, 30)}</span>
+                          {/* <p>R${item.price}</p> */}
                         </S.Card>
-                      </div>
+                      </S.SliderChild>
                     ))}
                 </Slider>
               </>
 
               <>
-                <h1>Monitor Gamer</h1>
+                <h1 style={{ color: "white" }}>Monitores Gamer</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
-                      <div>
-                        <S.Card>
-                          <img src={item.url} alt="img de uma peça" />
-                          <span>Nome {item.name.slice(0, 20)}</span>
-                          <p>R${item.price}</p>
-                          <button
-                            className="client"
-                            onClick={() => setCart(item)}
-                          >
-                            Comprar
-                          </button>
+                      <S.SliderChild>
+                        <S.Card
+                          onClick={() => redirectToSpecificProductPage(item)}
+                        >
+                          <img src={item.url} alt="Monitor" />
+                          <span>{item.name.slice(0, 30)}</span>
                         </S.Card>
-                      </div>
+                      </S.SliderChild>
                     ))}
                 </Slider>
               </>
@@ -117,20 +140,25 @@ const Home = () => {
             <>
               <Slider>
                 {products
-                  .filter((item) => item.category === inputValue)
+                  .filter(
+                    (item) =>
+                      item.category.toLowerCase() === inputValue.toLowerCase()
+                  )
                   .map((item) => (
-                    <div>
-                      <S.Card>
-                        <span>Nome {item.name.slice(0, 20)}</span>
-                        <p>R${item.price}</p>
+                    <S.SliderChild>
+                      <S.Card
+                        onClick={() => redirectToSpecificProductPage(item)}
+                      >
+                        <span>{item.name.slice(0, 30)}</span>
+                        {/* <p>R${item.price}</p> */}
                         <button
-                          onClick={() => setCart(item)}
+                          onClick={() => addToCart(item)}
                           className="client"
                         >
                           Comprar
                         </button>
                       </S.Card>
-                    </div>
+                    </S.SliderChild>
                   ))}
               </Slider>
             </>
@@ -142,16 +170,28 @@ const Home = () => {
           {
             <Slider>
               {filteredProducts.map((item) => (
-                <div>
-                  <S.CardS>
-                    <span>Nome {item.name.slice(0, 20)}</span>
-                    <p>R${item.price}</p>
+                <S.SliderChild>
+                  <S.CardS onClick={() => redirectToSpecificProductPage(item)}>
+                    <span>{item.name.slice(0, 30)}</span>
+                    {/* <p>R${item.price}</p> */}
                   </S.CardS>
-                </div>
+                </S.SliderChild>
               ))}
             </Slider>
           }
-          <button>Anunciar</button>
+          <Button
+            width="300px"
+            style={{
+              fontSize: "1.2rem",
+              borderRadius: "10px",
+              color: "white",
+              height: "50px",
+              marginBottom: "20px",
+            }}
+            onClick={getToRegisterProducts}
+          >
+            Anunciar novo produto
+          </Button>
         </>
       )}
     </S.Container>
