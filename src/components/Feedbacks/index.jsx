@@ -38,6 +38,7 @@ const Feedbacks = ({ evaluation, userType }) => {
         />
         {userType === "client" && (
           <Button
+            style={{border: "1px solid white"}}
             handleClick={() => setOpenModal(!openModal)}
             color="black"
             width="100px"
