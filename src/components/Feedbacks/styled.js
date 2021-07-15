@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: var(--light-green);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -9,11 +8,15 @@ export const Container = styled.div`
   width: 80%;
   margin: 0 auto;
   border-radius: 15px;
+  
   > :first-child {
     display: flex;
     justify-content: space-between;
   }
   button {
     color: white;
+  }
+  h3 {
+    color: white
   }
 `;
