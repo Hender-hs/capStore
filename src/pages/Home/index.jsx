@@ -15,6 +15,7 @@ import Header from "../../components/Header";
 import Button from "../../components/Button";
 import { useAuth } from "../../providers/Auth";
 import formatValue from "../../utils/formatValue";
+import animationPc from "../../assets/lotties/pc.json";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -26,10 +27,10 @@ const Home = () => {
 
   const history = useHistory();
 
-  const LaptopOptions = {
+  const DefaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: LaptopSVG,
+    animationData: animationPc,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -71,6 +72,7 @@ const Home = () => {
       <Header />
       <div style={{ marginTop: "75px" }} />
       <img src={GabineteHome} alt="gabinete" />
+      {/* <Lottie options={DefaultOptions} width={400} height={400} /> */}
       <div className="search">
         <input
           placeholder="Pesquisar hardware"
