@@ -38,7 +38,7 @@ const Register = () => {
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
         toastSuccess("Usuário criado com sucesso");
-        return history.push("/login");
+        return history.push("/");
       })
       .catch((_) => toastError("Erro ao criar usuário já cadastrado"));
     console.log("done");
@@ -46,7 +46,7 @@ const Register = () => {
 
   const token = localStorage.getItem("@capstore:accessToken") || false;
   if (token) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/home" />;
   }
 
   return (
