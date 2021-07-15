@@ -3,26 +3,36 @@ import styled from "styled-components";
 export const CartContainer = styled.div`
   max-width: 700px;
   margin: 0 auto;
+  padding-top: 70px;
 `;
 
 export const Container = styled.div`
-  background-color: white;
+  background: linear-gradient(var(--black), var(--green));
   border-radius: 5px;
   margin: 20px 0;
+  color: white;
+
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const Content = styled.div`
   display: flex;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid white;
   padding: 10px;
 
   img {
-    width: 102px;
-    height: 41px;
+    width: 60px;
+    height: 60px;
   }
 
   justify-content: space-between;
   @media (min-width: 768px) {
+    img {
+      width: 100px;
+      height: 100px;
+    }
   }
 `;
 
@@ -35,10 +45,14 @@ export const ProductCol = styled.div`
   text-align: center;
 
   label {
-    border: 1px solid var(--black);
+    /* border: 1px solid var(--gray); */
     width: 15px;
     height: 18px;
     font-family: Roboto sans-serif;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   p {
@@ -84,8 +98,17 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  flex-direction: column;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 2px;
 
-  img {
-    max-width: 100%;
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+
+    svg {
+      width: 400px !important;
+      height: 400px !important;
+    }
   }
 `;
