@@ -80,7 +80,7 @@ const Home = () => {
                     <S.SliderChild>
                       <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                         <img src={item.url} alt="img de uma peça" />
-                        <span>Nome {item.name.slice(0, 20)}</span>
+                        <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
                         {/* <button
                           className="client"
@@ -102,7 +102,7 @@ const Home = () => {
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                           <img src={item.url} alt="img de uma peça" />
-                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
                           {/* <button
                             className="client"
@@ -125,7 +125,7 @@ const Home = () => {
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
                           <img src={item.url} alt="img de uma peça" />
-                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
                           {/* <button
                             className="client"
@@ -148,7 +148,7 @@ const Home = () => {
                   .map((item) => (
                     <S.SliderChild>
                       <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                        <span>Nome {item.name.slice(0, 20)}</span>
+                        <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
                         <button
                           onClick={() => addToCart(item)}
@@ -171,7 +171,7 @@ const Home = () => {
               {filteredProducts.map((item) => (
                 <S.SliderChild>
                   <S.CardS onClick={() => redirectToSpecificProductPage(item)} >
-                    <span>Nome {item.name.slice(0, 20)}</span>
+                    <span>{item.name.slice(0, 30)}</span>
                     {/* <p>R${item.price}</p> */}
                   </S.CardS>
                 </S.SliderChild>
