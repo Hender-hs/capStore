@@ -7,8 +7,8 @@ export const CartContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  background: var(--dark-green);
-  border-radius: 10px;
+  background: linear-gradient(var(--black), var(--green));
+  border-radius: 5px;
   margin: 20px 0;
   color: white;
 
@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid white;
   padding: 10px;
 
   img {
@@ -98,8 +98,17 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  flex-direction: column;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 2px;
 
-  img {
-    max-width: 100%;
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+
+    svg {
+      width: 400px !important;
+      height: 400px !important;
+    }
   }
 `;

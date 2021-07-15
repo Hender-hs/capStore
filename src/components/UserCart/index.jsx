@@ -6,14 +6,25 @@ import formatValue from "../../utils/formatValue";
 import Button from "../Button";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../providers/Auth";
+import Lottie from "react-lottie";
 
 import EmptyImage from "../../assets/carrinho-vazio.jpg";
-import { useAuth } from "../../providers/Auth";
+import EmptyAnimation from "../../assets/lotties/empty-cart.json";
 
 const UserCart = () => {
   const { cart, setCart, getCartCost } = useCart();
   const { user, getUserInfo, updateUserInfo } = useAuth();
   const [totalCost, setTotalCost] = useState(getCartCost() || 0);
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: EmptyAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   useEffect(() => {
     getUserInfo();
@@ -86,7 +97,8 @@ const UserCart = () => {
       )}
       {cart.length < 1 && (
         <S.ImageContainer>
-          <img src={EmptyImage} alt="empty" />
+          <h2>Seu carrinho está vazio!</h2>
+          <Lottie options={defaultOptions} height={320} width={320} />
         </S.ImageContainer>
       )}
     </S.CartContainer>
