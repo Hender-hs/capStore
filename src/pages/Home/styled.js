@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 27%, rgb(0, 0, 0) 100%);
+  background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgb(0, 0, 0, 0.5) 70%, rgb(0, 0, 0) 100%);
   background-color: black;
   min-height: 100vh;
   transition: 0.2s;
@@ -60,7 +60,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: space-evenly;
   border: 1px solid white;
-  width: 90%;
+  width: 50%;
   height: 90%;
   background: radial-gradient(circle, rgb(255, 255, 255, 0.5) 0%, rgb(255, 255, 255) 27%, rgb(0, 0, 0, 0.7) 100%);
   border: none;
@@ -69,6 +69,11 @@ export const Card = styled.div`
   img {
     width: 250px;
     height: auto;
+  }
+
+  @media (max-width: 800px) {
+    width: 85%;
+    height: 90%;
   }
 `;
 

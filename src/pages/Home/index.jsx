@@ -94,7 +94,7 @@ const Home = () => {
               </Slider>
 
               <>
-                <h1>Processadores</h1>
+                <h1 style={{color: "rgb(255, 255, 255, 0.5)"}} >Processadores</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Processador")
@@ -117,7 +117,7 @@ const Home = () => {
               </>
 
               <>
-                <h1>Monitores Gamer</h1>
+                <h1 style={{color: "white"}} >Monitores Gamer</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
