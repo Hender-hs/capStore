@@ -7,6 +7,7 @@ export const Container = styled.div`
   border-radius: 10px;
 
   img {
+    margin-top: 40px;
     width: 220px;
     border: none;
     padding-top: 1rem;
@@ -24,6 +25,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-evenly;
     img {
+      margin-top: 0px;
       max-width: 300px;
       width: 100%;
     }
