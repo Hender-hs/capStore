@@ -94,7 +94,6 @@ export const CardS = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
-    border: 2px solid red;
   }
 `;
 
