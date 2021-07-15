@@ -171,14 +171,15 @@ const Home = () => {
       )}
       {type === "seller" && (
         <>
+          <h1 className="seller-title">Seus produtos</h1>
           {
             <Slider>
               {user.products?.map((item) => (
                 <S.SliderChild>
                   <S.Card onClick={() => redirectToSpecificProductPage(item)}>
-                    <span>{item.name.slice(0, 30)}</span>
                     <img src={item.url} alt={item.name} />
-                    <p>{formatValue(item.price)}</p>
+                    <span>{item.name.slice(0, 30)}</span>
+                    {/* <p>{formatValue(item.price)}</p> */}
                   </S.Card>
                 </S.SliderChild>
               ))}

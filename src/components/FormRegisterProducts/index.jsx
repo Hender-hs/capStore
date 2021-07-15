@@ -56,7 +56,8 @@ const FormRegisterProducts = ({ id }) => {
         history.push("/home");
         updateSellerProducts(response.data);
       })
-      .catch((_) => toastError("Não foi possivel cadastra este produto"));
+      .catch((_) => toastError("Não foi possivel cadastra este produto"))
+      .finally((_) => getUserInfo());
     reset();
   };
 
