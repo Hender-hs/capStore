@@ -9,6 +9,7 @@ import formatValue                        from "../../utils/formatValue";
 import { useHistory }                     from "react-router-dom";
 import Header                             from "../../components/Header";
 import spaceAnimation from '../../assets/lotties/space.json'
+import MenuDesktop from '../../components/MenuDesktop'
 
 const Profile = () => {
 
@@ -69,13 +70,13 @@ const Profile = () => {
       <>
           
         <S.Container>
-          <Header color="black" style={{color: "black"}} />
+          <MenuDesktop color="#fff"/>
           <S.Background
           options={spaceOptions}
           width="100%"
           height="100vh"
           position="relative"
-          style={{position: "relative", zIndex: 0}}
+          style={{position: "relative", zIndex: 0, marginTop: 65}}
         />
           { 
             userData 
