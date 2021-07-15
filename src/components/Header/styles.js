@@ -101,6 +101,10 @@ export const ToggleMenu = styled.div `
     justify-content: space-evenly;
     align-items: center;
   }
+
+  @media (max-width: 800px) {
+    width: ${({openToggleMenu}) => openToggleMenu ? "60vw" : "0vw" };
+  }
 `
 
 export const ToggleMenuLink = styled(Link) `
