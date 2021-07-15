@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CartContainer = styled.div`
   max-width: 700px;
   margin: 0 auto;
+  padding-top: 70px;
 `;
 
 export const Container = styled.div`

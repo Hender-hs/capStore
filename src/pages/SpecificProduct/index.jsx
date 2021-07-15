@@ -12,7 +12,7 @@ import Footer from "../../components/Footer";
 const SpecificProduct = () => {
   const [product, setProduct] = useState([]);
   const { addToCart } = useCart();
-  const { user } = useAuth();
+  const { user, getUserInfo } = useAuth();
   const getProduct = () => {
     const id = Number(localStorage.getItem("@capstone:product_Id") || "");
     api.get("/products").then((response) => {
@@ -20,10 +20,11 @@ const SpecificProduct = () => {
       setProduct(foundProduct);
     });
   };
-  console.log(user)
+  console.log(user);
 
   useEffect(() => {
     getProduct();
+    getUserInfo();
     // eslint-disable-next-line
   }, []);
   return (

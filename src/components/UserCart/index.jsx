@@ -3,17 +3,25 @@ import * as S from "./styles";
 import { useCart } from "../../providers/Cart";
 import CartProduct from "./CartProduct";
 import formatValue from "../../utils/formatValue";
-import Button from "../../components/Button";
+import Button from "../Button";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import EmptyImage from "../../assets/carrinho-vazio.jpg";
+import { useAuth } from "../../providers/Auth";
 
 const UserCart = () => {
   const { cart, setCart, getCartCost } = useCart();
+  const { user, getUserInfo, updateUserInfo } = useAuth();
   const [totalCost, setTotalCost] = useState(getCartCost() || 0);
 
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line
+  }, []);
+
   const handleBuy = () => {
+    addToHistory();
     setCart([]);
     toast.success("Compra realizada!");
     setTotalCost(0);
@@ -21,10 +29,16 @@ const UserCart = () => {
 
   const handleAddCost = (price) => {
     setTotalCost(totalCost + price);
+    console.log(user.products);
   };
 
   const handleRemoveCost = (price) => {
     setTotalCost(totalCost - price);
+  };
+
+  const addToHistory = () => {
+    const newProducts = [...user.products, ...cart] || cart;
+    updateUserInfo({ products: newProducts });
   };
 
   return (
