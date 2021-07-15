@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         localStorage.setItem("@capstore:token", response.data.accessToken);
         setAuth(response.data.access);
-        history.push("/dashboard");
+        history.push("/home");
         toastSuccess("Usuário logado com sucesso");
       })
       .catch((_) => {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/users", userData)
       .then((_) => {
-        history.push("/login");
+        history.push("/");
       })
       .catch((_) => setError(true));
   };
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
   const logout = (history) => {
     localStorage.clear();
     setAuth("");
-    history.push("/login");
+    history.push("/");
   };
 
   const updateUserInfo = (data) => {
