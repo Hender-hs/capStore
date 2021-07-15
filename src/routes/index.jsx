@@ -9,13 +9,12 @@ import Profile from "../pages/Profile";
 import Wallet from "../pages/Wallet";
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
-
+import RegisterProducts from "../pages/RegisterProducts";
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 
 import Styleguide from "../components/Styleguide";
 import WithdrawMoney from "../pages/withdrawalMoney";
-import RegisterProducts from "../pages/RegisterProducts";
 
 const Routes = () => {
   return (

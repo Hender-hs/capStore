@@ -5,34 +5,15 @@ import jwt_decode from "jwt-decode";
 import * as S from "./styled";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import { useCart } from "../../providers/Cart";
-import { useHistory } from "react-router-dom";
-import GabineteHome  from "../../assets/gabinete_gamer.jpeg"
-import LaptopSVG from "../../assets/Laptop-SVG.json"
-import Lottie from "react-lottie";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
-  const { addToCart } = useCart();
-
-  const history = useHistory();
-
-  const LaptopOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: LaptopSVG,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
 
   const getType = () => {
-    const token = localStorage.getItem("@capstore:token");
+    const token = localStorage.getItem("token");
     const decoded = jwt_decode(token);
     setType(JSON.parse(decoded.sub));
 
@@ -47,94 +28,86 @@ const Home = () => {
         setId(response.data.sellerId);
       });
   };
-
-  const redirectToSpecificProductPage = (el) => {
-    localStorage.setItem("@capstone:product_Id", el.id)
-    history.push("/specificProduct")
-  }
+  const setCart = (item) => {
+    localStorage.setItem("cart", JSON.stringify(item));
+  };
 
   useEffect(() => {
-    console.log("type", type);
     getType();
     filterBySellerId(id);
+    console.log(type);
   }, []);
 
   return (
     <S.Container>
-      <Header />
-      <div style={{marginTop: "75px"}} />
-      <img src={GabineteHome} />
-      <div className="search">
-        <input placeholder="Pesquisar hardware" onChange={(e) => setInput(e.target.value)} />
-      </div>
-        {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
-      {type !== "seller" && (
+      {type === "client" && (
         <>
+          <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
             <>
-              <h1>Placas mãe</h1>
+              <h1>Placa mãe</h1>
               <Slider autoFocus="true">
                 {products
                   .filter((item) => item.category === "Placa-mãe")
                   .map((item) => (
-                    <S.SliderChild>
-                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                    <div>
+                      <S.Card>
                         <img src={item.url} alt="img de uma peça" />
-                        <span>{item.name.slice(0, 30)}</span>
-                        {/* <p>R${item.price}</p> */}
-                        {/* <button
+                        <span>Nome {item.name.slice(0, 20)}</span>
+                        <p>R${item.price}</p>
+                        <button
                           className="client"
-                          onClick={() => addToCart(item)}
+                          onClick={() => setCart(item)}
                         >
                           Comprar
-                        </button> */}
+                        </button>
                       </S.Card>
-                    </S.SliderChild>
+                    </div>
                   ))}
               </Slider>
 
               <>
-                <h1 style={{color: "rgb(255, 255, 255, 0.5)"}} >Processadores</h1>
+                <h1>Processador</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
-                      <S.SliderChild>
-                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                      <div>
+                        <S.Card>
                           <img src={item.url} alt="img de uma peça" />
-                          <span>{item.name.slice(0, 30)}</span>
-                          {/* <p>R${item.price}</p> */}
-                          {/* <button
+                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <p>R${item.price}</p>
+                          <button
                             className="client"
-                            onClick={() => addToCart(item)}
+                            onClick={() => setCart(item)}
                           >
                             Comprar
-                          </button> */}
+                          </button>
                         </S.Card>
-                      </S.SliderChild>
+                      </div>
                     ))}
                 </Slider>
               </>
 
               <>
-                <h1 style={{color: "white"}} >Monitores Gamer</h1>
+                <h1>Monitor Gamer</h1>
                 <Slider>
                   {products
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
-                      <S.SliderChild>
-                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                      <div>
+                        <S.Card>
                           <img src={item.url} alt="img de uma peça" />
-                          <span>{item.name.slice(0, 30)}</span>
-                          {/* <p>R${item.price}</p> */}
-                          {/* <button
+                          <span>Nome {item.name.slice(0, 20)}</span>
+                          <p>R${item.price}</p>
+                          <button
                             className="client"
-                            onClick={() => addToCart(item)}
+                            onClick={() => setCart(item)}
                           >
                             Comprar
-                          </button> */}
+                          </button>
                         </S.Card>
-                      </S.SliderChild>
+                      </div>
                     ))}
                 </Slider>
               </>
@@ -144,20 +117,20 @@ const Home = () => {
             <>
               <Slider>
                 {products
-                  .filter((item) => item.category.toLowerCase() === inputValue.toLowerCase())
+                  .filter((item) => item.category === inputValue)
                   .map((item) => (
-                    <S.SliderChild>
-                      <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                        <span>{item.name.slice(0, 30)}</span>
-                        {/* <p>R${item.price}</p> */}
+                    <div>
+                      <S.Card>
+                        <span>Nome {item.name.slice(0, 20)}</span>
+                        <p>R${item.price}</p>
                         <button
-                          onClick={() => addToCart(item)}
+                          onClick={() => setCart(item)}
                           className="client"
                         >
                           Comprar
                         </button>
                       </S.Card>
-                    </S.SliderChild>
+                    </div>
                   ))}
               </Slider>
             </>
@@ -169,19 +142,18 @@ const Home = () => {
           {
             <Slider>
               {filteredProducts.map((item) => (
-                <S.SliderChild>
-                  <S.CardS onClick={() => redirectToSpecificProductPage(item)} >
-                    <span>{item.name.slice(0, 30)}</span>
-                    {/* <p>R${item.price}</p> */}
+                <div>
+                  <S.CardS>
+                    <span>Nome {item.name.slice(0, 20)}</span>
+                    <p>R${item.price}</p>
                   </S.CardS>
-                </S.SliderChild>
+                </div>
               ))}
             </Slider>
           }
           <button>Anunciar</button>
         </>
       )}
-      <Footer />
     </S.Container>
   );
 };
