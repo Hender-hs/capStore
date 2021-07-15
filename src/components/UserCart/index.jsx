@@ -3,17 +3,36 @@ import * as S from "./styles";
 import { useCart } from "../../providers/Cart";
 import CartProduct from "./CartProduct";
 import formatValue from "../../utils/formatValue";
-import Button from "../../components/Button";
+import Button from "../Button";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../providers/Auth";
+import Lottie from "react-lottie";
 
 import EmptyImage from "../../assets/carrinho-vazio.jpg";
+import EmptyAnimation from "../../assets/lotties/empty-cart.json";
 
 const UserCart = () => {
   const { cart, setCart, getCartCost } = useCart();
+  const { user, getUserInfo, updateUserInfo } = useAuth();
   const [totalCost, setTotalCost] = useState(getCartCost() || 0);
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: EmptyAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line
+  }, []);
+
   const handleBuy = () => {
+    addToHistory();
     setCart([]);
     toast.success("Compra realizada!");
     setTotalCost(0);
@@ -25,6 +44,11 @@ const UserCart = () => {
 
   const handleRemoveCost = (price) => {
     setTotalCost(totalCost - price);
+  };
+
+  const addToHistory = () => {
+    const newProducts = [...user.products, ...cart] || cart;
+    updateUserInfo({ products: newProducts });
   };
 
   return (
@@ -73,7 +97,8 @@ const UserCart = () => {
       )}
       {cart.length < 1 && (
         <S.ImageContainer>
-          <img src={EmptyImage} alt="empty" />
+          <h2>Seu carrinho está vazio!</h2>
+          <Lottie options={defaultOptions} height={320} width={320} />
         </S.ImageContainer>
       )}
     </S.CartContainer>
