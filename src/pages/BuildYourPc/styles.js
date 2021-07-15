@@ -173,6 +173,7 @@ export const Modal = styled.div`
   width: 100%;
   height: ${() => `${document.body.clientHeight}px`};
   visibility: ${({ open }) => (open ? "visible" : "hidden")};
+  padding-top: 105px;
 
   display: flex;
   justify-content: space-evenly;
@@ -279,11 +280,12 @@ export const TitleDiv = styled.div`
       props.disabled === true ? "gray" : `var(--dark-green)`};
 
     color: white;
-    animation: ${(props) => (props.disabled ? "none" : "jump 1s infinite")};
+    animation: jump 1s infinite;
 
     @keyframes jump {
       from {
         transform: translateY(-10%);
+        background: var(--green);
       }
     }
   }
