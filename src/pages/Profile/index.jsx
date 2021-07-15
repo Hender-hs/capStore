@@ -31,8 +31,8 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
       <S.Container>
+        <Header />
         { 
           userData 
           ? 
