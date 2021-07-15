@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import BuildYourPc from "../pages/BuildYourPc";
 import SpecificProduct from "../pages/SpecificProduct";
+import Profile from "../pages/Profile";
 import Wallet from "../pages/Wallet"
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
@@ -29,6 +30,7 @@ const Routes = () => {
       <Route exact path="/styleguide" component={Styleguide} />
       <Route exact path="/wallet" component={Wallet} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/profile" component={Profile} />
       <Route exact path="/withdrawMoney" component={WithdrawMoney} />
     </Switch>
   );
