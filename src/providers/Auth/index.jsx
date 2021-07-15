@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const token = localStorage.getItem("@capstore:token") || "";
+  const token = localStorage.getItem("@capstore:accessToken") || "";
 
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
@@ -16,7 +16,10 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("@capstore:token", response.data.accessToken);
+        localStorage.setItem(
+          "@capstore:accessToken",
+          response.data.accessToken
+        );
         setAuth(response.data.access);
         history.push("/home");
         toastSuccess("Usuário logado com sucesso");

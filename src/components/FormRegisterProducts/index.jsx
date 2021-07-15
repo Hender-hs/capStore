@@ -7,9 +7,10 @@ import { toastError, toastSuccess } from "../../utils/toast";
 
 import Button from "../Button";
 import { useAuth } from "../../providers/Auth";
+import { useEffect } from "react";
 
 const FormRegisterProducts = ({ id }) => {
-  const { user } = useAuth();
+  const { user, getUserInfo, updateUserInfo } = useAuth();
 
   const history = useHistory();
 
@@ -30,6 +31,13 @@ const FormRegisterProducts = ({ id }) => {
     resolver: yupResolver(schema),
   });
 
+  const updateSellerProducts = (product) => {
+    const localProducts = user.products || [];
+    const newProducts = [...localProducts, product];
+
+    updateUserInfo({ products: newProducts });
+  };
+
   const onSubmit = (data) => {
     const produto = {
       ...data,
@@ -43,13 +51,19 @@ const FormRegisterProducts = ({ id }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => {
+      .then((response) => {
         toastSuccess("Produto cadastrado");
         history.push("/home");
+        updateSellerProducts(response.data);
       })
       .catch((_) => toastError("Não foi possivel cadastra este produto"));
     reset();
   };
+
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
