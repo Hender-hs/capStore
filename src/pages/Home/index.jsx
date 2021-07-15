@@ -63,7 +63,7 @@ const Home = () => {
     <S.Container>
       <Header />
       <div style={{marginTop: "75px"}} />
-      <img src={GabineteHome} />
+      <img src={GabineteHome} alt="gabinete"/>
       <div className="search">
         <input placeholder="Pesquisar hardware" onChange={(e) => setInput(e.target.value)} />
       </div>
@@ -82,12 +82,6 @@ const Home = () => {
                         <img src={item.url} alt="img de uma peça" />
                         <span>{item.name.slice(0, 30)}</span>
                         {/* <p>R${item.price}</p> */}
-                        {/* <button
-                          className="client"
-                          onClick={() => addToCart(item)}
-                        >
-                          Comprar
-                        </button> */}
                       </S.Card>
                     </S.SliderChild>
                   ))}
@@ -101,15 +95,9 @@ const Home = () => {
                     .map((item) => (
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                          <img src={item.url} alt="img de uma peça" />
+                          <img src={item.url} alt="Processador" />
                           <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}
@@ -124,15 +112,8 @@ const Home = () => {
                     .map((item) => (
                       <S.SliderChild>
                         <S.Card onClick={() => redirectToSpecificProductPage(item)} >
-                          <img src={item.url} alt="img de uma peça" />
+                          <img src={item.url} alt="Monitor" />
                           <span>{item.name.slice(0, 30)}</span>
-                          {/* <p>R${item.price}</p> */}
-                          {/* <button
-                            className="client"
-                            onClick={() => addToCart(item)}
-                          >
-                            Comprar
-                          </button> */}
                         </S.Card>
                       </S.SliderChild>
                     ))}

@@ -27,9 +27,10 @@ export const Container = styled.div`
   }
 
   img {
-    /* height: ${() => document.scrollingElement.clientWidth}; */
     height: 50vh;
     width: 30vw;
+    object-fit: cover;
+    object-position: center;
   }
 
   .search {
@@ -48,7 +49,6 @@ export const Container = styled.div`
 
     .search {
       width: 80%;
-      /* background-color: red; */
     }
   }
 
@@ -74,6 +74,7 @@ export const Card = styled.div`
   @media (max-width: 800px) {
     width: 85%;
     height: 90%;
+    background: transparent;
   }
 `;
 
@@ -93,12 +94,12 @@ export const CardS = styled.div`
   img {
     width: 6.2rem;
     height: 6.2rem;
+    border: 2px solid red;
   }
 `;
 
 
 export const SliderChild = styled.div `
-  /* background-color: red; */
   display: flex;
   justify-content: center;
   align-items: center;
