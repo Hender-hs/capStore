@@ -18,12 +18,16 @@ export const Content = styled.div`
   padding: 10px;
 
   img {
-    width: 102px;
-    height: 41px;
+    width: 60px;
+    height: 60px;
   }
 
   justify-content: space-between;
   @media (min-width: 768px) {
+    img {
+      width: 100px;
+      height: 100px;
+    }
   }
 `;
 

@@ -29,7 +29,6 @@ const UserCart = () => {
 
   const handleAddCost = (price) => {
     setTotalCost(totalCost + price);
-    console.log(user.products);
   };
 
   const handleRemoveCost = (price) => {
