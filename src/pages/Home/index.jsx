@@ -13,6 +13,7 @@ import Lottie from "react-lottie";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
+import { useAuth } from "../../providers/Auth";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -20,6 +21,7 @@ const Home = () => {
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
   const { addToCart } = useCart();
+  const { getUserInfo } = useAuth();
 
   const history = useHistory();
 
@@ -33,7 +35,7 @@ const Home = () => {
   };
 
   const getType = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("@capstore:accessToken");
     const decoded = jwt_decode(token);
     setType(JSON.parse(decoded.sub));
 
@@ -59,6 +61,7 @@ const Home = () => {
   useEffect(() => {
     getType();
     filterBySellerId(id);
+    getUserInfo();
     // eslint-disable-next-line
   }, []);
 

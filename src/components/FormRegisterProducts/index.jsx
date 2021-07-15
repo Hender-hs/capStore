@@ -44,7 +44,7 @@ const FormRegisterProducts = ({ id }) => {
       sellerId: user.id,
       feedback: [],
     };
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("@capstore:accessToken");
     api
       .post("/products/", produto, {
         headers: {

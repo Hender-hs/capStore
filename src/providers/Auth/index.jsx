@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
           "@capstore:accessToken",
           response.data.accessToken
         );
-        setAuth(response.data.access);
+        setAuth(response.data.accessToken);
         history.push("/home");
         toastSuccess("Usuário logado com sucesso");
       })
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getUserInfo = () => {
-    const decoded = jwt_decode(token);
+    const decoded = jwt_decode(auth);
 
     api
       .get(`/users/${decoded.sub}`, {
