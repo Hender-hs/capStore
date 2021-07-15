@@ -35,7 +35,7 @@ const Profile = () => {
         <Header />
         { 
           userData 
-          ? 
+          &&
           <S.Body>
             <S.Div>
               <S.LeftDiv>
@@ -56,8 +56,6 @@ const Profile = () => {
               </S.RightDiv>
             </S.Div>
           </S.Body>
-          :
-          <h1>Carregando</h1>
         }
       </S.Container>
     </>
