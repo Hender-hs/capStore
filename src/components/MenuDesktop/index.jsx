@@ -10,31 +10,49 @@ import Button from "../Button";
 const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
   const history = useHistory();
   const { user, logout, getUserInfo } = useAuth();
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
   useEffect(() => {
     getUserInfo();
   }, []);
   return (
-    <S.Container style={{backgroundColor: bgcolor}}>
+    <S.Container style={{ backgroundColor: bgcolor }}>
       <nav>
         <ul>
           <li>
-            <Link style={{color: color}} to="home">Home</Link>
+            <Link style={{ color: color }} to="home">
+              Home
+            </Link>
           </li>
           <li>
-            <Link style={{color: color}} to="build-your-pc">Monte Seu PC</Link>
+            <Link style={{ color: color }} to="build-your-pc">
+              Monte Seu PC
+            </Link>
           </li>
           <li>
-            <Link style={{color: color}} to="profile">Meu Perfil</Link>
+            <Link style={{ color: color }} to="profile">
+              Meu Perfil
+            </Link>
           </li>
 
           <li>
-            <Link style={{color: color}} to="wallet">Carteira</Link>
+            <Link style={{ color: color }} to="wallet">
+              Carteira
+            </Link>
           </li>
           <li>
-            <Link style={{color: color}} to="aboutUs">Sobre Nós</Link>
+            <Link style={{ color: color }} to="aboutUs">
+              Sobre Nós
+            </Link>
           </li>
-          <li style={{color: color, cursor: "pointer"}} onClick={() => logout(history)}>Sair</li>
+          <li
+            style={{ color: color, cursor: "pointer" }}
+            onClick={() => {
+              logout(history);
+              setCart([]);
+            }}
+          >
+            Sair
+          </li>
         </ul>
       </nav>
       <div>
