@@ -72,17 +72,14 @@ const Home = () => {
       <Header />
       <div style={{ marginTop: "75px" }} />
       <img src={GabineteHome} alt="gabinete" />
-      {/* <Lottie options={DefaultOptions} width={400} height={400} /> */}
       <div className="search">
         <input
           placeholder="Pesquisar hardware"
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
-      {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
-          <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>
