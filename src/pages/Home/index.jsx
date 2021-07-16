@@ -7,7 +7,7 @@ import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { useCart } from "../../providers/Cart";
 import { useHistory } from "react-router-dom";
-import GabineteHome from "../../assets/gabinete_gamer.jpeg";
+import GabineteHome from "../../assets/gabinete-gamer.png";
 import LaptopSVG from "../../assets/Laptop-SVG.json";
 import Lottie from "react-lottie";
 import Footer from "../../components/Footer";
@@ -70,19 +70,18 @@ const Home = () => {
   return (
     <S.Container>
       <Header />
-      <div style={{ marginTop: "75px" }} />
+      <div style={{ marginTop: "105px" }} />
       <img src={GabineteHome} alt="gabinete" />
       {/* <Lottie options={DefaultOptions} width={400} height={400} /> */}
       <div className="search">
         <input
-          placeholder="Pesquisar hardware"
+          placeholder="Pesquisar categoria"
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
       {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
-          <input onChange={(e) => setInput(e.target.value)} />
           {inputValue === "" && (
             <>
               <h1>Placa mãe</h1>
@@ -133,7 +132,7 @@ const Home = () => {
                         <S.Card
                           onClick={() => redirectToSpecificProductPage(item)}
                         >
-                          <img src={item.url} alt="Monitor" />
+                          <img src={item.url} alt={item.name} />
                           <span>{item.name.slice(0, 30)}</span>
                         </S.Card>
                       </S.SliderChild>
@@ -152,17 +151,22 @@ const Home = () => {
                   )
                   .map((item) => (
                     <S.SliderChild>
-                      <S.Card
-                        onClick={() => redirectToSpecificProductPage(item)}
-                      >
+                      <S.Card>
                         <span>{item.name.slice(0, 30)}</span>
+                        <img
+                          src={item.url}
+                          alt={item.name}
+                          onClick={() => redirectToSpecificProductPage(item)}
+                        />
                         {/* <p>R${item.price}</p> */}
-                        <button
+                        <Button
                           onClick={() => addToCart(item)}
                           className="client"
+                          width="200px"
+                          style={{ margin: "10px 0", color: "darkgreen" }}
                         >
                           Comprar
-                        </button>
+                        </Button>
                       </S.Card>
                     </S.SliderChild>
                   ))}

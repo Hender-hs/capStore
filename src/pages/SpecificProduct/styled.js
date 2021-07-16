@@ -5,9 +5,16 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgb(0, 0, 0, 0.5) 85%, rgb(0, 0, 0) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 28%,
+    rgb(0, 0, 0, 0.5) 85%,
+    rgb(0, 0, 0) 100%
+  );
   justify-content: space-evenly;
   align-items: center;
+  padding-top: 105px;
 
   .description {
     color: white;
@@ -25,13 +32,11 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     .description {
       display: none;
-      
     }
   }
-
 `;
 
-export const DivProduct = styled.div `
+export const DivProduct = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -41,9 +46,9 @@ export const DivProduct = styled.div `
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
-export const Button = styled.button `
+export const Button = styled.button`
   border: none;
   height: 50px;
   width: 300px;
@@ -57,6 +62,6 @@ export const Button = styled.button `
   @media (max-width: 768px) {
     position: unset;
     height: 40px;
-    width: 150px; 
+    width: 150px;
   }
-`
+`;

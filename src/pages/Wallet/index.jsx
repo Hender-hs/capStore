@@ -36,7 +36,6 @@ const Wallet = () => {
       <Header />
       <S.Body>
         <S.WalletDiv>
-          {/* <WalletIcon size="200" /> */}
           <div style={{ marginRight: "-150px" }}>
             <Lottie options={defaultOptions} width={400} height={400} />
           </div>
