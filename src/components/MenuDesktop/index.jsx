@@ -7,7 +7,7 @@ import { useCart } from "../../providers/Cart";
 import { AiOutlineShoppingCart as CartIcon } from "react-icons/ai";
 import Button from "../Button";
 
-const MenuDesktop = ({ setInputValue, needInput }) => {
+const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
   const history = useHistory();
   const { user, logout, getUserInfo } = useAuth();
   const { cart } = useCart();
@@ -15,26 +15,26 @@ const MenuDesktop = ({ setInputValue, needInput }) => {
     getUserInfo();
   }, []);
   return (
-    <S.Container>
+    <S.Container style={{backgroundColor: bgcolor}}>
       <nav>
         <ul>
           <li>
-            <Link to="home">Home</Link>
+            <Link style={{color: color}} to="home">Home</Link>
           </li>
           <li>
-            <Link to="build-your-pc">Monte Seu PC</Link>
+            <Link style={{color: color}} to="build-your-pc">Monte Seu PC</Link>
           </li>
           <li>
-            <Link to="profile">Meu Perfil</Link>
+            <Link style={{color: color}} to="profile">Meu Perfil</Link>
           </li>
 
           <li>
-            <Link to="wallet">Carteira</Link>
+            <Link style={{color: color}} to="wallet">Carteira</Link>
           </li>
           <li>
-            <Link to="aboutUs">Sobre Nós</Link>
+            <Link style={{color: color}} to="aboutUs">Sobre Nós</Link>
           </li>
-          <li onClick={() => logout(history)}>Sair</li>
+          <li style={{color: color, cursor: "pointer"}} onClick={() => logout(history)}>Sair</li>
         </ul>
       </nav>
       <div>

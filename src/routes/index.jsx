@@ -16,12 +16,12 @@ import Cart from "../pages/Cart";
 import Styleguide from "../components/Styleguide";
 import WithdrawMoney from "../pages/withdrawalMoney";
 import NotFound from "../pages/NotFound";
+import AllProducts from "../pages/allProducts";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Login} />
-      {/* <Route exact path="/dashboard" component={Dashboard} /> */}
       <Route exact path="/home" component={Home} />
       <Route exact path="/build-your-pc" component={BuildYourPc} />
       <Route exact path="/specificProduct" component={SpecificProduct} />
@@ -33,6 +33,7 @@ const Routes = () => {
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/withdrawMoney" component={WithdrawMoney} />
       <Route exact path="/register-products" component={RegisterProducts} />
+      <Route exact path="/all-products" component={AllProducts} />
       <Route path="*" component={NotFound} />
     </Switch>
   );

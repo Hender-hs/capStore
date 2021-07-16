@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
-  margin: 2rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;
   justify-content: center;
 
   @media (min-width: 680px) {

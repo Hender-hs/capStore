@@ -10,7 +10,7 @@ import { useAuth } from "../../providers/Auth";
 import { useCart } from "../../providers/Cart";
 import { Link } from "react-router-dom";
 
-const Header = ({ color = "white" }) => {
+const Header = ({ color = "black" }) => {
   const { user, logout } = useAuth();
   const { cart } = useCart();
   const [openToggleMenu, setOpenToggleMenu] = useState(false);
