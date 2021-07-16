@@ -82,7 +82,7 @@ const AllProducts = () => {
 
   return (
     <S.Container>
-      <MenuDesktop />
+      <MenuDesktop color="white" />
       <S.Div>
         <div className="left-div" >
           <S.DivFilter >

@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const Container = styled.div`
   height: 100%;
@@ -41,4 +40,4 @@ export const BackgroundH2 = styled.div`
   }
 `;
 
-export default Container
+export default Container;

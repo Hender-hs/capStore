@@ -10,14 +10,15 @@ export const Container = styled.div`
   align-items: center;
   z-index: 2;
   font-weight: bold;
+
   nav {
     ul {
       display: flex;
       li {
         padding: 0.5rem;
-        border-right: 2px solid white;
+        border-right: 2px solid black;
         a {
-          color: white;
+          color: black;
         }
         :last-child {
           border: 0;
@@ -33,6 +34,7 @@ export const Container = styled.div`
       border-radius: 15px;
       border: 1px solid black;
       padding: 10px 20px;
+      width: 200px;
     }
     button {
       border-radius: 10px;

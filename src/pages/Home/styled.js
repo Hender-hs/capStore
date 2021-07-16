@@ -5,7 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgb(0, 0, 0, 0.5) 70%, rgb(0, 0, 0) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 28%,
+    rgb(0, 0, 0, 0.5) 70%,
+    rgb(0, 0, 0) 100%
+  );
   background-color: black;
   min-height: 100vh;
   transition: 0.2s;
@@ -40,18 +46,21 @@ export const Container = styled.div`
     align-items: center;
   }
 
-  @media (max-width: 800px) {
+  .seller-title {
+    color: white;
+    letter-spacing: 2px;
+  }
 
+  @media (max-width: 800px) {
     img {
-    height: 50vh;
-    width: 85vw;
+      height: 50vh;
+      width: 85vw;
     }
 
     .search {
       width: 80%;
     }
   }
-
 `;
 
 export const Card = styled.div`
@@ -62,7 +71,12 @@ export const Card = styled.div`
   border: 1px solid white;
   width: 50%;
   height: 90%;
-  background: radial-gradient(circle, rgb(255, 255, 255, 0.5) 0%, rgb(255, 255, 255) 27%, rgb(0, 0, 0, 0.7) 100%);
+  background: radial-gradient(
+    circle,
+    rgb(255, 255, 255, 0.5) 0%,
+    rgb(255, 255, 255) 27%,
+    rgb(0, 0, 0, 0.7) 100%
+  );
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -97,9 +111,14 @@ export const CardS = styled.div`
   }
 `;
 
-
-export const SliderChild = styled.div `
+export const SliderChild = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
+
+export const SellerContent = styled.div`
+  h2 {
+    font-size: 1.2rem;
+  }
+`;
