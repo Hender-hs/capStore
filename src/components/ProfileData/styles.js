@@ -1,15 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 700px;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
+  
 `;
 
+
 export const Tabs = styled.div`
-  background-color: var(--black);
+  background: rgba( 255, 251, 251, 0.25 );
+  box-shadow: 0 0px 32px 0 #16db65;
+  backdrop-filter: blur( 14.5px );
+  -webkit-backdrop-filter: blur( 14.5px );
+  border-radius: 10px 10px 0 0;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   display: flex;
   color: white;
   border: 1px solid var(--gray);
+  width: 100%;
+  margin: 0;
 
   div {
     width: 50%;
@@ -20,6 +29,7 @@ export const Tabs = styled.div`
 
     &:hover {
       background-color: var(--green);
+      border-radius: 10px 10px 0 0;
     }
   }
 
@@ -35,10 +45,18 @@ export const Divider = styled.section`
 `;
 
 export const Content = styled.div`
-  background-color: var(--gray);
-  padding: 20px;
+  background: rgba( 255, 251, 251, 0.25 );
+  box-shadow: 0 8px 32px 0 #16db65;
+  backdrop-filter: blur( 14.5px );
+  -webkit-backdrop-filter: blur( 14.5px );
+  border-radius: 0 0 10px 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   width: 100%;
+  margin: 0 auto;
   position: relative;
+  @media (min-width: 800px) {
+    padding: 1rem;
+  }
 `;
 
 export const Data = styled.div`
@@ -62,6 +80,7 @@ export const Data = styled.div`
           outline: none;
           border-radius: 5px;
         }
+        
 
         @media (min-width: 768px) {
           max-width: 300px;
@@ -98,12 +117,17 @@ export const Data = styled.div`
   }
 `;
 
-export const ChangeData = styled.div`
-  color: red;
+export const ChangeData = styled.button`
+  color: #fff;
   position: absolute;
   bottom: 20px;
   right: 40px;
   cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-family: var(--alt-font);
+  background-color: transparent;
 
   @media (min-width: 768px) {
     font-size: 1.2rem;

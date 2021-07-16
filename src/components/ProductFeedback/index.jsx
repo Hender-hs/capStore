@@ -11,8 +11,8 @@ const ProductFeedback = ( { feedback } ) => {
           editing={false}
           name={user}
           starCount={5}
-          starColor={`var(--black)`}
-          emptyStarColor={`var(--gray)`}
+          starColor={`rgb(125, 125, 125)`}
+          emptyStarColor={`rgb(155, 155, 155)`}
           value={rating}
         />
       </div>
