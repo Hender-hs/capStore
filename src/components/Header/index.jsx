@@ -14,6 +14,7 @@ const Header = ({ color = "black" }) => {
   const { user, logout } = useAuth();
   const { cart } = useCart();
   const [openToggleMenu, setOpenToggleMenu] = useState(false);
+  const { setCart } = useCart();
   const history = useHistory();
   return (
     <>
@@ -71,7 +72,12 @@ const Header = ({ color = "black" }) => {
             <S.ToggleMenuLink to="profile">Meu Perfil</S.ToggleMenuLink>
             <S.ToggleMenuLink to="wallet">Carteira</S.ToggleMenuLink>
             <S.ToggleMenuLink to="aboutUs">Sobre Nós</S.ToggleMenuLink>
-            <S.ToggleMenuLink onClick={() => logout(history)}>
+            <S.ToggleMenuLink
+              onClick={() => {
+                logout(history);
+                setCart([]);
+              }}
+            >
               Sair
             </S.ToggleMenuLink>
           </div>
