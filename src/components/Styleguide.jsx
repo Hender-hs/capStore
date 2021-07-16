@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "../providers/Auth";
 import { useProducts } from "../providers/Products";
-import ProfileData from "./ProfileData";
+import MenuDesktop from "./MenuDesktop";
 
 const Styleguide = () => {
   const { user, getUserInfo } = useAuth();
@@ -14,8 +14,7 @@ const Styleguide = () => {
 
   return (
     <div>
-      <ProfileData data={user} products={products} />
-      <button onClick={getUserInfo}>Teste</button>
+      <MenuDesktop needInput />
     </div>
   );
 };

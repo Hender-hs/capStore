@@ -31,7 +31,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const isInCart = (product) => {
-    // para deixar botão disabled se já tiver produto no cart
     return cart.includes(product);
   };
 

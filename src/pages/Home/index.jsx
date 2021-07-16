@@ -12,6 +12,10 @@ import LaptopSVG from "../../assets/Laptop-SVG.json";
 import Lottie from "react-lottie";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Button from "../../components/Button";
+import { useAuth } from "../../providers/Auth";
+import formatValue from "../../utils/formatValue";
+import animationPc from "../../assets/lotties/pc.json";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
@@ -19,20 +23,21 @@ const Home = () => {
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
   const { addToCart } = useCart();
+  const { getUserInfo, user } = useAuth();
 
   const history = useHistory();
 
-  const LaptopOptions = {
+  const DefaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: LaptopSVG,
+    animationData: animationPc,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
 
   const getType = () => {
-    const token = localStorage.getItem("@capstore:token");
+    const token = localStorage.getItem("@capstore:accessToken");
     const decoded = jwt_decode(token);
     setType(JSON.parse(decoded.sub));
 
@@ -53,30 +58,31 @@ const Home = () => {
     history.push("/specificProduct");
   };
 
+  const getToRegisterProducts = () => history.push("/register-products");
+
   useEffect(() => {
-    console.log("type", type);
     getType();
     filterBySellerId(id);
+    getUserInfo();
     // eslint-disable-next-line
   }, []);
 
   return (
     <S.Container>
       <Header />
-      <div style={{marginTop: "75px"}} />
-      <img src={GabineteHome} alt="gabinete"/>
+      <div style={{ marginTop: "75px" }} />
+      <img src={GabineteHome} alt="gabinete" />
       <div className="search">
         <input
           placeholder="Pesquisar hardware"
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
-      {/* <Lottie width="30%" height="50%" options={LaptopOptions} /> */}
       {type !== "seller" && (
         <>
           {inputValue === "" && (
             <>
-              <h1>Placas mãe</h1>
+              <h1>Placa mãe</h1>
               <Slider autoFocus="true">
                 {products
                   .filter((item) => item.category === "Placa-mãe")
@@ -102,7 +108,9 @@ const Home = () => {
                     .filter((item) => item.category === "Processador")
                     .map((item) => (
                       <S.SliderChild>
-                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                        <S.Card
+                          onClick={() => redirectToSpecificProductPage(item)}
+                        >
                           <img src={item.url} alt="Processador" />
                           <span>{item.name.slice(0, 30)}</span>
                           {/* <p>R${item.price}</p> */}
@@ -119,7 +127,9 @@ const Home = () => {
                     .filter((item) => item.category === "Monitor Gamer")
                     .map((item) => (
                       <S.SliderChild>
-                        <S.Card onClick={() => redirectToSpecificProductPage(item)} >
+                        <S.Card
+                          onClick={() => redirectToSpecificProductPage(item)}
+                        >
                           <img src={item.url} alt="Monitor" />
                           <span>{item.name.slice(0, 30)}</span>
                         </S.Card>
@@ -160,22 +170,35 @@ const Home = () => {
       )}
       {type === "seller" && (
         <>
+          <h1 className="seller-title">Seus produtos</h1>
           {
             <Slider>
-              {filteredProducts.map((item) => (
+              {user.products?.map((item) => (
                 <S.SliderChild>
-                  <S.CardS onClick={() => redirectToSpecificProductPage(item)}>
+                  <S.Card onClick={() => redirectToSpecificProductPage(item)}>
+                    <img src={item.url} alt={item.name} />
                     <span>{item.name.slice(0, 30)}</span>
-                    {/* <p>R${item.price}</p> */}
-                  </S.CardS>
+                    {/* <p>{formatValue(item.price)}</p> */}
+                  </S.Card>
                 </S.SliderChild>
               ))}
             </Slider>
           }
-          <button>Anunciar</button>
+          <Button
+            width="300px"
+            style={{
+              fontSize: "1.2rem",
+              borderRadius: "10px",
+              color: "white",
+              height: "50px",
+              marginBottom: "20px",
+            }}
+            onClick={getToRegisterProducts}
+          >
+            Anunciar novo produto
+          </Button>
         </>
       )}
-      <Footer />
     </S.Container>
   );
 };

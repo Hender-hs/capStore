@@ -9,12 +9,13 @@ import Profile from "../pages/Profile";
 import Wallet from "../pages/Wallet";
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
-
+import RegisterProducts from "../pages/RegisterProducts";
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 
 import Styleguide from "../components/Styleguide";
 import WithdrawMoney from "../pages/withdrawalMoney";
+import NotFound from "../pages/NotFound";
 import AllProducts from "../pages/allProducts";
 
 const Routes = () => {
@@ -31,7 +32,9 @@ const Routes = () => {
       <Route exact path="/register" component={Register} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/withdrawMoney" component={WithdrawMoney} />
+      <Route exact path="/register-products" component={RegisterProducts} />
       <Route exact path="/all-products" component={AllProducts} />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };
