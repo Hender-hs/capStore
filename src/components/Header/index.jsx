@@ -68,6 +68,7 @@ const Header = ({ color = "black" }) => {
           </div>
           <div className="third-child">
             <S.ToggleMenuLink to="home">Home</S.ToggleMenuLink>
+            <S.ToggleMenuLink to="all-products">Todos os Produtos</S.ToggleMenuLink>
             <S.ToggleMenuLink to="build-your-pc">Monte Seu PC</S.ToggleMenuLink>
             <S.ToggleMenuLink to="profile">Meu Perfil</S.ToggleMenuLink>
             <S.ToggleMenuLink to="wallet">Carteira</S.ToggleMenuLink>

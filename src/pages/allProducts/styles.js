@@ -6,17 +6,20 @@ export const Container = styled.div `
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  background-color: black;
+  background-color: #000000de;
 ` 
 
 export const Body = styled.div `
-  width: 75%;
+  width: 100%;
   min-height: 75%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 65px;
-  /* background-color: green; */
+
+  @media (max-width: 768px) { 
+    margin-top: 105px;
+  }
 `
 
 export const ProductCard = styled.div `
@@ -49,6 +52,17 @@ export const ProductCard = styled.div `
   p { 
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 300px;
+
+    img {
+      height: 100px;
+      max-width: 100px;
+
+    }
+  }
 `
 
 export const Button = styled.button `
@@ -69,18 +83,49 @@ export const Div = styled.div `
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 
   .left-div {
-    width: 25%;
+    width: 15%;
     display: flex;
     justify-content: center;
+  }
+
+  @media (max-width: 768px) { 
+    .left-div {
+      display: none;
+    }
   }
 `
 
 export const DivFilter = styled.div `
-  width: 50%;
-  height: 20%;
-  margin-top: 50px;
-  background-color: hotpink;
+  position: fixed;
+  top: 30vh;
+  left: 2vw;
+  width: 15%;
+  height: 50%;
+  margin-top: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  border-radius: 10px;
+
+  input {
+    padding: 5px 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+  }
+
+  h5, label {
+    cursor: pointer;
+    color: white;
+    font-size: medium;
+
+    &:hover {
+      color: gray;
+    } 
+  }
 `

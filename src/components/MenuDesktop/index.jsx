@@ -44,6 +44,9 @@ const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
               Sobre Nós
             </Link>
           </li>
+          <li>
+            <Link style={{ color: color }} to="all-products">Todos os Produtos</Link>
+          </li>
           <li
             style={{ color: color, cursor: "pointer" }}
             onClick={() => {
