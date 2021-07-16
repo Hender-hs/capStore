@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Header from "../../components/Header";
 import MenuDesktop from "../../components/MenuDesktop";
 import { useCart } from "../../providers/Cart";
 import { useProducts } from "../../providers/Products";
@@ -91,6 +92,7 @@ const AllProducts = () => {
   return (
     <S.Container>
       <MenuDesktop color="white" />
+      <Header />
       <S.Div>
         <div className="left-div">
           <S.DivFilter>
