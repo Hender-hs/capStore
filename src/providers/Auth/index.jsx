@@ -6,18 +6,20 @@ import jwt_decode from "jwt-decode";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const token = localStorage.getItem("@capstore:token") || "";
+  const token = localStorage.getItem("@capstore:accessToken") || "";
 
   const [auth, setAuth] = useState(token);
   const [user, setUser] = useState("");
 
   const signIn = (userData, setError, history) => {
-    console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("@capstore:token", response.data.accessToken);
-        setAuth(response.data.access);
+        localStorage.setItem(
+          "@capstore:accessToken",
+          response.data.accessToken
+        );
+        setAuth(response.data.accessToken);
         history.push("/home");
         toastSuccess("Usuário logado com sucesso");
       })
@@ -39,6 +41,7 @@ export const AuthProvider = ({ children }) => {
   const logout = (history) => {
     localStorage.clear();
     setAuth("");
+    setUser("");
     history.push("/");
   };
 
@@ -55,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getUserInfo = () => {
-    const decoded = jwt_decode(token);
+    const decoded = jwt_decode(auth);
 
     api
       .get(`/users/${decoded.sub}`, {

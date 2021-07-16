@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import Lottie from "react-lottie";
 
-import EmptyImage from "../../assets/carrinho-vazio.jpg";
 import EmptyAnimation from "../../assets/lotties/empty-cart.json";
 
 const UserCart = () => {
@@ -34,7 +33,9 @@ const UserCart = () => {
   const handleBuy = () => {
     addToHistory();
     setCart([]);
-    toast.success("Compra realizada!");
+    user.type === "client"
+      ? toast.success("Compra realizada!")
+      : toast.success("Adicionado ao estoque!");
     setTotalCost(0);
   };
 
@@ -89,9 +90,14 @@ const UserCart = () => {
             <Button
               width="200px"
               onClick={handleBuy}
-              style={{ cursor: "pointer", borderRadius: "10px" }}
+              style={{
+                cursor: "pointer",
+                borderRadius: "10px",
+                color: "white",
+                fontSize: "1.2rem",
+              }}
             >
-              Comprar
+              {user.tipe === "client" ? "Comprar" : "Adicionar ao estoque"}
             </Button>
           </S.ButtonContainer>
         </>

@@ -21,14 +21,16 @@ import Ssd from "../../assets/ssd.jpg";
 import Mousepad from "../../assets/mousepad.jpg";
 import { useCart } from "../../providers/Cart";
 import { toast } from "react-toastify";
+import { useAuth } from "../../providers/Auth";
 
 const BuildYourPc = () => {
   const hardwaresInlocalStorage = JSON.parse(
     localStorage.getItem("@build-your-pc/hardwares")
   );
 
-  const { filterByCategory, filteredProducts } = useProducts();
-  const { addToCart, setCart, cart } = useCart();
+  const { filterByCategory, filteredProducts, getProducts } = useProducts();
+  const { setCart, cart } = useCart();
+  const { user, getUserInfo } = useAuth();
 
   const [PCpartsBeingBuild, setPCpartsBeingBuild] = useState(
     hardwaresInlocalStorage || []
@@ -162,6 +164,12 @@ const BuildYourPc = () => {
     toast.success("Produtos adicionados ao carrinho!");
   };
 
+  useEffect(() => {
+    getUserInfo();
+    getProducts();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <S.Container>
       <div>
@@ -179,7 +187,9 @@ const BuildYourPc = () => {
                 onClick={handleAddAllToCart}
                 disabled={PCpartsBeingBuild.length < 1}
               >
-                Adicionar ao carrinho
+                {user.type === "client"
+                  ? "Adicionar ao carrinho"
+                  : "Adicionar ao estoque"}
               </Button>
             </div>
           </S.TitleDiv>
