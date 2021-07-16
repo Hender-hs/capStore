@@ -101,6 +101,7 @@ export const ToggleMenu = styled.div`
     align-items: center;
     margin: 10px 15px;
     flex-direction: column;
+    
   }
 
   .third-child {
@@ -110,6 +111,7 @@ export const ToggleMenu = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    
     a {
       display: block;
       /* width: 100%; */

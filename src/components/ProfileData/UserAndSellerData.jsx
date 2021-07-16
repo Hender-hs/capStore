@@ -52,7 +52,7 @@ const UserAndSellerData = ({ propProfileData }) => {
         <>
           <ul className="editInfo">
             <li>
-              CEP:{" "}
+              <span>CEP:{" "}</span>
               <input
                 placeholder={cep}
                 value={userCep}
@@ -60,7 +60,7 @@ const UserAndSellerData = ({ propProfileData }) => {
               />
             </li>
             <li>
-              Celular:{" "}
+            <span>Celular :{" "}</span>
               <input
                 placeholder={phone}
                 value={userPhone}
@@ -68,7 +68,7 @@ const UserAndSellerData = ({ propProfileData }) => {
               />
             </li>
             <li>
-              Email:{" "}
+            <span>Email:{" "}</span>
               <input
                 placeholder={email}
                 value={userEmail}
@@ -78,7 +78,7 @@ const UserAndSellerData = ({ propProfileData }) => {
           </ul>
           <ul className="editInfo">
             <li>
-              Estado:{" "}
+            <span>Estado:{" "}</span>
               <input
                 placeholder={location}
                 value={userLocation}
