@@ -15,18 +15,31 @@ export const Container = styled.div`
   background-color: black;
   min-height: 100vh;
   transition: 0.2s;
+  max-width: 1600px;
+  margin: 0 auto;
+
   input {
     background: none;
     border-radius: 15px;
     border: 1px solid black;
     width: 80vw;
     height: 2rem;
-    color: black;
+    color: var(--green);
     margin: 2rem auto;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    outline: none;
+    font-size: 1.2rem;
+
+    &::placeholder {
+      text-align: center;
+    }
   }
   h1 {
-    color: var(--black);
+    color: white;
+    background: linear-gradient(var(--green), var(--dark-green));
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
   }
   polygon {
     fill: var(--gray);
@@ -70,7 +83,7 @@ export const Card = styled.div`
   justify-content: space-evenly;
   border: 1px solid white;
   width: 50%;
-  height: 90%;
+  padding: 10px 0;
   background: radial-gradient(
     circle,
     rgb(255, 255, 255, 0.5) 0%,
@@ -80,9 +93,20 @@ export const Card = styled.div`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
   img {
     width: 250px;
     height: auto;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+  }
+
+  span {
+    background: var(--dark-green);
+    color: white;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
   }
 
   @media (max-width: 800px) {
