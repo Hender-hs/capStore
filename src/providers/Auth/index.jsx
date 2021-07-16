@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState("");
 
   const signIn = (userData, setError, history) => {
-    console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
@@ -42,6 +41,7 @@ export const AuthProvider = ({ children }) => {
   const logout = (history) => {
     localStorage.clear();
     setAuth("");
+    setUser("");
     history.push("/");
   };
 
