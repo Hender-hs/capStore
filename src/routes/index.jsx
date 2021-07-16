@@ -15,6 +15,7 @@ import Cart from "../pages/Cart";
 
 import Styleguide from "../components/Styleguide";
 import WithdrawMoney from "../pages/withdrawalMoney";
+import NotFound from "../pages/NotFound";
 
 const Routes = () => {
   return (
@@ -32,6 +33,7 @@ const Routes = () => {
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/withdrawMoney" component={WithdrawMoney} />
       <Route exact path="/register-products" component={RegisterProducts} />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };
