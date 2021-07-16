@@ -40,17 +40,16 @@ const Wallet = () => {
             <Lottie options={defaultOptions} width={400} height={400} />
           </div>
           <S.H3>{formatValue(user?.cash || 0)}</S.H3>
-          <S.DivButton>
+          {!!user.cash && (
             <Button
               onClick={() => history.push("/withdrawMoney")}
               color="black"
-              width="95%"
-              height="70%"
-              style={{ fontSize: "17px", color: "white", cursor: "pointer" }}
+              width="250px"
+              height="50px"
             >
               Retirar Dinheiro
             </Button>
-          </S.DivButton>
+          )}
         </S.WalletDiv>
       </S.Body>
     </S.Container>

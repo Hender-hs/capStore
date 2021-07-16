@@ -5,6 +5,9 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+   button {
+    border-radius: 10px;
+  }
 `;
 
 export const Body = styled.div`
@@ -25,14 +28,6 @@ export const WalletDiv = styled.div`
   align-items: center;
 `;
 
-export const DivButton = styled.div`
-  width: 40%;
-  min-width: 180px;
-  height: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export const H3 = styled.h3`
   font-size: 45px;

@@ -14,6 +14,7 @@ const Header = ({ color = "black" }) => {
   const { user, logout } = useAuth();
   const { cart } = useCart();
   const [openToggleMenu, setOpenToggleMenu] = useState(false);
+  const { setCart } = useCart();
   const history = useHistory();
   return (
     <>
@@ -67,11 +68,17 @@ const Header = ({ color = "black" }) => {
           </div>
           <div className="third-child">
             <S.ToggleMenuLink to="home">Home</S.ToggleMenuLink>
+            <S.ToggleMenuLink to="all-products">Todos os Produtos</S.ToggleMenuLink>
             <S.ToggleMenuLink to="build-your-pc">Monte Seu PC</S.ToggleMenuLink>
             <S.ToggleMenuLink to="profile">Meu Perfil</S.ToggleMenuLink>
             <S.ToggleMenuLink to="wallet">Carteira</S.ToggleMenuLink>
             <S.ToggleMenuLink to="aboutUs">Sobre Nós</S.ToggleMenuLink>
-            <S.ToggleMenuLink onClick={() => logout(history)}>
+            <S.ToggleMenuLink
+              onClick={() => {
+                logout(history);
+                setCart([]);
+              }}
+            >
               Sair
             </S.ToggleMenuLink>
           </div>
