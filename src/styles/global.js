@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto Condensed', sans-serif;
+
+    body {
+      background: linear-gradient(var(--black), var(--gray));
+    }
 }
 
 :root{

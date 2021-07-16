@@ -1,47 +1,56 @@
 import Header from "../../components/Header";
 import * as S from "./styles";
-import { IoWalletOutline as WalletIcon }          from "react-icons/io5";
+import { IoWalletOutline as WalletIcon } from "react-icons/io5";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
-import api from "../../services/api";
-import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import formatValue from "../../utils/formatValue";
-import Input from "../../components/Input";
+import { useAuth } from "../../providers/Auth";
+import Lottie from "react-lottie";
+
+import animationWallet from "../../assets/lotties/wallet.json";
 
 const Wallet = () => {
+  const { token, user, getUserInfo } = useAuth();
 
   const history = useHistory();
 
-  const [userData, setUserData] = useState();
-
-  const token = localStorage.getItem("@capstore:token");
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line
+  }, []);
 
   if (!token) history.push("/");
 
-  const getUser = async () => {
-
-    const tokenDecoded = jwtDecode(token).sub;
-
-    const responseRequest = await api.get(`/users/${tokenDecoded}`);
-
-    setUserData(responseRequest.data);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationWallet,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
-
-  useEffect( () => {
-    !userData && getUser();
-  });
 
   return (
     <S.Container>
       <Header />
       <S.Body>
         <S.WalletDiv>
-          <WalletIcon size="200" />
-          <S.H3>{formatValue(userData?.cash)}</S.H3>
+          {/* <WalletIcon size="200" /> */}
+          <div style={{ marginRight: "-150px" }}>
+            <Lottie options={defaultOptions} width={400} height={400} />
+          </div>
+          <S.H3>{formatValue(user?.cash || 0)}</S.H3>
           <S.DivButton>
-            <Button onClick={() => history.push("/withdrawMoney")} color="black" width="95%" height="70%" style={{fontSize: "17px", color: "white", cursor: "pointer"}} >Retirar Dinheiro</Button>
+            <Button
+              onClick={() => history.push("/withdrawMoney")}
+              color="black"
+              width="95%"
+              height="70%"
+              style={{ fontSize: "17px", color: "white", cursor: "pointer" }}
+            >
+              Retirar Dinheiro
+            </Button>
           </S.DivButton>
         </S.WalletDiv>
       </S.Body>

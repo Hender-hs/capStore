@@ -112,6 +112,7 @@ export const EachHardware = styled.div`
   padding: 20px;
   font-weight: 800;
   text-align: center;
+  border: 2px solid var(--green);
 
   img {
     height: 200px;
