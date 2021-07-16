@@ -29,11 +29,11 @@ const MenuMobile = () => {
               <AiOutlineHome />
             </Link>
             <S.Itens>
-              <Link>Computadores</Link>
-              <Link>Monitores</Link>
-              <Link>Hardware</Link>
-              <Link>Perifericos</Link>
-              <Link>Monte seu pc</Link>
+              <S.LinkTo>Computadores</S.LinkTo>
+              <S.LinkTo>Monitores</S.LinkTo>
+              <S.LinkTo>Hardware</S.LinkTo>
+              <S.LinkTo>Perifericos</S.LinkTo>
+              <S.LinkTo>Monte seu pc</S.LinkTo>
             </S.Itens>
             <button onClick={() => logout(history)}>
               <GrLogout />

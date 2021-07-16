@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 1rem;
   border-bottom: 1px solid var(--black);
+  color: white;
 
   > :first-child {
     display: flex;
@@ -11,6 +12,7 @@ export const Container = styled.div`
   }
   p {
     padding: 0.5rem;
+    color: white;
   }
 
   @media only screen and (min-width: 768px) {
@@ -19,9 +21,11 @@ export const Container = styled.div`
     justify-items: center;
     background-color: #fff;
     border-radius: 15px;
+    color: black;
     p {
       font-size: 18px;
       border: 0;
+      color: black;
     }
     > :first-child {
       align-items: center;

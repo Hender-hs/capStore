@@ -1,32 +1,51 @@
 import styled from "styled-components";
 
-export const Container = styled.div `
+export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: linear-gradient(0deg, rgb(175, 175, 175) 0%, rgb(0, 0, 0, 0.5) 0%, rgb(0, 0, 0) 110%);
+  background-image: linear-gradient(
+    0deg,
+    rgb(175, 175, 175) 0%,
+    rgb(0, 0, 0, 0.5) 0%,
+    rgb(0, 0, 0) 110%
+  );
   overflow-x: hidden;
-`
+`;
 
-export const BodyDiv = styled.div `
+export const BodyDiv = styled.div`
   width: 100%;
   height: 70%;
-  margin-top: 75px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-evenly;
-`
+  flex-direction: column;
+  align-items: center;
 
-export const PChardware = styled.div `
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: initial;
+  }
+`;
+
+export const PChardware = styled.div`
   width: 60%;
   height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-`
-export const EachHardwareSelected = styled.div `
+
+  img {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 10px;
+    border: 2px solid var(--black);
+  }
+`;
+export const EachHardwareSelected = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -57,7 +76,6 @@ export const EachHardwareSelected = styled.div `
   }
 
   @media (max-width: 850px) {
-
     height: 10%;
 
     .product-info {
@@ -66,7 +84,7 @@ export const EachHardwareSelected = styled.div `
       align-items: center;
       justify-content: space-evenly;
       margin: 0px 0 0px 0;
-      font-size: 8px;
+      font-size: 10px;
     }
 
     img {
@@ -76,11 +94,12 @@ export const EachHardwareSelected = styled.div `
     button {
       width: 100%;
       height: 80%;
+      font-size: 12px !important;
     }
   }
-`
+`;
 
-export const EachHardware = styled.div `
+export const EachHardware = styled.div`
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -125,80 +144,98 @@ export const EachHardware = styled.div `
   }
 
   @media (max-width: 850px) {
+    height: 10%;
+    width: 80vw;
 
-  height: 10%;
-  width: 80vw;
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      margin: 0px 0 0px 0;
+      font-size: 8px;
+    }
 
-  .product-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 0px 0 0px 0;
-    font-size: 8px;
+    img {
+      height: 50px;
+    }
+
+    button {
+      width: 100%;
+      height: 80%;
+    }
   }
+`;
 
-  img {
-    height: 50px;
-  }
-
-  button {
-    width: 100%;
-    height: 80%;
-  }
-}
-`
-
-export const Modal = styled.div `
+export const Modal = styled.div`
   position: absolute;
-  /* width: ${() => `${document.body.clientWidth}px` }; */
+  /* width: ${() => `${document.body.clientWidth}px`}; */
   width: 100%;
-  height: ${() => `${document.body.clientHeight}px` };
-  visibility: ${({open}) => open ? "visible" : "hidden" };
+  height: ${() => `${document.scrollingElement.offsetHeight}px`};
+  visibility: ${({ open }) => (open ? "visible" : "hidden")};
+  padding-top: 105px;
 
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
 
-  background-color: ${({open}) => open ? "rgb(0, 0, 0, 0.5)" : "rgb(255, 255, 255, 0)" };
+  background-color: ${({ open }) =>
+    open ? "rgb(0, 0, 0, 0.5)" : "rgb(255, 255, 255, 0)"};
 
   transition: 0.25s;
-`
+`;
 
-export const ModalContainer = styled.div `
+export const ModalContainer = styled.div`
   width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  visibility: ${({open}) => open ? "visible" : "hidden" };
-`
+  visibility: ${({ open }) => (open ? "visible" : "hidden")};
+`;
 
-export const EachHardwareType = styled.div `
+export const EachHardwareType = styled.div`
   width: 250px;
-  height: 190px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   margin: 15px;
+  padding: 5px 0;
   cursor: pointer;
   color: white;
-  background-color: #388F40;
+  background-color: #388f40;
+  border: 2px solid var(--green);
+  transition: 0.5s;
 
   img {
     width: 200px;
   }
-`
 
-export const SelectedProducts = styled.div `
+  p {
+    color: white;
+    font-size: 1.2rem;
+    background: var(--dark-green);
+    padding: 5px 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+
+  &:hover {
+    transform: translateY(-10%);
+  }
+`;
+
+export const SelectedProducts = styled.div`
   width: 40%;
-  min-height: 100%;
   background-color: var(--gray);
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100%;
+  max-height: 100%;
 
   strong {
     color: var(--green);
@@ -212,8 +249,19 @@ export const SelectedProducts = styled.div `
     margin: 10px 0;
   }
 
-`
-export const TitleDiv = styled.div `
+  img {
+    margin: 10px;
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    max-width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    margin-top: 20px;
+  }
+`;
+export const TitleDiv = styled.div`
   width: 100%;
   height: 120px;
   background-color: var(--green);
@@ -222,10 +270,34 @@ export const TitleDiv = styled.div `
   justify-content: center;
   align-items: center;
   margin-top: -15px;
+  /* flex-direction: column; */
+  position: relative;
+
+  button {
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: ${(props) =>
+      props.disabled === true ? "gray" : `var(--dark-green)`};
+
+    color: white;
+    animation: jump 1s infinite;
+
+    @keyframes jump {
+      from {
+        transform: translateY(-10%);
+        background: var(--green);
+      }
+    }
+  }
+
+  div {
+    position: absolute;
+    bottom: -20px;
+  }
 
   @media (max-width: 850px) {
     h1 {
       font-size: 130%;
     }
   }
-`
+`;
