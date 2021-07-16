@@ -3,15 +3,17 @@ import { useState }   from "react";
 import { useHistory } from "react-router-dom";
 import MenuDesktop    from "../../components/MenuDesktop";
 import { useCart }    from "../../providers/Cart";
+import { useProducts } from "../../providers/Products";
 import api            from "../../services/api";
 import formatValue    from "../../utils/formatValue";
 import * as S         from "./styles";
 
 const AllProducts = () => {
 
-  const [gotProducts, setGotProducts] = useState();
-  const { addToCart }                 = useCart();
-  const history                       = useHistory();
+  const [gotProducts, setGotProducts]           = useState();
+  const { addToCart }                           = useCart();
+  const { filterByCategory, filteredProducts }  = useProducts();
+  const history                                 = useHistory();
 
   const getProducts = async () => {
     const response = await api.get("/products");
@@ -47,20 +49,49 @@ const AllProducts = () => {
           <S.Button onClick={() => handleAddToCard(el)} >Adicionar ao Carrinho</S.Button>
         </div>
       </S.ProductCard>
-    )
-  }
+    );
+  };
+
+  const handleFilterProducts = (category) => {
+    filterByCategory(category);
+    if (category === "") getProducts();
+  };
+
+  const categoriesToFilter = [
+    "Placa-mãe",
+    "Placa de Vídeo",
+    "Processador",
+    "Fonte",
+    "Cooler",
+    "hd/ssd",
+    "Memória Ram",
+    "Gabinete Gamer",
+    "Teclado Gamer",
+    "Mouse Gamer",
+    "Mousepad Gamer",
+    "Headset",
+  ];
 
   useEffect( () => {
     !gotProducts && getProducts();
-  })
+  });
+
+  useEffect( () => {
+    filteredProducts && setGotProducts(filteredProducts);
+  }, [filteredProducts]);
 
   return (
     <S.Container>
       <MenuDesktop />
       <S.Div>
-        {/* <div className="left-div" > */}
-          {/* <S.DivFilter ></S.DivFilter> */}
-        {/* </div> */}
+        <div className="left-div" >
+          <S.DivFilter >
+            <div>
+              <input placeholder="Pesquisar" onChange={(el) => handleFilterProducts(el.target.value)} />
+            </div>
+            {categoriesToFilter.map( (el) => <h5 onClick={() => handleFilterProducts(el) } >{el}</h5> )}
+          </S.DivFilter>
+        </div>
         <S.Body>
           {
             gotProducts

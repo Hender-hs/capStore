@@ -34,6 +34,9 @@ const MenuDesktop = ({ setInputValue }) => {
           <li>
             <Link to="aboutUs">Sobre Nós</Link>
           </li>
+          <li>
+            <Link to="all-products">Todos os Produtos</Link>
+          </li>
           <li onClick={() => logout(history)}>Sair</li>
         </ul>
       </nav>
