@@ -10,10 +10,9 @@ import Header from "../../components/Header";
 import * as S from "./styled";
 import Footer from "../../components/Footer";
 import { useHistory } from "react-router-dom";
-
+import MenuDesktop from "../../components/MenuDesktop";
 
 const SpecificProduct = () => {
-
   const [product, setProduct] = useState([]);
   const { addToCart } = useCart();
   const { user, getUserInfo } = useAuth();
@@ -29,8 +28,7 @@ const SpecificProduct = () => {
 
   const handleAddToCard = (product) => {
     addToCart(product);
-    history.push("/cart");
-  }
+  };
 
   useEffect(() => {
     getProduct();
@@ -40,6 +38,7 @@ const SpecificProduct = () => {
   return (
     <>
       <Header />
+      <MenuDesktop color="black" bgcolor="white" />
       <S.Container>
         <S.DivProduct>
           <Product
@@ -55,8 +54,8 @@ const SpecificProduct = () => {
             </S.Button>
           )}
         </S.DivProduct>
-        <div className="description" >
-          <h2 className="description-title" >Descrição</h2>
+        <div className="description">
+          <h2 className="description-title">Descrição</h2>
           <p>{product.description}</p>
         </div>
         <Feedbacks evaluation={product.feedback} userType={user?.type} />

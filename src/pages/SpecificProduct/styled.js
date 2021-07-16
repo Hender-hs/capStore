@@ -58,6 +58,12 @@ export const Button = styled.button`
   background-color: var(--light-green);
   color: white;
   font-size: 15px;
+  border-radius: 10px;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: var(--dark-green);
+  }
 
   @media (max-width: 768px) {
     position: unset;

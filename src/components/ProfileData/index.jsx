@@ -9,7 +9,7 @@ const ProfileData = ({ data, products }) => {
 
   const isClientOrUser = () => {
     if (data.type === "client") return "Compras";
-    return "Vendas";
+    return "Produtos";
   };
 
   const alternateHistoryTitle = () => {

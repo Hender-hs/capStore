@@ -3,17 +3,19 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: 0;
   width: 100%;
-  
+
+  @media (min-width: 768px) {
+    width: 800px;
+  }
 `;
 
-
 export const Tabs = styled.div`
-  background: rgba( 255, 251, 251, 0.25 );
+  background: rgba(255, 251, 251, 0.25);
   box-shadow: 0 0px 32px 0 #16db65;
-  backdrop-filter: blur( 14.5px );
-  -webkit-backdrop-filter: blur( 14.5px );
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
   border-radius: 10px 10px 0 0;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   color: white;
   border: 1px solid var(--gray);
@@ -45,12 +47,12 @@ export const Divider = styled.section`
 `;
 
 export const Content = styled.div`
-  background: rgba( 255, 251, 251, 0.25 );
+  background: rgba(255, 251, 251, 0.25);
   box-shadow: 0 8px 32px 0 #16db65;
-  backdrop-filter: blur( 14.5px );
-  -webkit-backdrop-filter: blur( 14.5px );
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
   border-radius: 0 0 10px 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -80,7 +82,6 @@ export const Data = styled.div`
           outline: none;
           border-radius: 5px;
         }
-        
 
         @media (min-width: 768px) {
           max-width: 300px;
@@ -131,5 +132,13 @@ export const ChangeData = styled.button`
 
   @media (min-width: 768px) {
     font-size: 1.2rem;
+  }
+`;
+
+export const History = styled.div`
+  h4,
+  h5 {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--gray);
   }
 `;

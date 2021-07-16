@@ -97,7 +97,7 @@ const UserCart = () => {
                 fontSize: "1.2rem",
               }}
             >
-              {user.tipe === "client" ? "Comprar" : "Adicionar ao estoque"}
+              {user.type === "client" ? "Comprar" : "Adicionar ao estoque"}
             </Button>
           </S.ButtonContainer>
         </>

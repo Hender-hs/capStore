@@ -22,6 +22,7 @@ import Mousepad from "../../assets/mousepad.jpg";
 import { useCart } from "../../providers/Cart";
 import { toast } from "react-toastify";
 import { useAuth } from "../../providers/Auth";
+import MenuDesktop from "../../components/MenuDesktop";
 
 const BuildYourPc = () => {
   const hardwaresInlocalStorage = JSON.parse(
@@ -174,6 +175,7 @@ const BuildYourPc = () => {
     <S.Container>
       <div>
         <Header color={"black"} />
+        <MenuDesktop />
       </div>
       <S.BodyDiv>
         <S.PChardware>
@@ -186,6 +188,7 @@ const BuildYourPc = () => {
               <Button
                 onClick={handleAddAllToCart}
                 disabled={PCpartsBeingBuild.length < 1}
+                style={{ width: "200px" }}
               >
                 {user.type === "client"
                   ? "Adicionar ao carrinho"

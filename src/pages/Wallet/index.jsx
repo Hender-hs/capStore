@@ -9,6 +9,7 @@ import { useAuth } from "../../providers/Auth";
 import Lottie from "react-lottie";
 
 import animationWallet from "../../assets/lotties/wallet.json";
+import MenuDesktop from "../../components/MenuDesktop";
 
 const Wallet = () => {
   const { token, user, getUserInfo } = useAuth();
@@ -34,10 +35,14 @@ const Wallet = () => {
   return (
     <S.Container>
       <Header />
+      <MenuDesktop />
       <S.Body>
         <S.WalletDiv>
-          <div style={{ marginRight: "-150px" }}>
-            <Lottie options={defaultOptions} width={400} height={400} />
+          <div className="animationMobile">
+            <Lottie options={defaultOptions} width={200} height={200} />
+          </div>
+          <div className="animationDesktop">
+            <Lottie options={defaultOptions} width={600} height={600} />
           </div>
           <S.H3>{formatValue(user?.cash || 0)}</S.H3>
           {!!user.cash && (

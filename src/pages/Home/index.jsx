@@ -18,6 +18,7 @@ import formatValue from "../../utils/formatValue";
 import animationPc from "../../assets/lotties/pc.json";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import MenuDesktop from "../../components/MenuDesktop";
 
 const responsive = {
   superLargeDesktop: {
@@ -40,7 +41,7 @@ const responsive = {
 };
 
 const Home = () => {
-  const [inputValue, setInput] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [type, setType] = useState("");
   const [id, setId] = useState("");
   const { products, filterBySellerId, filteredProducts } = useProducts();
@@ -93,16 +94,17 @@ const Home = () => {
     <>
       <S.Container>
         <Header />
+        <MenuDesktop needInput color="black" bgcolor="white" />
         <div style={{ marginTop: "105px" }} />
         <img src={GabineteHome} alt="gabinete" />
-        <div className="search">
-          <input
-            placeholder="Pesquisar categoria"
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
         {type !== "seller" && (
           <>
+            <div className="search">
+              <input
+                placeholder="Pesquisar categoria"
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+            </div>
             {inputValue === "" && (
               <>
                 <h1>Placa mãe</h1>
@@ -238,6 +240,7 @@ const Home = () => {
           </Carousel>
         </div>
       </S.Container>
+      {/* <Footer /> */}
     </>
   );
 };

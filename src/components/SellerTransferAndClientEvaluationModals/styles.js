@@ -103,6 +103,7 @@ export const Input = styled.input`
   font-size: 14px;
   font-family: var(--alt-font);
   font-weight: 600;
+  outline: none;
 
   @media (min-width: 768px) {
     font-size: 1.2rem;

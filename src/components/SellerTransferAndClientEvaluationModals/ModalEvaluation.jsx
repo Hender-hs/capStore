@@ -95,6 +95,7 @@ const ModalEvaluation = () => {
         <textarea
           id="commentary"
           onChange={(e) => setComment(e.target.value)}
+          style={{ outline: "none", fontSize: "16px", padding: "10px" }}
         />
       </S.ModalHeaderEvaluation>
 

@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-   button {
+  button {
     border-radius: 10px;
   }
 `;
@@ -26,8 +26,21 @@ export const WalletDiv = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-`;
 
+  .animationMobile {
+    margin-right: -80px;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .animationDesktop {
+    margin-right: -230px;
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+`;
 
 export const H3 = styled.h3`
   font-size: 45px;

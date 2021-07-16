@@ -12,6 +12,10 @@ export const Header = styled.div`
 
   border-bottom: 1px solid var(--gray);
   background-color: ${(props) => props.color};
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -72,12 +76,13 @@ export const ToggleMenu = styled.div`
   top: 0;
   width: ${({ openToggleMenu }) => (openToggleMenu ? "30vw" : "0vw")};
   height: ${() => `${document.scrollingElement.offsetHeight}px`};
-  visibility: ${({openToggleMenu}) => openToggleMenu ? "visible" : "hidden" };
-  background: rgba( 181, 181, 177, 0.35 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 8.0px );
-  -webkit-backdrop-filter: blur( 8.0px );
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  visibility: ${({ openToggleMenu }) =>
+    openToggleMenu ? "visible" : "hidden"};
+  background: rgba(181, 181, 177, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: 0.2s;
   z-index: 2;
   color: #fff;
@@ -101,17 +106,16 @@ export const ToggleMenu = styled.div`
     align-items: center;
     margin: 10px 15px;
     flex-direction: column;
-    
   }
 
   .third-child {
     width: auto;
-    height: 50vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    
+
     a {
       display: block;
       /* width: 100%; */
@@ -119,7 +123,7 @@ export const ToggleMenu = styled.div`
       border-bottom: 1px solid var(--gray);
       color: #fff;
       &:hover {
-        transform: scale(1.1)
+        transform: scale(1.1);
       }
     }
   }
