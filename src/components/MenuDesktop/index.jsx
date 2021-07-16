@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useCart } from "../../providers/Cart";
 import { AiOutlineShoppingCart as CartIcon } from "react-icons/ai";
 import Button from "../Button";
+import { IoIosNotifications } from "react-icons/io";
 
 const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
   const history = useHistory();
@@ -13,42 +14,33 @@ const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
   const { cart, setCart } = useCart();
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line
   }, []);
   return (
-    <S.Container style={{ backgroundColor: bgcolor }}>
+    <S.Container color={color} style={{ backgroundColor: bgcolor }}>
       <nav>
         <ul>
           <li>
-            <Link style={{ color: color }} to="home">
-              Home
-            </Link>
+            <Link to="home">Home</Link>
           </li>
           <li>
-            <Link style={{ color: color }} to="build-your-pc">
-              Monte Seu PC
-            </Link>
+            <Link to="build-your-pc">Monte Seu PC</Link>
           </li>
           <li>
-            <Link style={{ color: color }} to="profile">
-              Meu Perfil
-            </Link>
+            <Link to="profile">Meu Perfil</Link>
           </li>
 
           <li>
-            <Link style={{ color: color }} to="wallet">
-              Carteira
-            </Link>
+            <Link to="wallet">Carteira</Link>
           </li>
           <li>
-            <Link style={{ color: color }} to="aboutUs">
-              Sobre Nós
-            </Link>
+            <Link to="aboutUs">Sobre Nós</Link>
           </li>
           <li>
-            <Link style={{ color: color }} to="all-products">Todos os Produtos</Link>
+            <Link to="all-products">Todos os Produtos</Link>
           </li>
           <li
-            style={{ color: color, cursor: "pointer" }}
+            style={{ cursor: "pointer" }}
             onClick={() => {
               logout(history);
               setCart([]);
@@ -66,12 +58,14 @@ const MenuDesktop = ({ setInputValue, needInput, color, bgcolor }) => {
           />
         )}
 
-        {user?.type === "client" && (
-          <Button width="80px" onClick={() => history.push("/cart")}>
+        <Button width="80px" onClick={() => history.push("/cart")}>
+          {user?.type === "client" ? (
             <CartIcon size={25} />
-            {cart.length}
-          </Button>
-        )}
+          ) : (
+            <IoIosNotifications size={25} color="green" />
+          )}
+          {cart.length}
+        </Button>
       </div>
     </S.Container>
   );

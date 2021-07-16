@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 80%;
   margin: 0 auto;
   border-radius: 15px;
-  
+
   > :first-child {
     display: flex;
     justify-content: space-between;
@@ -17,6 +17,6 @@ export const Container = styled.div`
     color: white;
   }
   h3 {
-    color: white
+    color: white;
   }
 `;

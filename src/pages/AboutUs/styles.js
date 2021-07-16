@@ -4,6 +4,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   padding: 0.5rem;
+  padding-top: 50px;
   background-image: radial-gradient(var(--black), var(--gray));
   @media (min-width: 600px) {
     height: 100%;
